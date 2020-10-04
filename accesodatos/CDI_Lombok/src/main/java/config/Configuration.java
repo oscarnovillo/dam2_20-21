@@ -7,6 +7,7 @@ package config;
 
 import org.yaml.snakeyaml.Yaml;
 
+import javax.enterprise.inject.Alternative;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -15,6 +16,7 @@ import java.util.logging.Logger;
 /**
  * @author dam2
  */
+@Alternative
 public class Configuration {
 
     private static Configuration config;

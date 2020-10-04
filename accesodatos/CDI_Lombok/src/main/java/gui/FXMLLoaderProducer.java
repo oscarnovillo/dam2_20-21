@@ -3,6 +3,7 @@ package gui;
 
 import javafx.fxml.FXMLLoader;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;

@@ -2,34 +2,76 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import lombok.SneakyThrows;
 import servicios.ServiciosTest;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 public class Principal {
 
+    @FXML
+    private BorderPane root;
+    @FXML
+    private Button boton;
 
-  @FXML
-  private Button boton;
+    private Alert alert;
 
-  private Alert alert;
+    public Alert getAlert() {
+        return alert;
+    }
 
-  public Alert getAlert() {
-    return alert;
-  }
+    @Inject
+    ServiciosTest st;
 
-  @Inject
-  ServiciosTest st;
+    @Inject
+    FXMLLoader fxmlloaderPantalla;
+    AnchorPane panePantalla;
 
-  @FXML
-  private void click() {
-    // ServiciosTest st = new ServiciosTest();
-    alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.getDialogPane().lookupButton(ButtonType.OK).setId("alertOK");
-    alert.setContentText("hola "+st.dameNombre(1)+" "+st.dameNumero());
-    alert.showAndWait();
-  }
+    @Inject
+    FXMLLoader fxmlloaderPantalla2;
+    AnchorPane panePantalla2;
+
+
+    @SneakyThrows
+    public void cargarPantalla2() {
+        if (panePantalla2 == null) {
+            panePantalla2 = fxmlloaderPantalla2.load(getClass().getResourceAsStream("/fxml/pantalla.fxml"));
+            Pantalla pantall = fxmlloaderPantalla2.getController();
+            pantall.boton.setText("conseguido2");
+            pantall.setP(this);
+        }
+        root.setCenter(panePantalla2);
+    }
+
+
+    @SneakyThrows
+    public void cargarPantalla1() {
+        if (panePantalla == null) {
+            panePantalla = fxmlloaderPantalla.load(getClass().getResourceAsStream("/fxml/pantalla.fxml"));
+            Pantalla pantall = fxmlloaderPantalla.getController();
+            pantall.boton.setText("conseguido");
+            pantall.setP(this);
+
+        }
+        root.setCenter(panePantalla);
+    }
+
+    @FXML
+    private void click() {
+        // ServiciosTest st = new ServiciosTest();
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.getDialogPane().lookupButton(ButtonType.OK).setId("alertOK");
+        alert.setContentText("hola " + st.dameNombre(1) + " " + st.dameNumero());
+        alert.showAndWait();
+        cargarPantalla1();
+
+
+    }
 }

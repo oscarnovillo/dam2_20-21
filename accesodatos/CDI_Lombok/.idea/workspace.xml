@@ -23,28 +23,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e983978-2ed5-42be-9d2b-e9586e9914ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CDI_lombok.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/DaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/CDIJavafx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/FXMLLoaderProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/StartupScene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../psp/testWeb/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../psp/testWeb/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../psp/testWeb/.idea/testWeb.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../psp/testWeb/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../psp/testWeb/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../psp/testWeb/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../psp/testWeb/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../psp/testWeb/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/Pantalla.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/ConfigurationProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/pantalla.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/config/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DaoTestImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DaoTestImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/FXMLLoaderProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/FXMLLoaderProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/principal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/principal.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +48,9 @@
       <list>
         <option value="AnnotationType" />
         <option value="cdi.beans_2_0" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -131,8 +121,16 @@
       <option name="presentableId" value="Default" />
       <updated>1601810091458</updated>
       <workItem from="1601810092517" duration="1980000" />
-      <workItem from="1601813196577" duration="1172000" />
+      <workItem from="1601813196577" duration="5317000" />
     </task>
+    <task id="LOCAL-00001" summary="asd">
+      <created>1601815745170</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1601815745170</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,35 +148,59 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="asd" />
+    <option name="LAST_COMMIT_MESSAGE" value="asd" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601813043063">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1601813043063" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1601812683601">
+    <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1601847164258">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601812683601" />
+    <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1601847164258" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1601815486410">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601815486410" />
     <state x="449" y="167" key="GistSnippet.InsertGistDialog" timestamp="1601813027095">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="167" key="GistSnippet.InsertGistDialog/0.0.1536.824@0.0.1536.824" timestamp="1601813027095" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1601813695993">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1601847252558">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601813695993" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1601813695993">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601847252558" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1601847252558">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601813695993" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1601813695993">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601847252558" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1601847252558">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601813695993" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1601813695993">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601847252558" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1601847252558">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601813695993" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601847252558" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1601847207007">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601847207007" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1601847207006">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1601847207006" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1601847207006">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1601847207006" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1601847207007">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1601847207007" />
     <state x="299" y="67" key="Maven.ArtifactSearchDialog" timestamp="1601813550750">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -187,5 +209,29 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1601810168702" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601815746857">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1601815746857" />
+    <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1601815663968">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1601815663968" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/Principal.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/Principal.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

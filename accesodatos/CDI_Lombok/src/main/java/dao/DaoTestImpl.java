@@ -2,7 +2,13 @@ package dao;
 
 import config.Configuration;
 
+import javax.inject.Inject;
+
 public class DaoTestImpl implements DaoTest {
+
+
+  @Inject
+  Configuration config;
 
   public int dameNumero()
   {
@@ -11,6 +17,6 @@ public class DaoTestImpl implements DaoTest {
 
   public String dameNombre()
   {
-    return "pepe "+ Configuration.getInstance().getRuta();
+    return "pepe "+ config.getRuta();
   }
 }
