@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class PrimeraConexion {
@@ -25,11 +26,13 @@ public class PrimeraConexion {
         System.out.println("234.34".chars().allMatch(value -> Character.isDigit(value)));
         Statement stmt = null;
         ResultSet rs=null;
+        Scanner sc = new Scanner(System.in);
+        var name = sc.nextLine();
         try {
 
             stmt = connection.createStatement();
 
-            rs = stmt.executeQuery("select * from table_fechas2");
+            rs = stmt.executeQuery("select * from table_fechas2 where name='"+name+"'");
 
             while (rs.next())
             {

@@ -23,19 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e983978-2ed5-42be-9d2b-e9586e9914ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/src/main/java/tutorial/PrimeraConexion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/tutorialJDBC.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tutorialJDBC/src/main/java/tutorial/PrimeraConexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tutorialJDBC/src/main/java/tutorial/PrimeraConexion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
