@@ -5,6 +5,9 @@
  */
 package config;
 
+import config.modelo.ConfigDB;
+import lombok.Getter;
+import lombok.Setter;
 import org.yaml.snakeyaml.Yaml;
 
 import javax.enterprise.inject.Alternative;
@@ -16,10 +19,10 @@ import java.util.logging.Logger;
 /**
  * @author dam2
  */
-@Alternative
+@Alternative @Getter @Setter
 public class Configuration {
 
-    private static Configuration config;
+    private static Configuration config = null;
 
     private Configuration() {
 
@@ -39,13 +42,11 @@ public class Configuration {
         return config;
     }
 
+
+
+
     private String ruta;
+    private String user;
+    private String password;
 
-    public String getRuta() {
-        return ruta;
-    }
-
-    public void setRuta(String ruta) {
-        this.ruta = ruta;
-    }
 }

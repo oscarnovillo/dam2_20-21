@@ -23,17 +23,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e983978-2ed5-42be-9d2b-e9586e9914ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../javafx11/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11/.idea/javafx11.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11/src/main/java/modelo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../javafx11/src/main/java/servicios/Coche.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/Readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/src/main/java/dao/modelo/Fecha.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/config/modelo/ConfigDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/src/main/java/config/Configuration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/src/main/java/dao/DBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/src/main/java/tutorial/PrimerDelete.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/src/main/java/tutorial/PrimerInsert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/src/main/java/tutorial/PrimerUpdate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/src/main/java/tutorial/PrimeraTransaccion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tutorialJDBC/src/main/resources/log4j2.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp/testWeb/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp/testWeb/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp/testWeb/src/main/webapp/jsp/jstl.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../psp/testWeb/src/main/webapp/jsp/test.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/config/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DaoTestImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DaoTestImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tutorialJDBC/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tutorialJDBC/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tutorialJDBC/src/main/java/tutorial/PrimeraConexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tutorialJDBC/src/main/java/tutorial/PrimeraConexion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tutorialJDBC/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../tutorialJDBC/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tutorialJDBC/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tutorialJDBC/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../psp/testWeb/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../psp/testWeb/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,11 +68,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="JupyterTrust" id="16a65896-368b-453c-b8bc-f9c7fe979545" />
+  <component name="JupyterTrust" id="1aefab2b-2508-47d8-83f3-373b623433a4" />
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\tools\ideaIU-2020.1.3.win\plugins\maven\lib\maven3" />
+        <option name="mavenHome" value="C:\tools\ideaIU-2020.1.win\plugins\maven\lib\maven3" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -80,7 +91,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tutorialJDBC" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -95,7 +107,7 @@
   <component name="RunManager">
     <configuration name="CDIJavafx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gui.CDIJavafx" />
-      <module name="CDI_lombok" />
+      <module name="CDI_Lombok" />
       <option name="VM_PARAMETERS" value="--module-path  ${PATH_TO_FX} --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
@@ -124,6 +136,7 @@
       <workItem from="1601810092517" duration="1980000" />
       <workItem from="1601813196577" duration="5360000" />
       <workItem from="1601913497359" duration="3045000" />
+      <workItem from="1602006448080" duration="503000" />
     </task>
     <task id="LOCAL-00001" summary="asd">
       <created>1601815745170</created>
@@ -162,10 +175,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="asd" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601914609464">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="279" y="85" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602006767976">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1601914609464" />
+    <state x="279" y="85" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602006767976" />
     <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1601847164258">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -179,26 +193,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="167" key="GistSnippet.InsertGistDialog/0.0.1536.824@0.0.1536.824" timestamp="1601813027095" />
-    <state width="905" height="179" key="GridCell.Tab.0.bottom" timestamp="1601981338693">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1602006945625">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="905" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1601981338693" />
     <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601847905156" />
-    <state width="905" height="179" key="GridCell.Tab.0.center" timestamp="1601981338693">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602006945625" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1602006945625">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="905" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1601981338693" />
     <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601847905156" />
-    <state width="905" height="179" key="GridCell.Tab.0.left" timestamp="1601981338693">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602006945625" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1602006945625">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="905" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1601981338693" />
     <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601847905156" />
-    <state width="905" height="179" key="GridCell.Tab.0.right" timestamp="1601981338693">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602006945625" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1602006945625">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="905" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1601981338693" />
     <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601847905156" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602006945625" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1601847905156">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -240,6 +258,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1601914378000" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602006926281">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602006926281" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
