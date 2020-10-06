@@ -1,12 +1,15 @@
 package tutorial;
 
+import dao.modelo.Fecha;
 import lombok.SneakyThrows;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -16,6 +19,8 @@ public class PrimeraConexion {
     public static void main(String[] args) {
         Connection connection = null;
 
+        List<Fecha> fechas = new ArrayList();
+
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         connection = DriverManager.getConnection(
@@ -23,33 +28,56 @@ public class PrimeraConexion {
                 "root",
                 "root");
 
-        System.out.println("234.34".chars().allMatch(value -> Character.isDigit(value)));
+        //System.out.println("23434".chars().allMatch(value -> Character.isDigit(value)));
         Statement stmt = null;
-        ResultSet rs=null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
         Scanner sc = new Scanner(System.in);
         var name = sc.nextLine();
         try {
 
             stmt = connection.createStatement();
 
-            rs = stmt.executeQuery("select * from table_fechas2 where name='"+name+"'");
+            pst = connection.prepareStatement(
+                    "select * from table_fechas2 where name = ? and numero > ? and date > ?");
+            LocalDateTime ldt = LocalDateTime.of(2000,10,10,10,10);
 
-            while (rs.next())
-            {
-                System.out.print(rs.getInt("id"));
-                System.out.print(" "+rs.getString("name"));
-                System.out.print(" "+rs.getTimestamp("date").toLocalDateTime()
-                        .format(DateTimeFormatter.ofPattern("YYYY-MM-dd")));
-                System.out.print(" "+rs.getInt("numero"));
-                System.out.println();
+            pst.setString(1,name);
+            pst.setInt(2,10);
+            pst.setTimestamp(3,Timestamp.valueOf(ldt));
+
+
+
+
+            //rs = stmt.executeQuery("select * from table_fechas2 where name='" + name + "'");
+
+            rs= pst.executeQuery();
+        /*
+
+            select * from table_fechas2 where name='2'
+            select * from table_fechas2 where name=' 2' OR 1=1 #'
+            2' OR 1=1 #
+
+             */
+
+
+            while (rs.next()) {
+                fechas.add( Fecha.builder()
+                        .id(rs.getInt("id"))
+                        .name(rs.getString("name"))
+                        .fecha(rs.getTimestamp("date").toLocalDateTime())
+                        .numero(rs.getInt("numero")).build());
             }
 
         } catch (Exception e) {
             Logger.getLogger("Main").info(e.getMessage());
         } finally {
-            rs.close();
-            stmt.close();
-            connection.close();
+            if (rs != null) rs.close();
+            if (stmt != null) stmt.close();
+            if (connection != null) connection.close();
         }
+
+
+        fechas.stream().forEach(System.out::println);
     }
 }
