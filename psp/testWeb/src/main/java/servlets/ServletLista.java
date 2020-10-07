@@ -26,11 +26,14 @@ public class ServletLista extends HttpServlet {
 
         Validador v = new Validador();
 
-        var error = v.validarParametros(request.getParameter("jjj"));
+
+        var error = v.validarParametros(request.getParameter("jjj"),
+                request.getParameterValues("cabecera"),
+                request.getParameter("columnas"));
 
         if (error==null) {
             request.setAttribute("test", "probando");
-            request.setAttribute("numList", List.of(1, 2, 3, 4, 5, 6, 7));
+            request.setAttribute("numList", List.of("pp", "ll", "3", "4", "5", "6", "7"));
             request.setAttribute("jjj", request.getParameter("jjj"));
             request.setAttribute("cabeceras", request.getParameterValues("cabecera"));
             request.setAttribute("veces",3);
@@ -39,7 +42,7 @@ public class ServletLista extends HttpServlet {
         }
         else
         {
-            request.setAttribute("error",error);
+            request.setAttribute("errorcito",error);
             request.getRequestDispatcher("jsp/error.jsp").forward(request, response);
         }
     }

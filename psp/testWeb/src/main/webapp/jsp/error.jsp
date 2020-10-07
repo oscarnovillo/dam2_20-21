@@ -12,6 +12,6 @@
     <title>Title</title>
 </head>
 <body>
-<c:out value="${error}" />
+<c:out value="${errorcito}" />
 </body>
 </html>

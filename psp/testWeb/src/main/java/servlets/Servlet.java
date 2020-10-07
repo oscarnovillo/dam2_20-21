@@ -13,11 +13,15 @@ public class Servlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        haceralgo(response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().println("hola mundo");
+        haceralgo(response);
+    }
+
+    private void haceralgo(HttpServletResponse response) throws IOException {
+        response.getWriter().println("<html></html>");
     }
 }
