@@ -32,19 +32,22 @@
 
 
 <c:out value="${cabeceras[0]}" />
-<c:set property="par" value="true" />
+
+<c:set scope="request" var="par" value="true" />
+
+<c:out value="${par}" />
 
 <table border="1">
     <c:forEach var="item" items="${numList}">
         <tr >
             <c:forEach var="i" begin="0" end="${veces-1}" step="1" varStatus ="status">
                 <td <c:if test="${par}">bgcolor="blue" </c:if> >
-                    <c:out value="${cabeceras[i]}" /> ${item}
+                    <c:out value="${cabeceras[i]}" /> ${item.getNombre()}
 
                 </td>
             </c:forEach>
         </tr>
-        <c:set property="par" value="${!par}" />
+        <c:set var="par" value="${!par}" />
     </c:forEach>
 
 </table>

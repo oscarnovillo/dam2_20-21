@@ -1,27 +1,25 @@
 package servicios;
 
 
+import dto.Filtro;
+import dto.FiltroException;
+
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Validador {
 
 
-    public String validarParametros(String jjj, String [] cabeceras,String columnas)
+    public Filtro validarFiltro(String jjj, String [] cabeceras, String columnas) throws FiltroException
     {
         String error = null;
+        Filtro f = null;
 
-        if ( (jjj==null) || (cabeceras==null) || (columnas==null) )
+        if ( (cabeceras==null) || (columnas==null) )
         {
             error =" jjj o cabecera o cllumnas no se admiten nulos";
         }
-        else if (jjj.isBlank())
-        {
-            error = "no blancos";
-        }
-        else if (!jjj.chars().allMatch(Character::isDigit))
-        {
-            error = "se requiere numero";
-        }
+
         if (error == null) {
             long numeroCabeceras = Arrays.stream(cabeceras)
                     .filter(s -> !s.isBlank()).count();
@@ -31,7 +29,16 @@ public class Validador {
                 error = "cabceras y columnas no son iguales";
             }
         }
-        return error;
+        if (error == null)
+        {
+           f = new Filtro(jjj,Arrays.stream(cabeceras)
+                   .filter(s -> !s.isBlank()).toArray(String[]::new),Integer.parseInt(columnas));
+        }
+        else
+        {
+            throw new FiltroException(error);
+        }
+        return f;
 
     }
 }

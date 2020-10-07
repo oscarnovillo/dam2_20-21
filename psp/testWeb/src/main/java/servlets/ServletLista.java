@@ -1,5 +1,8 @@
 package servlets;
 
+import dto.Filtro;
+import dto.FiltroException;
+import servicios.ServiciosAlumnos;
 import servicios.Validador;
 
 import javax.servlet.ServletException;
@@ -26,24 +29,30 @@ public class ServletLista extends HttpServlet {
 
         Validador v = new Validador();
 
+        String error = null;
+        Filtro filtro = null;
 
-        var error = v.validarParametros(request.getParameter("jjj"),
-                request.getParameterValues("cabecera"),
-                request.getParameter("columnas"));
+        try {
+            filtro = v.validarFiltro(request.getParameter("jjj"),
+                    request.getParameterValues("cabecera"),
+                    request.getParameter("columnas"));
 
-        if (error==null) {
+            ServiciosAlumnos s = new ServiciosAlumnos();
+
+
+
             request.setAttribute("test", "probando");
-            request.setAttribute("numList", List.of("pp", "ll", "3", "4", "5", "6", "7"));
-            request.setAttribute("jjj", request.getParameter("jjj"));
-            request.setAttribute("cabeceras", request.getParameterValues("cabecera"));
-            request.setAttribute("veces",3);
+            request.setAttribute("numList", s.getAlumnos(filtro));
+            request.setAttribute("jjj", filtro.getJjj());
+            request.setAttribute("cabeceras", filtro.getCabeceras());
+            request.setAttribute("veces",filtro.getColumnas());
 
             request.getRequestDispatcher("jsp/jstl.jsp").forward(request, response);
-        }
-        else
-        {
-            request.setAttribute("errorcito",error);
+
+        } catch (FiltroException e) {
+            request.setAttribute("errorcito",e.getMessage());
             request.getRequestDispatcher("jsp/error.jsp").forward(request, response);
         }
+
     }
 }
