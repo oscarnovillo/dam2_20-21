@@ -2,6 +2,7 @@ package tutorial;
 
 import dao.DBConnection;
 import lombok.extern.log4j.Log4j2;
+import utils.ConstantesDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,10 +13,6 @@ import java.sql.SQLIntegrityConstraintViolationException;
 @Log4j2
 public class PrimerDelete {
 
-
-    //public static Logger log = LogManager.getLogger(PrimerDelete.class);
-    public static final String DELETE_TABLE_FECHAS_WHERE_ID =
-            "delete from table_fechas2 where id = ?";
 
     public static void main(String[] args) {
 
@@ -28,7 +25,7 @@ public class PrimerDelete {
             log.info("conectando");
             con = db.getConnection();
             stmt = con.prepareStatement
-                    (DELETE_TABLE_FECHAS_WHERE_ID);
+                    (ConstantesDB.DELETE_TABLE_FECHAS_WHERE_ID);
             stmt.setInt(1,
                     14);
 
