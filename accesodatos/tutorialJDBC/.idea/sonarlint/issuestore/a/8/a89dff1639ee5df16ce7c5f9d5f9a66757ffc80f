@@ -1,0 +1,5 @@
+
+P
+java:S1128"5Remove this unused import 'java.util.logging.Logger'.(ƒ¥óš8ÎÆÞ÷Ï.
+R	java:S106"9Replace this use of System.out or System.err by a logger.(æú‹8®Ç¤÷Ï.
+S	java:S106"9Replace this use of System.out or System.err by a logger.(öå¾ó8®Ç¤÷Ï.

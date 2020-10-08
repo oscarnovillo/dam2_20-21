@@ -1,0 +1,19 @@
+
+9
+	Readme.md,0\c\0c1945d7443c2e154bd3e421c0d438bd4086d8c3
+[
++src/main/java/tutorial/PrimeraConexion.java,4\d\4d1ea111ece67677c3d4683daf1cc468148c551b
+X
+(src/main/java/tutorial/PrimerUpdate.java,2\7\277d587b8458dde10202313c8dc2b924d954ccd9
+^
+.src/main/java/tutorial/PrimeraTransaccion.java,9\9\99649659972c477c3efc42ee435b8e1bda97d12f
+X
+(src/main/java/tutorial/PrimerInsert.java,2\8\28f4b1d1bc5a3cd9b5beaba606fe442026a4ba45
+S
+#src/main/java/dao/DBConnection.java,f\1\f165cee95d90c2b7eb0614507df1f683deb219e8
+X
+(src/main/java/tutorial/PrimerDelete.java,a\8\a89dff1639ee5df16ce7c5f9d5f9a66757ffc80f
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+W
+'src/main/java/config/Configuration.java,7\f\7f9a1455549e9958f1cfe6993a695569484b133b
