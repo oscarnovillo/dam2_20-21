@@ -40,8 +40,6 @@ public class ServletLista extends HttpServlet {
 
             ServiciosAlumnos s = new ServiciosAlumnos();
 
-
-
             request.setAttribute("color", "#EEEEEE");
             request.setAttribute("numList", s.getAlumnos(filtro));
             request.setAttribute("jjj", filtro.getJjj());
