@@ -1,3 +1,5 @@
 
-[
-java:S2094"BRemove this empty class, write its code or make it an "interface".(ïçÛÿùÿÿÿÿ
+q
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Øíõ­ýÿÿÿÿ8Ñ‰­ÊÐ.
+U	java:S1061"9Replace this use of System.out or System.err by a logger.(öå¾ó8Ñ‰­ÊÐ.
+Z	java:S106("9Replace this use of System.out or System.err by a logger.( Ë¥ûùÿÿÿÿ8Ñ‰­ÊÐ.

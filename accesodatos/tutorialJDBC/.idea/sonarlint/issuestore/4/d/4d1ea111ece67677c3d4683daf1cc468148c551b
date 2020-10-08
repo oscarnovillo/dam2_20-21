@@ -1,20 +1,20 @@
 
-h
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ú³œ›øÿÿÿÿ
-\
-java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(¬ŒÈ­
 [
 java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(‚ÌÆË
+S
+java:S1128"?Remove this unused import 'java.time.format.DateTimeFormatter'.(‰÷÷ª
+\
+java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(¬ŒÈ­
+T	java:S125"<This block of commented-out lines of code should be removed.(´ Áéüÿÿÿÿ
+I
+java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èýÿÿÿÿ
+I
+java:S1128"0Remove this unused import 'java.time.LocalTime'.(à®øÃùÿÿÿÿ
+T	java:S125"<This block of commented-out lines of code should be removed.(Áöšúÿÿÿÿ
+Q	java:S106"9Replace this use of System.out or System.err by a logger.(éžó¨þÿÿÿÿ
 H
 java:S3740"/Provide the parametrized type for this generic.(Ûó©Çûÿÿÿÿ
 K
 java:S2589"7Remove this expression which always evaluates to "true"(þ³ñã
-I
-java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èýÿÿÿÿ
-S
-java:S1128"?Remove this unused import 'java.time.format.DateTimeFormatter'.(‰÷÷ª
-I
-java:S1128"0Remove this unused import 'java.time.LocalTime'.(à®øÃùÿÿÿÿ
-Q	java:S106"9Replace this use of System.out or System.err by a logger.(éžó¨þÿÿÿÿ
-T	java:S125"<This block of commented-out lines of code should be removed.(Áöšúÿÿÿÿ
-T	java:S125"<This block of commented-out lines of code should be removed.(´ Áéüÿÿÿÿ
+h
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ú³œ›øÿÿÿÿ
