@@ -12,10 +12,11 @@ import java.util.stream.Collectors;
 
 public class AlumnosDao {
 
-    public static List<Alumno> alumnos;
+    private static List<Alumno> alumnos;
 
     public List<Alumno> getAlumnos(Filtro f) {
-        return alumnos.stream().filter(alumno -> alumno.getNombre().contains(f.getJjj())).collect(Collectors.toList());
+        return alumnos.stream().filter(alumno -> alumno.getNombre()
+                .contains(f.getJjj())).collect(Collectors.toList());
     }
 
     public AlumnosDao() {

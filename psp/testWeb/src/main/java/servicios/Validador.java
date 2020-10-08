@@ -10,14 +10,23 @@ import java.util.stream.Collectors;
 public class Validador {
 
 
-    public Filtro validarFiltro(String jjj, String [] cabeceras, String columnas) throws FiltroException
+    public Filtro validarFiltro(String jjj, String [] cabeceras, String columnas,String inferior)
+            throws FiltroException
     {
         String error = null;
+        var inferiorInterno = 0;
         Filtro f = null;
 
         if ( (cabeceras==null) || (columnas==null) )
         {
             error =" jjj o cabecera o cllumnas no se admiten nulos";
+        }
+        if (inferior!= null && !inferior.isBlank())
+        {
+            if (!inferior.chars().allMatch(Character::isDigit))
+                error = "inferior debe ser numero";
+            else
+                inferiorInterno = Integer.parseInt(inferior);
         }
 
         if (error == null) {
@@ -32,7 +41,8 @@ public class Validador {
         if (error == null)
         {
            f = new Filtro(jjj,Arrays.stream(cabeceras)
-                   .filter(s -> !s.isBlank()).toArray(String[]::new),Integer.parseInt(columnas));
+                   .filter(s -> !s.isBlank()).toArray(String[]::new),Integer.parseInt(columnas)
+           ,inferiorInterno);
         }
         else
         {

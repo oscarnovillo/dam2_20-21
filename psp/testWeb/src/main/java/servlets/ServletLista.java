@@ -35,13 +35,14 @@ public class ServletLista extends HttpServlet {
         try {
             filtro = v.validarFiltro(request.getParameter("jjj"),
                     request.getParameterValues("cabecera"),
-                    request.getParameter("columnas"));
+                    request.getParameter("columnas"),
+                    request.getParameter("inferior"));
 
             ServiciosAlumnos s = new ServiciosAlumnos();
 
 
 
-            request.setAttribute("test", "probando");
+            request.setAttribute("color", "#EEEEEE");
             request.setAttribute("numList", s.getAlumnos(filtro));
             request.setAttribute("jjj", filtro.getJjj());
             request.setAttribute("cabeceras", filtro.getCabeceras());

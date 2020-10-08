@@ -37,11 +37,13 @@
 
 <c:out value="${par}" />
 
+
+
 <table border="1">
     <c:forEach var="item" items="${numList}">
         <tr >
             <c:forEach var="i" begin="0" end="${veces-1}" step="1" varStatus ="status">
-                <td <c:if test="${par}">bgcolor="blue" </c:if> >
+                <td <c:if test="${par}">bgcolor="${color}" </c:if> >
                     <c:out value="${cabeceras[i]}" /> ${item.getNombre()}
 
                 </td>
