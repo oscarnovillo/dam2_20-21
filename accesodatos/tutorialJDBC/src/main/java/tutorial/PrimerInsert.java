@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 @Log4j2
 public class PrimerInsert {
 
+
     public static void main(String[] args) {
         DBConnection db = new DBConnection();
         Connection con = null;
@@ -28,6 +29,8 @@ public class PrimerInsert {
                     java.sql.Timestamp.valueOf(LocalDateTime.now()));
             stmt.setString(1, "nombre");
             stmt.setInt(3, 7);
+
+
             int numeroFilas = stmt.executeUpdate();
 
             rs = stmt.getGeneratedKeys();
@@ -36,6 +39,8 @@ public class PrimerInsert {
             if (rs != null && rs.next()) {
                 id = rs.getLong(1);
             }
+
+            //usuario.setId(id);
             System.out.println("numero de filas afecto " + numeroFilas + " con id " + id);
         } catch (Exception e) {
             log.info(e.getMessage());

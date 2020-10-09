@@ -1,5 +1,6 @@
 package dao;
 
+import config.Configuration;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
@@ -17,12 +18,13 @@ public class DBConnection {
 
         Connection connection = null;
 
+        // solo hace falta en web.
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         connection = DriverManager.getConnection(
                 "jdbc:mysql://dam2.mysql.iesquevedo.es:3335/netflisssss",
-                "root",
-                "root");
+                Configuration.getInstance().getUser(),
+                Configuration.getInstance().getPassword());
 
     //    connection = DBConnectionPool.getInstance().getConnection();
         return connection;
@@ -35,7 +37,7 @@ public class DBConnection {
                 connection.close();
             }
         } catch (SQLException ex) {
-            log.error("", ex);
+            log.error("no se ha podido cerrar conexion", ex);
         }
     }
     public void cerrarStatement(Statement stmt) {
@@ -44,7 +46,7 @@ public class DBConnection {
                 stmt.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+            log.error("", ex);
         }
     }
     public void cerrarResultSet(ResultSet rs) {

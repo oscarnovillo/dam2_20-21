@@ -44,9 +44,15 @@
         <tr >
             <c:forEach var="i" begin="0" end="${veces-1}" step="1" varStatus ="status">
                 <td <c:if test="${par}">bgcolor="${color}" </c:if> >
-                    <c:out value="${cabeceras[i]}" /> ${item.getNombre()}
+                    <c:out value="${cabeceras[i]}" />
+                    <c:choose >
+                        <c:when test="${i ==0 }">${item.getNombre()}</c:when>
+                        <c:when test="${i ==1 }">${item.getEdad()}</c:when>
+                        <c:when test="${i ==2 }">${item.getBirth()}</c:when>
+                    </c:choose>
 
                 </td>
+
             </c:forEach>
         </tr>
         <c:set var="par" value="${!par}" />

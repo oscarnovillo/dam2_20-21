@@ -16,6 +16,7 @@ public class PrimeraTransaccion {
     public static final String DELETE_TABLE_FK_FECHAS_WHERE_ID =
             "delete from table_fk where id_fechas = ?";
 
+
     public static void main(String[] args) {
         DBConnection db = new DBConnection();
         Connection con = null;

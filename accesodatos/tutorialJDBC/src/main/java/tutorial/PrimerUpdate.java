@@ -11,6 +11,7 @@ public class PrimerUpdate {
     public static final String UPDATE_TABLE_FECHAS_SET_NAME_WHERE_ID =
             "update table_fechas2 set name= ?,numero = ? where id = ?";
 
+
     public static void main(String[] args) {
         DBConnection db = new DBConnection();
         Connection con = null;
@@ -34,7 +35,7 @@ public class PrimerUpdate {
         } catch (Exception e) {
             Logger.getLogger("Main").info(e.getMessage());
         } finally {
-            db.cerrarStatement(stmt);
+            //db.cerrarStatement(stmt);
             db.cerrarConexion(con);
         }
     }
