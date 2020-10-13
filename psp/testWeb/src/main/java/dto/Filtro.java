@@ -9,4 +9,5 @@ public class Filtro {
     private final String[] cabeceras;
     private final int columnas;
     private final int inferior;
+    private final int superior;
 }

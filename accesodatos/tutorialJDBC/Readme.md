@@ -24,5 +24,5 @@
     - Tratar excepciones de FK.
 
 - **Transacciones**:
-    - Son siempre cuando hay varias querys de cambio de datos
+    - Son siempre cuando hay varias querys de cambio de datos que se tienen que hacer a la vez, o no hacerse
 

@@ -40,6 +40,7 @@
 
 
 <table border="1">
+
     <c:forEach var="item" items="${numList}">
         <tr >
             <c:forEach var="i" begin="0" end="${veces-1}" step="1" varStatus ="status">

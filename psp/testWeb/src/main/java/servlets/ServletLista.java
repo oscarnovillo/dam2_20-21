@@ -36,7 +36,8 @@ public class ServletLista extends HttpServlet {
             filtro = v.validarFiltro(request.getParameter("jjj"),
                     request.getParameterValues("cabecera"),
                     request.getParameter("columnas"),
-                    request.getParameter("inferior"));
+                    request.getParameter("inferior"),
+                    request.getParameter("superior"));
 
             ServiciosAlumnos s = new ServiciosAlumnos();
 
