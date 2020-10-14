@@ -10,4 +10,5 @@ public class Filtro {
     private final int columnas;
     private final int inferior;
     private final int superior;
+    private final String stripped;
 }

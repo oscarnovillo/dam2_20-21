@@ -37,11 +37,13 @@ public class ServletLista extends HttpServlet {
                     request.getParameterValues("cabecera"),
                     request.getParameter("columnas"),
                     request.getParameter("inferior"),
-                    request.getParameter("superior"));
+                    request.getParameter("superior"),
+                    request.getParameter("stripped"));
 
             ServiciosAlumnos s = new ServiciosAlumnos();
 
-            request.setAttribute("color", "#EEEEEE");
+
+            request.setAttribute("color", filtro.getStripped());
             request.setAttribute("numList", s.getAlumnos(filtro));
             request.setAttribute("jjj", filtro.getJjj());
             request.setAttribute("cabeceras", filtro.getCabeceras());

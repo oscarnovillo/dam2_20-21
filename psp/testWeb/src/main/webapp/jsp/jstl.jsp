@@ -39,7 +39,7 @@
 
 
 
-<table border="1">
+<table border="1" >
 
     <c:forEach var="item" items="${numList}">
         <tr >

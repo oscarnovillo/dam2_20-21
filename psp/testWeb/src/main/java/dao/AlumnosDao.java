@@ -14,9 +14,17 @@ public class AlumnosDao {
 
     private static List<Alumno> alumnos;
 
+
     public List<Alumno> getAlumnos(Filtro f) {
 
-        return alumnos.stream().skip(f.getInferior()).limit(f.getSuperior()-f.getInferior()+1).filter(alumno -> alumno.getNombre()
+        var limite = alumnos.size();
+
+        if (f.getSuperior()>0)
+            limite= f.getSuperior();
+
+
+        return alumnos.stream().skip(f.getInferior())
+                .limit(limite-f.getInferior()+1).filter(alumno -> alumno.getNombre()
                 .contains(f.getJjj())).collect(Collectors.toList());
     }
 

@@ -10,13 +10,21 @@ import java.util.stream.Collectors;
 public class Validador {
 
 
-    public Filtro validarFiltro(String jjj, String [] cabeceras, String columnas,String inferior,String superior)
+    public Filtro validarFiltro(String jjj, String [] cabeceras, String columnas,String inferior,
+                                String superior,String stripped)
             throws FiltroException
     {
         String error = null;
         var inferiorInterno = 0;
         var superiorInterno=0;
         Filtro f = null;
+        String color= "#EEEEE";
+
+        if (stripped==null)
+        {
+            color="";
+        }
+
 
         if ( (cabeceras==null) || (columnas==null) )
         {
@@ -39,6 +47,7 @@ public class Validador {
             else
                 superiorInterno = Integer.parseInt(superior);
         }
+
         if (error == null) {
             long numeroCabeceras = Arrays.stream(cabeceras)
                     .filter(s -> !s.isBlank()).count();
@@ -54,7 +63,7 @@ public class Validador {
            f = new Filtro(jjj == null ? "":jjj,
                    Arrays.stream(cabeceras)
                    .filter(s -> !s.isBlank()).toArray(String[]::new),Integer.parseInt(columnas)
-           ,inferiorInterno,superiorInterno);
+           ,inferiorInterno,superiorInterno,color);
         }
         else
         {
