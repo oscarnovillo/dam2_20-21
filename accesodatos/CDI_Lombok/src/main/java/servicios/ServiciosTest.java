@@ -1,7 +1,9 @@
 package servicios;
 
+import dao.Dao;
 import dao.DaoTest;
 import dao.DaoTestImpl;
+import dao.Test;
 
 import javax.inject.Inject;
 
