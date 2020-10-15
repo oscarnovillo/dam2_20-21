@@ -12,7 +12,7 @@ public class HashPasswordTest {
 
         MessageDigest md = MessageDigest.getInstance("SHA3-512");
 
-        String pass = "hola";
+        String pass = "admin";
 
         byte[] hashBytes = md.digest(pass.getBytes());
         var hash1 = bytesToHex(hashBytes);

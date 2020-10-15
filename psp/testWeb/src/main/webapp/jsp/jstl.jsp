@@ -37,7 +37,7 @@
 
 <c:out value="${par}" />
 
-
+hola&nbsp;adios
 
 <table border="1" >
 

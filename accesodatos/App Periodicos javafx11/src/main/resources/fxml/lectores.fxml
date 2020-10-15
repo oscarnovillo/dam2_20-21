@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="474.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Lectores">
+   <children>
+      <ListView layoutX="101.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextField fx:id="textUsuario" layoutX="390.0" layoutY="57.0" />
+      <PasswordField fx:id="txtPassword" layoutX="390.0" layoutY="93.0" />
+      <PasswordField layoutX="390.0" layoutY="125.0" />
+      <TextField fx:id="txtMail" layoutX="390.0" layoutY="170.0" />
+      <TextField fx:id="txtNombre" layoutX="390.0" layoutY="225.0" />
+      <DatePicker fx:id="fechaNacimiento" layoutX="390.0" layoutY="285.0" />
+      <Label layoutX="345.0" layoutY="229.0" text="nombre" />
+      <Button fx:id="btAdd" layoutX="314.0" layoutY="358.0" mnemonicParsing="false" onAction="#addLector" text="add" />
+      <Button layoutX="390.0" layoutY="358.0" mnemonicParsing="false" onAction="#borrarLector" text="delete" />
+      <Button layoutX="465.0" layoutY="358.0" mnemonicParsing="false" onAction="#actualizar" text="update" />
+   </children>
+</AnchorPane>

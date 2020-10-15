@@ -5,6 +5,8 @@
  */
 package config;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;
@@ -15,6 +17,8 @@ import java.util.logging.Logger;
 /**
  * @author dam2
  */
+@Getter
+@Setter
 public class Configuration {
 
     private static Configuration config;
@@ -38,12 +42,6 @@ public class Configuration {
     }
 
     private String ruta;
-
-    public String getRuta() {
-        return ruta;
-    }
-
-    public void setRuta(String ruta) {
-        this.ruta = ruta;
-    }
+    private String user;
+    private String password;
 }
