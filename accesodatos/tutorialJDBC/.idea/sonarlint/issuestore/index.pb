@@ -25,3 +25,5 @@ U
 %src/main/java/utils/ConstantesDB.java,0\a\0abaf00b48322fa49bf7b2c3cfb5723f67af5a7f
 W
 'src/main/java/dao/DBConnectionPool.java,2\9\299b42bb1e6854997ec216a7ea7031195666e722
+\
+,src/main/java/tutorial/HashPasswordTest.java,3\f\3fcf13165904d562c5a52a7b00f66a30564a5cca

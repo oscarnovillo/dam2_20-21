@@ -55,7 +55,9 @@ public class DaoLectores {
             stmt.setString(2, l.getNombre());
            stmt.setDate(3,
                     java.sql.Date.valueOf(l.getBirth()));
+            numeroFilas = stmt.executeUpdate();
             añadido = true;
+
         } catch (Exception e) {
             log.info(e.getMessage());
         } finally {

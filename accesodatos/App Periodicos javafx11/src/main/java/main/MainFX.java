@@ -6,6 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+
+// --module-path  ${PATH_TO_FX} --add-modules javafx.controls,javafx.fxml
+
 public class MainFX extends Application {
 
   @Override
