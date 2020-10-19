@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="474.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Lectores">
    <children>
-      <ListView layoutX="101.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="listLectores" layoutX="101.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" />
       <TextField fx:id="textUsuario" layoutX="390.0" layoutY="57.0" />
       <PasswordField fx:id="txtPassword" layoutX="390.0" layoutY="93.0" />
       <PasswordField layoutX="390.0" layoutY="125.0" />

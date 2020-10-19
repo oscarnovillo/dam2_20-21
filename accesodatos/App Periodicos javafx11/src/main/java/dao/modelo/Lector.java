@@ -7,7 +7,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Data
+@Getter @Setter @AllArgsConstructor
 public class Lector {
     private long id;
     private final String usuario;
@@ -18,4 +18,11 @@ public class Lector {
 
 
 
+    public Lector(String usuario, String password, String mail, String nombre, LocalDate birth) {
+        this.usuario = usuario;
+        this.password = password;
+        this.mail = mail;
+        this.nombre = nombre;
+        this.birth = birth;
+    }
 }
