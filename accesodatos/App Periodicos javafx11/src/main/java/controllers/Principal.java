@@ -9,12 +9,23 @@ import javafx.scene.layout.BorderPane;
 import lombok.SneakyThrows;
 import servicios.ServiciosTest;
 
+
 public class Principal {
   @FXML
   private Button boton;
 
   @FXML
   private BorderPane root;
+
+  private String usuario;
+
+  public String getUsuario() {
+    return usuario;
+  }
+
+  public void setUsuario(String usuario) {
+    this.usuario = usuario;
+  }
 
   private Alert alert;
 
