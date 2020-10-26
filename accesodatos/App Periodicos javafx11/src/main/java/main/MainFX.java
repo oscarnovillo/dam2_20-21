@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 
 // --module-path  ${PATH_TO_FX} --add-modules javafx.controls,javafx.fxml
 
+// --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+
 public class MainFX extends Application {
 
   @Override
