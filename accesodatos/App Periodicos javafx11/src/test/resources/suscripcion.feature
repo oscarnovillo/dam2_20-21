@@ -3,7 +3,7 @@ Feature: suscripcion
   Scenario: Alta suscripcion
 
     Given un lector valido logueado
-    And un periodico en el que no tiene suscripcion(no hay fecha_baja == null)
+    And un periodico en el que no tiene suscripcion (no hay fecha_baja == null o no existe suscripcion alguna)
     When hace una suscripcion a ese periodico
     Then se suscribe al periodico con fecha baja = null
 

@@ -17,7 +17,7 @@ public class HashPasswordTest {
         byte[] hashBytes = md.digest(pass.getBytes());
         var hash1 = bytesToHex(hashBytes);
 
-        pass="hola1";
+        pass="root";
         md.update(pass.getBytes());
         byte[] hashBytes1 = md.digest();
         String hash2 = bytesToHex(hashBytes1);

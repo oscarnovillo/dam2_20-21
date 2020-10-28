@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Login",urlPatterns = {"/doLogin"})
-public class ServletLogin extends HttpServlet {
+@WebServlet(name = "ServletLogout",urlPatterns = {"/logout"})
+public class ServletLogout extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().setAttribute("cesta",null);
+        request.getSession().setAttribute("login",null);
 
-        // mirara si el suuario es valido
-
-        // si es valido guarda en sesion el usuario y va a un a pagina main con dos links productos o cesta
-
-        // si no pagina error.
+        request.getSession().invalidate();
 
     }
 }
