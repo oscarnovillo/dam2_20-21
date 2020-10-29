@@ -12,5 +12,11 @@
 </head>
 <body>
 
+
+<form action="/cesta?op=add" >
+
+    <input type="hidden" name="op" value="add" />
+
+</form>
 </body>
 </html>

@@ -25,10 +25,6 @@ public class ServletCesta extends HttpServlet {
 
                     break;
 
-                case "ver":
-
-                    break;
-
                 case "limpiar":
 
                     break;

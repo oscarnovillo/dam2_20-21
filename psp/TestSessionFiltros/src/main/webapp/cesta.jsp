@@ -12,5 +12,13 @@
 </head>
 <body>
 
+<form action="/cesta?op=limpiar" >
+
+    <input type="hidden" name="op" value="limpiar" />
+
+    <input type="submit" value="limpiar" />
+
+</form>
+
 </body>
 </html>
