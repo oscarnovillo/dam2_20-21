@@ -10,11 +10,11 @@ import javax.inject.Inject;
 public class ServiciosTest {
 
   @Inject
-  DaoTest d;
+  private DaoTest d;
 
   public int dameNumero()
   {
-   // DaoTest d = new DaoTest();
+   // DaoTest d = new DaoTestImpl();
     return d.dameNumero();
   }
   public String dameNombre(int condicion)

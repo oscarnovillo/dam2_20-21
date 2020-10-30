@@ -32,6 +32,5 @@ Feature:  Login
     Given administrador de periodico logueado
     When se pasa a pantalla de bienvenida
     Then el menu de periodico,
-    And el menu de suscripciones,
     And el menu crear articulos estan visibles
 
