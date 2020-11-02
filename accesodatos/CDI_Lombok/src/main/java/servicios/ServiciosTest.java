@@ -1,16 +1,20 @@
 package servicios;
 
-import dao.Dao;
-import dao.DaoTest;
-import dao.DaoTestImpl;
-import dao.Test;
+import dao.*;
 
 import javax.inject.Inject;
+import javax.validation.Validator;
 
 public class ServiciosTest {
 
   @Inject
   private DaoTest d;
+
+  @Inject
+  private Validator validator;
+
+
+
 
   public int dameNumero()
   {

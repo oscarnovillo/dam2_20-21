@@ -14,7 +14,14 @@ Feature: administracion de articulos
     Then se añade el articulo al peridico en bd
     And el autor se enlaza al articulo
 
+    Given un periodico valido
+    And un articulo con un autor que existe en el sistema
+    When se añade al articulo al peridico
+    Then se añade el articulo al peridico en bd
+
+
   Scenario: update articulo
+
 
   Scenario: leer articulo
 

@@ -11,5 +11,8 @@
         <module name="CDI_lombok" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dao" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
