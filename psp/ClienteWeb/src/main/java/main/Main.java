@@ -28,11 +28,18 @@ public class Main {
                 .build();
 
 //        OkHttpClient clientOK = new OkHttpClient();
+
+        HttpUrl.Builder urlBuilder
+                = HttpUrl.parse("/ex/bars").newBuilder();
+        urlBuilder.addQueryParameter("id", "1");
+
+        String url = urlBuilder.build().toString();
+
         Request request = new Request.Builder()
 
                 .url("http://www.marca.es")
                 .build();
-
+        RequestBody rb = RequestBody.create("hola", MediaType.get("application/json"));
         try {
             Response resp = clientOK.newCall(request).execute();
             System.out.println(resp.code());
