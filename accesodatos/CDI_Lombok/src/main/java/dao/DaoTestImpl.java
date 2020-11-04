@@ -3,8 +3,11 @@ package dao;
 import config.Configuration;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.List;
 import java.util.Optional;
+
+
 
 public class DaoTestImpl implements DaoTest {
 

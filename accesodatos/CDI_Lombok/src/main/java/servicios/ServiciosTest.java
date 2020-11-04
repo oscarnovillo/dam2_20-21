@@ -14,8 +14,6 @@ public class ServiciosTest {
   private Validator validator;
 
 
-
-
   public int dameNumero()
   {
    // DaoTest d = new DaoTestImpl();
