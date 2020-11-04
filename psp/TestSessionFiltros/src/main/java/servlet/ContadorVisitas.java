@@ -30,5 +30,7 @@ public class ContadorVisitas extends HttpServlet {
         response.getWriter().println("visitas "+visitas);
 
 
+
+
     }
 }
