@@ -13,9 +13,10 @@ public class MainSimplePost {
         HttpUrl.Builder urlBuilder
                 = HttpUrl.parse("http://localhost:8080/TestSessionFiltros_war/rest").newBuilder();
 
-        String url = urlBuilder.build().toString();
+        String url = "http://localhost:8080/TestSessionFiltros_war/rest";
 
         RequestBody formBody = new FormBody.Builder()
+                .add("nombre", "test1")
                 .add("nombre", "test")
                 .build();
 

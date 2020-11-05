@@ -11,6 +11,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,17 +28,23 @@ public class Configuration {
 
     }
 
-    public static Configuration getInstance() {
+
+    public static Configuration cargarInstance(InputStream file) {
 
         if (config == null) {
             try {
                 Yaml yaml = new Yaml();
-                config = yaml.loadAs(new FileInputStream("config/config.yaml"),
+                config = yaml.loadAs(file,
                         Configuration.class);
-            } catch (FileNotFoundException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(Configuration.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        return config;
+    }
+
+    public static Configuration getInstance() {
+
         return config;
     }
 

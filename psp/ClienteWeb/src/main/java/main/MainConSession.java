@@ -36,14 +36,26 @@ public class MainConSession {
         System.out.println(resp.code());
         System.out.println(resp.message());
         System.out.println(resp.body().string());
+        for (int i=0; i< resp.headers().size();i++)
+        {
+            System.out.println(resp.headers().name(i)+ " :::: "+resp.headers().value(i));
+        }
 
-
+        clientOK = new OkHttpClient.Builder()
+                .cookieJar(new JavaNetCookieJar(cookieManager))
+                .build();
         resp = clientOK.newCall(request).execute();
 
         System.out.println(resp.code());
         System.out.println(resp.message());
         System.out.println(resp.body().string());
+        for (int i=0; i< resp.headers().size();i++)
+        {
+            System.out.println(resp.headers().name(i)+ " :::: "+resp.headers().value(i));
+        }
 
-        clientOK.connectionPool().evictAll();
+
+        clientOK = null;
+//        clientOK.connectionPool().evictAll();
     }
 }
