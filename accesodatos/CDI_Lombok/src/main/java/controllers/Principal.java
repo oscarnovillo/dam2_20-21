@@ -28,15 +28,15 @@ public class Principal {
     }
 
     @Inject
-    ServiciosTest st;
+    private ServiciosTest st;
 
     @Inject
-    FXMLLoader fxmlloaderPantalla;
-    AnchorPane panePantalla;
+    private FXMLLoader fxmlloaderPantalla;
+    private AnchorPane panePantalla;
 
     @Inject
-    FXMLLoader fxmlloaderPantalla2;
-    AnchorPane panePantalla2;
+    private FXMLLoader fxmlloaderPantalla2;
+    private AnchorPane panePantalla2;
 
 
     @SneakyThrows
