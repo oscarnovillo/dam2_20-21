@@ -43,10 +43,9 @@ public class Principal {
     public void cargarPantalla2() {
         ServiciosTest sat = new ServiciosTest();
         if (panePantalla2 == null) {
-            panePantalla2 = fxmlloaderPantalla2.load(getClass().getResourceAsStream("/fxml/pantalla.fxml"));
-            Pantalla pantall = fxmlloaderPantalla2.getController();
-            pantall.boton.setText("conseguido2");
-            pantall.setP(this);
+            panePantalla2 = fxmlloaderPantalla2.load(getClass().getResourceAsStream("/fxml/pantalla2.fxml"));
+            Pantalla2 pantall = fxmlloaderPantalla2.getController();
+            pantall.boton.setText("funciona");
         }
         root.setCenter(panePantalla2);
     }
@@ -57,7 +56,8 @@ public class Principal {
         if (panePantalla == null) {
             panePantalla = fxmlloaderPantalla.load(getClass().getResourceAsStream("/fxml/pantalla.fxml"));
             Pantalla pantall = fxmlloaderPantalla.getController();
-            pantall.boton.setText("conseguido");
+
+            pantall.boton.setText("conseguido2");
             pantall.setP(this);
 
         }

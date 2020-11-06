@@ -20,12 +20,12 @@ public class Producers {
         return Configuration.getInstance();
     }
 
-//    @Produces
-//    public Validator createValidator()
-//    {
-//        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-//        Validator validator = factory.getValidator();
-//        return validator;
-//    }
+    @Produces
+    public Validator createValidator()
+    {
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        return validator;
+    }
 
 }
