@@ -48,6 +48,8 @@
             <artifactId>log4j-core</artifactId>
             <version>2.13.3</version>
         </dependency>
+
+        <!-- dependencias de text -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
