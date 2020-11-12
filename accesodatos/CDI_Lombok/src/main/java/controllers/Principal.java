@@ -1,5 +1,6 @@
 package controllers;
 
+import config.ExampleSingleton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +32,9 @@ public class Principal {
     private ServiciosTest st;
 
     @Inject
+    private ExampleSingleton eps;
+
+    @Inject
     private FXMLLoader fxmlloaderPantalla;
     private AnchorPane panePantalla;
 
@@ -45,7 +49,7 @@ public class Principal {
         if (panePantalla2 == null) {
             panePantalla2 = fxmlloaderPantalla2.load(getClass().getResourceAsStream("/fxml/pantalla2.fxml"));
             Pantalla2 pantall = fxmlloaderPantalla2.getController();
-            pantall.boton.setText("funciona");
+            pantall.boton.setText("funciona "+eps.getNow());
         }
         root.setCenter(panePantalla2);
     }
@@ -69,7 +73,7 @@ public class Principal {
         // ServiciosTest st = new ServiciosTest();
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.getDialogPane().lookupButton(ButtonType.OK).setId("alertOK");
-        alert.setContentText("hola " + st.dameNombre(1) + " " + st.dameNumero());
+        alert.setContentText(eps.getNow()+"hola " + st.dameNombre(1) + " " + st.dameNumero());
         alert.showAndWait();
         cargarPantalla1();
 

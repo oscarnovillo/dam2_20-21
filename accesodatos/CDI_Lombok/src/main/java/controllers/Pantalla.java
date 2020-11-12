@@ -1,5 +1,6 @@
 package controllers;
 
+import config.ExampleSingleton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -20,6 +21,8 @@ public class Pantalla {
     private Principal p ;
     @Inject
     private ServiciosTest st;
+    @Inject
+    private ExampleSingleton eps;
 
     @FXML
     public Button boton;
@@ -29,7 +32,7 @@ public class Pantalla {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.getDialogPane().lookupButton(ButtonType.OK).setId("alertOK");
-        alert.setContentText("hola "+st.dameNombre(1)+" "+st.dameNumero());
+        alert.setContentText(eps.getNow()+"hola "+st.dameNombre(1)+" "+st.dameNumero());
         alert.showAndWait();
         p.cargarPantalla2();
 

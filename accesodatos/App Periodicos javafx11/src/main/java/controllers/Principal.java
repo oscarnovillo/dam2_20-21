@@ -56,6 +56,10 @@ public class Principal {
       fxmlloaderPantalla2 = new FXMLLoader();
       panePantalla2 = fxmlloaderPantalla2.load(getClass().getResourceAsStream("/fxml/lectores.fxml"));
       Lectores pantall = fxmlloaderPantalla2.getController();
+      fxmlloaderPantalla2.setRoot(null);
+      fxmlloaderPantalla2.setController(null);
+      panePantalla2 = fxmlloaderPantalla2.load(getClass().getResourceAsStream("/fxml/lectores.fxml"));
+       pantall = fxmlloaderPantalla2.getController();
 
     }
     root.setCenter(panePantalla2);
