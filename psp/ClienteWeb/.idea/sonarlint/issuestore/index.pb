@@ -17,7 +17,3 @@ V
 &src/main/java/main/MainConSession.java,4\5\45dfe451665fc674117204380bc1e93ca3ef20ed
 \
 ,src/main/java/main/MainSimpleParametros.java,2\c\2c1a7f3fb79731d82b108ffe858559b268e6e7a8
-\
-,src/main/java/servlet/ServletPrimerRest.java,b\a\ba1e7d0452cb245d5725d9f5d52a941b3236c037
-Z
-*src/main/java/servlet/ContadorVisitas.java,1\1\119252c72f1d06de2b0bc5b588dea890a9c78adc
