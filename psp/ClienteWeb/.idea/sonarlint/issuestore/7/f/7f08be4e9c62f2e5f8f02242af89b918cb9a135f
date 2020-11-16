@@ -1,14 +1,14 @@
 
-H
-java:S1481"(Remove this unused "url" local variable.(Ôãäúÿÿÿÿ8Ü›ÙØ.
-B
-java:S1481"'Remove this unused "rb" local variable.(ñîñ÷8¥Œ”ÙØ.
-Q
-java:S1854"6Remove this useless assignment to local variable "rb".(ñîñ÷8¥Œ”ÙØ.
-[	java:S125"<This block of commented-out lines of code should be removed.(©”£İùÿÿÿÿ8èİò¦Ù.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(Ê‡å8ïßÌÓØ.
-W
-java:S1854"7Remove this useless assignment to local variable "url".(Ôãäúÿÿÿÿ8Ü›ÙØ.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(¶ìÓÈ8È“ÍÓØ.
-X	java:S106"9Replace this use of System.out or System.err by a logger.(„ï—‘ÿÿÿÿÿ8â„êÓØ.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(½“Îô8›ÕÍÓØ.
+Y
+java:S1854%"7Remove this useless assignment to local variable "url".(Ôãäúÿÿÿÿ8Ü›ÙØ.
+U	java:S1060"9Replace this use of System.out or System.err by a logger.(½“Îô8›ÕÍÓØ.
+S
+java:S1854+"6Remove this useless assignment to local variable "rb".(ñîñ÷8¥Œ”ÙØ.
+Z	java:S1066"9Replace this use of System.out or System.err by a logger.(„ï—‘ÿÿÿÿÿ8â„êÓØ.
+D
+java:S1481+"'Remove this unused "rb" local variable.(ñîñ÷8¥Œ”ÙØ.
+U	java:S106."9Replace this use of System.out or System.err by a logger.(Ê‡å8ïßÌÓØ.
+]	java:S125"<This block of commented-out lines of code should be removed.(©”£İùÿÿÿÿ8èİò¦Ù.
+J
+java:S1481%"(Remove this unused "url" local variable.(Ôãäúÿÿÿÿ8Ü›ÙØ.
+U	java:S106/"9Replace this use of System.out or System.err by a logger.(¶ìÓÈ8È“ÍÓØ.

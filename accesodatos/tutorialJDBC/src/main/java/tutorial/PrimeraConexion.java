@@ -2,6 +2,7 @@ package tutorial;
 
 import dao.modelo.Fecha;
 import lombok.SneakyThrows;
+import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+@Log4j2
 public class PrimeraConexion {
 
     @SneakyThrows
@@ -26,7 +28,7 @@ public class PrimeraConexion {
         connection = DriverManager.getConnection(
                 "jdbc:mysql://dam2.mysql.iesquevedo.es:3335/netflisssss",
                 "root",
-                "root");
+                "quevedo2020");
 
         //System.out.println("23434".chars().allMatch(value -> Character.isDigit(value)));
         Statement stmt = null;
@@ -70,7 +72,7 @@ public class PrimeraConexion {
             }
 
         } catch (Exception e) {
-            Logger.getLogger("Main").info(e.getMessage());
+            log.info(e.getMessage(),e);
         } finally {
             if (rs != null) rs.close();
             if (stmt != null) stmt.close();

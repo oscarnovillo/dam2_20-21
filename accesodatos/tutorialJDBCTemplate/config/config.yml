@@ -1,0 +1,9 @@
+## YAML Template.
+---
+
+driverDB: org.h2.Driver
+#urlDB: jdbc:h2:file:./myDb;DB_CLOSE_DELAY=-1
+urlDB: jdbc:h2:mem:.;DB_CLOSE_DELAY=-1
+userDB: sa
+passDB: sa
+

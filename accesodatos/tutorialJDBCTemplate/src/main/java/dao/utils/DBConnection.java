@@ -1,8 +1,8 @@
-package dao;
+package dao.utils;
 
-import config.Configuration;
 import lombok.extern.log4j.Log4j2;
 
+import javax.sql.DataSource;
 import java.sql.*;
 
 
@@ -18,15 +18,24 @@ public class DBConnection {
         Connection connection = null;
 
         // solo hace falta en web.
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Class.forName("org.h2.Driver");
 
-        connection = DriverManager.getConnection(
-                "jdbc:mysql://dam2.mysql.iesquevedo.es:3335/profesor_periodico",
-                "root",
-                "quevedo2020");
+//        connection = DriverManager.getConnection(
+//                "jdbc:mysql://dam2.mysql.iesquevedo.es:3335/profesor_periodico",
+//                "root",
+//                "quevedo2020");
 
-        //    connection = DBConnectionPool.getInstance().getConnection();
+        connection = DBConnectionPool.getInstance().getConnection();
         return connection;
+    }
+
+    public DataSource getDataSource() throws Exception {
+        return DBConnectionPool.getInstance().getDataSource();
+    }
+
+    public void cerrarPool()
+    {
+        DBConnectionPool.getInstance().cerrarPool();
     }
 
     public void cerrarConexion(Connection connection) {
@@ -36,6 +45,7 @@ public class DBConnection {
                 connection.close();
             }
         } catch (SQLException ex) {
+
             log.error("no se ha podido cerrar conexion", ex);
         }
     }

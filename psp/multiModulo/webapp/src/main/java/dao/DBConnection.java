@@ -4,7 +4,8 @@ import config.Configuration;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Log4j2
 public class DBConnection {
@@ -54,7 +55,7 @@ public class DBConnection {
                 rs.close();
             }
         } catch (SQLException ex) {
-            log.error("", ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     public void rollbackCon(Connection con) {
