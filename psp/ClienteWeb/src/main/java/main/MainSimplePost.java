@@ -35,9 +35,20 @@ public class MainSimplePost {
 
         Response resp = clientOK.newCall(request).execute();
 
-        System.out.println(resp.code());
-        System.out.println(resp.message());
-        System.out.println(resp.body().string());
+        if (resp.isSuccessful())
+        {
+            System.out.println(resp.code());
+            System.out.println(resp.message());
+            System.out.println(resp.body().string());
+           
+        }
+        else
+
+        {
+            resp.code();
+            System.out.println("error "+resp.body().string());
+        }
+
 
         clientOK.connectionPool().evictAll();
     }

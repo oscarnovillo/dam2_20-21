@@ -15,7 +15,11 @@ Z
 *src/main/java/servicios/ServiciosTest.java,d\d\ddef2d854850f00e0fdf2cb5482df14613abb6d8
 <
 javafx11.iml,5\e\5e3d89ebb72ab6ab38cd3030faa459da2e461fff
-R
-"src/main/java/dao/DaoLectores.java,3\e\3e4cf9249bf9916556c4e1a5862b5a2115ab19c9
+T
+$src/main/java/dao/modelo/Lector.java,5\1\51df8e58d80aa47efb1ea136c20b603462e7ae3f
+W
+'src/main/java/controllers/Lectores.java,b\8\b8ffe2816c192ad03699771ebb6015b8b7932ead
 L
 src/test/java/LoginTest.java,d\6\d6cd1323b46eaeae5c5e2a440f39a3d610dabf0d
+R
+"src/main/java/dao/DaoLectores.java,3\e\3e4cf9249bf9916556c4e1a5862b5a2115ab19c9

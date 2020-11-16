@@ -13,7 +13,7 @@ public class DaoTestImpl implements DaoTest {
 
 
   @Inject
-  Configuration config;
+  private Configuration config;
 
   public int dameNumero()
   {

@@ -1,12 +1,10 @@
 
-I
-java:S1481:",Remove this unused "pantall" local variable.(‡¹ª‘8°ß€¢Û.
-W	java:S125*"<This block of commented-out lines of code should be removed.(Šëö$8°ß€¢Û.
-I
-java:S1481&"'Remove this unused "st" local variable.(¢”† ûÿÿÿÿ8°ß€¢Û.
-X
-java:S1854>";Remove this useless assignment to local variable "pantall".(¥å¤½8‹©ƒ¢Û.
-X
-java:S1854&"6Remove this useless assignment to local variable "st".(¢”† ûÿÿÿÿ8°ß€¢Û.
-X
-java:S1854:";Remove this useless assignment to local variable "pantall".(‡¹ª‘8°ß€¢Û.
+V
+java:S1854";Remove this useless assignment to local variable "pantall".(‡¹ª‘8ãÀ™‘Û.
+V
+java:S1854"6Remove this useless assignment to local variable "st".(¢”† ûÿÿÿÿ8ãÀ™‘Û.
+U	java:S125"<This block of commented-out lines of code should be removed.(Šëö$8ãÀ™‘Û.
+G
+java:S1481"'Remove this unused "st" local variable.(¢”† ûÿÿÿÿ8ãÀ™‘Û.
+G
+java:S1481",Remove this unused "pantall" local variable.(‡¹ª‘8ãÀ™‘Û.
