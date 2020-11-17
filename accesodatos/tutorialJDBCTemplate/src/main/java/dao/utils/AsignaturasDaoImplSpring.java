@@ -156,7 +156,8 @@ public class AsignaturasDaoImplSpring {
 //  public int deleteTransaccJDBCTemplate(Asignatura a) {
 //    int filas = -1;
 //    TransactionDefinition txDef = new DefaultTransactionDefinition();
-//    DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(DBConnectionPool.getInstance().getDataSource());
+//    DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(
+//    DBConnectionPool.getInstance().getDataSource());
 //    TransactionStatus txStatus = transactionManager.getTransaction(txDef);
 //
 //    try {

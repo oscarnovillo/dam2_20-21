@@ -17,3 +17,7 @@ V
 &src/main/java/main/MainConSession.java,4\5\45dfe451665fc674117204380bc1e93ca3ef20ed
 \
 ,src/main/java/main/MainSimpleParametros.java,2\c\2c1a7f3fb79731d82b108ffe858559b268e6e7a8
+S
+#src/main/java/dao/DaoProductos.java,7\9\79423c4c27d8f6cf2c79faa3e94b4f4c1be33b98
+R
+"src/main/java/dao/DaoUsuarios.java,c\3\c3e2279251a50bbca53fa9aa44d1917aa4dc23c5

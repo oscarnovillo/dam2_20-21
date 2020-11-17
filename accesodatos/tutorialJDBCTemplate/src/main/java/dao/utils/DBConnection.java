@@ -29,7 +29,11 @@ public class DBConnection {
         return connection;
     }
 
-    public DataSource getDataSource() throws Exception {
+    public DataSource getDataSource()  {
+        //        MysqlDataSource mysql = new MysqlConnectionPoolDataSource();
+//        mysql.setUrl(Configuration.getInstance().getUrlDB());
+//        mysql.setUser(Configuration.getInstance().getUserDB());
+//        mysql.setPassword(Configuration.getInstance().getPassDB());
         return DBConnectionPool.getInstance().getDataSource();
     }
 

@@ -89,12 +89,12 @@ public class DBConnectionPool {
 //        mysql.setPassword(Configuration.getInstance().getPassDB());
 
         // Jdbc URL, database user name and password.
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-
-        dataSource.setDriverClassName(Configuration.getInstance().getDriverDB());
-        dataSource.setUrl(Configuration.getInstance().getUrlDB());
-        dataSource.setUsername(Configuration.getInstance().getUserDB());
-        dataSource.setPassword(Configuration.getInstance().getPassDB());
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//
+//        dataSource.setDriverClassName(Configuration.getInstance().getDriverDB());
+//        dataSource.setUrl(Configuration.getInstance().getUrlDB());
+//        dataSource.setUsername(Configuration.getInstance().getUserDB());
+//        dataSource.setPassword(Configuration.getInstance().getPassDB());
 
         //return mysql;
         return hirakiDatasource;
