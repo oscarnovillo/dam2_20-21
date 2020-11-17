@@ -1,5 +1,9 @@
 package servlet;
 
+import servicios.ServiciosProductos;
+
+import javax.inject.Inject;
+import javax.json.bind.Jsonb;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,12 +13,24 @@ import java.io.IOException;
 
 @WebServlet(name = "ServletProducto",urlPatterns = {"/productos"})
 public class ServletProducto extends HttpServlet {
+
+    @Inject
+    private ServiciosProductos sp;
+
+    @Inject
+    private Jsonb jsonBb;
+
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         var usuario = (String)request.getSession().getAttribute("usuario");
+//        jsonb.fromJson(request.getReader(),ServiciosProductos.class);
+//        Type listOfMyClassObject = new TypeToken<ArrayList<MyClass>>() {}.getType();
+
+        sp.test();
 
         if (usuario !=null )
         {

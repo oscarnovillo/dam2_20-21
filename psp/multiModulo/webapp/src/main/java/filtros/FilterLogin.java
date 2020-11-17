@@ -9,6 +9,8 @@ import java.io.IOException;
 
 @WebFilter(filterName = "FilterLogin",urlPatterns = {"/cesta","/productos","/privado/*"})
 public class FilterLogin implements Filter {
+
+
     public void destroy() {
     }
 
