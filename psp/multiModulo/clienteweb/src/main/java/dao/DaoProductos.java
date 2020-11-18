@@ -1,6 +1,9 @@
 package dao;
 
 
+
+
+import clase.Cesta;
 import modelo.Producto;
 
 import java.util.List;
@@ -10,7 +13,7 @@ public class DaoProductos {
     public List verProductos(){
         Producto p = new Producto();
 
-
+Cesta c = new Cesta();
 
         return null;
     }

@@ -1,4 +1,4 @@
-package claes;
+package clase;
 
 
 import lombok.Data;
