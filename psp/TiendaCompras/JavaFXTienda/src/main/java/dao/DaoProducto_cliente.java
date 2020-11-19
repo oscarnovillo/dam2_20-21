@@ -1,6 +1,9 @@
 package dao;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import config.ConfigurationSingleton_Client;
+import dao.modelo.Producto;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import lombok.extern.log4j.Log4j2;
@@ -11,7 +14,6 @@ import okhttp3.RequestBody;
 import utils.Constantes;
 
 import java.net.ConnectException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -19,51 +21,24 @@ import java.util.concurrent.atomic.AtomicReference;
 public class DaoProducto_cliente {
 
 
-    public Either<String, List<String>> getTodosProductos() {
-        AtomicReference<Either<String, List<String>>> resultado = new AtomicReference<>();
-        OkHttpClient clientOK = ConfigurationSingleton_OkHttpClient.getInstance();
-
+    public Either<String, List<Producto>> getTodosProductos() {
         //Por POST
-        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.PRODUCTOS;
+        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.URL_PRODUCTOS;
 
         Request request = new Request.Builder()
                 .url(url)
                 .build();
 
-        Try.of(() -> clientOK.newCall(request).execute())
-                .onSuccess(response -> {
-                    if (response.isSuccessful()) {
-                        Try.of(() -> response.body().string())
-                                .onSuccess(s ->
-                                        resultado.set(Either.right(Arrays.asList(s.split(",")))))
-                                .onFailure(throwable -> resultado.set(Either.left("error de comunicacion")));
-                    } else {
-                        Try.of(() -> response.body().string())
-                                .onSuccess(s ->
-                                        resultado.set(Either.left(s)))
-                                .onFailure(throwable -> resultado.set(Either.left("error de comunicacion")));
-
-                    }
-                })
-                .onFailure(ConnectException.class, throwable -> {
-                    log.error(throwable.getMessage(), throwable);
-                    resultado.set(Either.left("El servidor va lento y no se\nha podido CERRAR.\nDisculpe las molestias"));
-
-                });
-
-        return resultado.get();
+        return parseaListaProductos(request);
     }
 
-    public Either<String, List<String>> addCesta(List productosAdd) {
-
-
-        OkHttpClient clientOK = ConfigurationSingleton_OkHttpClient.getInstance();
+    public Either<String, List<Producto>> addCesta(List<Producto> productosAdd) {
         //Por POST
-        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.CESTA;
+        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.URL_CESTA;
         FormBody.Builder b = new FormBody.Builder();
-        for (int i = 0; i < productosAdd.size(); i++) {
-            b.add(Constantes.PARAMETRO_PRODUCTOS, productosAdd.get(i).toString());
-        }
+        Gson gson = new Gson();
+        b.add(Constantes.PARAMETRO_PRODUCTOS, gson.toJson(productosAdd));
+
         b.add(Constantes.PARAMETRO_OPCION_CESTA, Constantes.OPCION_ADD_CESTA);
         RequestBody formBody = b.build();
         Request request = new Request.Builder()
@@ -73,12 +48,9 @@ public class DaoProducto_cliente {
         return parseaListaProductos(request);
     }
 
-    public Either<String, List<String>> verCesta() {
-        AtomicReference<Either<String, List<String>>> resultado = new AtomicReference<>();
-
-
+    public Either<String, List<Producto>> verCesta() {
         //Por POST
-        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.CESTA;
+        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.URL_CESTA;
 
         RequestBody formBody = new FormBody.Builder()
                 .add(Constantes.PARAMETRO_OPCION_CESTA, Constantes.OPCION_VER_CESTA)
@@ -93,16 +65,22 @@ public class DaoProducto_cliente {
     }
 
 
-    private Either<String, List<String>> parseaListaProductos(Request request) {
-        AtomicReference<Either<String, List<String>>> resultado = new AtomicReference<>();
+    private Either<String, List<Producto>> parseaListaProductos(Request request) {
+        Gson gson = new Gson();
+
+
+        AtomicReference<Either<String, List<Producto>>> resultado = new AtomicReference<>();
         OkHttpClient clientOK = ConfigurationSingleton_OkHttpClient.getInstance();
 
         Try.of(() -> clientOK.newCall(request).execute())
                 .onSuccess(response -> {
                     if (response.isSuccessful()) {
                         Try.of(() -> response.body().string())
-                                .onSuccess(s ->
-                                        resultado.set(Either.right(Arrays.asList(s.split(",")))))
+                                .onSuccess(sProducto ->
+                                        Try.of(() -> gson.fromJson(sProducto, new TypeToken<List<Producto>>() {}.getType()))
+                                                .map(o -> (List)o)
+                                        .onSuccess(o -> resultado.set(Either.right(o)))
+                                        .onFailure(throwable -> resultado.set(Either.left("el objeto del servidor no se pudo parsear"))))
                                 .onFailure(throwable -> resultado.set(Either.left("error de comunicacion")));
                     } else {
                         Try.of(() -> response.body().string())
@@ -123,7 +101,7 @@ public class DaoProducto_cliente {
 
 
         //Por POST
-        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.CESTA;
+        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.URL_CESTA;
 
         RequestBody formBody = new FormBody.Builder()
                 .add(Constantes.PARAMETRO_OPCION_CESTA, Constantes.OPCION_BUY_CESTA)
@@ -138,11 +116,9 @@ public class DaoProducto_cliente {
     }
 
     public Either<String, String> clearCesta() {
-        String mensaje = null;
 
-        OkHttpClient clientOK = ConfigurationSingleton_OkHttpClient.getInstance();
         //Por POST
-        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.CESTA;
+        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.URL_CESTA;
 
         RequestBody formBody = new FormBody.Builder()
                 .add(Constantes.PARAMETRO_OPCION_CESTA, Constantes.OPCION_CLEAR_CESTA)

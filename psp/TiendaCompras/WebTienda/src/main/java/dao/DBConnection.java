@@ -15,7 +15,7 @@ public class DBConnection {
         Connection connection;
 
         // solo hace falta en web.
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        //Class.forName("com.mysql.cj.jdbc.Driver");
 
 
         Class.forName(ConfigurationSingleton.getInstance().getDriver());

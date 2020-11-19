@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="JavaFXTienda" />
         <module name="WebTienda" />
+        <module name="utils" />
       </profile>
     </annotationProcessing>
   </component>

@@ -17,8 +17,7 @@ public class ServletProducto extends HttpServlet {
     @Inject
     private ServiciosProductos sp;
 
-    @Inject
-    private Jsonb jsonBb;
+
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

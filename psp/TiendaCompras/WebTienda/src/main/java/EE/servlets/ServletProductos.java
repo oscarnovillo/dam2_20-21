@@ -3,6 +3,7 @@ package EE.servlets;
 import dao.modelo.Producto;
 import io.vavr.control.Either;
 import servicios.SvProductos;
+import utils.Constantes;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,14 +31,12 @@ public class ServletProductos extends HttpServlet {
         String paginaDestino;
         Either<String,List<Producto>> productos = svProductos.getTodosProductos();
         if (productos.isRight()) {
-            String productosResponse = productos.get().stream()
-                    .map(Producto::getNombreProducto).collect(Collectors.joining(","));
-            response.getWriter().println(productosResponse);
+            request.setAttribute(Constantes.PARAM_RESPUESTA,productos.get());
         }
         else
         {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            response.getWriter().println(productos.getLeft());
+            request.setAttribute(Constantes.PARAM_RESPUESTA,productos.getLeft());
         }
 
     }

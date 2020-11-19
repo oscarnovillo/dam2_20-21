@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.ProductosController">
    <children>
-      <ListView fx:id="viewProductos" layoutX="87.0" layoutY="69.0" prefHeight="303.0" prefWidth="426.0" />
+      <ListView fx:id="viewProductos" layoutX="87.0" layoutY="69.0" prefHeight="303.0" prefWidth="275.0" />
       <Label layoutX="228.0" layoutY="14.0" text="Productos">
          <font>
             <Font name="Bauhaus 93" size="33.0" />
@@ -14,5 +14,11 @@
       </Label>
       <Button layoutX="255.0" layoutY="405.0" mnemonicParsing="false" onAction="#clickAdd" text="ADD CESTA" />
       <Label layoutX="87.0" layoutY="372.0" text="***Puedes seleccionar varios productos con Ctrl + MouseClick en el producto" />
+      <Button layoutX="391.0" layoutY="329.0" mnemonicParsing="false" onAction="#editarProducto" text="Editar" />
+      <TextField fx:id="txtPrecio" layoutX="391.0" layoutY="287.0" promptText="precio" />
+      <TextField fx:id="txtNombre" layoutX="391.0" layoutY="250.0" promptText="nombre" />
+      <Button layoutX="451.0" layoutY="329.0" mnemonicParsing="false" onAction="#addProducto" text="add" />
+      <Button layoutX="495.0" layoutY="329.0" mnemonicParsing="false" onAction="#delProducto" text="del" />
+      <Button layoutX="388.0" layoutY="170.0" mnemonicParsing="false" onAction="#cogerProductoListView" text="Coger producto listView" />
    </children>
 </AnchorPane>

@@ -4,13 +4,17 @@ import dao.DaoUsuario;
 import dao.modelo.Usuario;
 import io.vavr.control.Either;
 
+import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.stream.Collectors;
 
+
 public class SvUsuarios {
+
+
     public Either<String, Usuario> usuarioLogin(Usuario usuarioTemp) {
         Either<String, Usuario> resultado;
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

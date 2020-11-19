@@ -8,8 +8,6 @@ import utils.Constantes;
 
 import java.io.IOException;
 import java.net.ConnectException;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Log4j2
@@ -20,7 +18,7 @@ public class DaoUsuario_cliente {
             OkHttpClient clientOK = ConfigurationSingleton_OkHttpClient.getInstance();
 
             //Por POST
-            String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.LOGIN;
+            String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.URL_LOGIN;
 
             RequestBody formBody = new FormBody.Builder()
                     .add("user", usuario)
@@ -54,7 +52,7 @@ public class DaoUsuario_cliente {
 
 
         //Por POST
-        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.LOGOUT;
+        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.URL_LOGOUT;
         Request request = new Request.Builder()
                 .url(url)
                 .build();

@@ -1,4 +1,0 @@
-ruta: jdbc:mysql://dam2.mysql.iesquevedo.es:3335/emilyGuerrero_tiendaPSP
-user: root
-password: quevedo2020
-driver: com.mysql.cj.jdbc.Driver

@@ -1,5 +1,9 @@
 package EE.servlets;
 
+import dao.modelo.Producto;
+import io.vavr.control.Either;
+import utils.Constantes;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,9 +29,9 @@ public class ServletCesta extends HttpServlet {
 
     protected void cesta(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String respuesta = "";
+
         int code=HttpServletResponse.SC_OK;
-        List<String> productosCesta = (List<String>) request.getSession().getAttribute("listaCesta");
+        List<Producto> productosCesta = (List<Producto>) request.getSession().getAttribute("listaCesta");
         if ( productosCesta == null) {
             productosCesta = new ArrayList<>();
         }
@@ -36,43 +40,43 @@ public class ServletCesta extends HttpServlet {
         if (opcion != null) {
             switch (opcion) {
                 case "add":
-                    var itemsCesta = request.getParameterValues("producto");
+                    var itemsCesta = (List<Producto>)request.getAttribute(Constantes.PARAM_PRODUCTOS);
                     if (itemsCesta != null) {
-                        productosCesta.addAll(Arrays.asList(request.getParameterValues("producto")));
+                        productosCesta.addAll(itemsCesta);
                     }
                case "ver":
                     if (!productosCesta.isEmpty()) {
-                        respuesta = productosCesta.stream().collect(Collectors.joining(","));
+                        request.setAttribute(Constantes.PARAM_RESPUESTA,productosCesta);
                     }
                     else{
-                        respuesta = "No hay productos en la cesta";
+                        request.setAttribute(Constantes.PARAM_RESPUESTA,"No hay productos en la cesta");
                         code = HttpServletResponse.SC_SERVICE_UNAVAILABLE;
                     }
                     break;
                 case "buy":
                     if (!productosCesta.isEmpty()) {
                         productosCesta.clear();
-                        respuesta = "Productos comprados correctamente. \nGracias por comprar en nuestra tienda";
+                        request.setAttribute(Constantes.PARAM_RESPUESTA,"Productos comprados correctamente. \nGracias por comprar en nuestra tienda");
                     } else {
                         code = HttpServletResponse.SC_SERVICE_UNAVAILABLE;
-                        respuesta = "La lista esta vacia no puedes comprar";
+                        request.setAttribute(Constantes.PARAM_RESPUESTA,"La lista esta vacia no puedes comprar");
                     }
                     break;
                 case "clear":
                     if (!productosCesta.isEmpty()) {
                         productosCesta.clear();
                     }
-                    respuesta = "Has vaciado la cesta correctamente";
+                    request.setAttribute(Constantes.PARAM_RESPUESTA,"Has vaciado la cesta correctamente");
                     break;
             }
         } else {
-            respuesta = "Parametros incorrectos";
+            request.setAttribute(Constantes.PARAM_ERROR,"Parametros incorrectos");
             code = HttpServletResponse.SC_BAD_REQUEST;
         }
 
         request.getSession().setAttribute("listaCesta",productosCesta);
         response.setStatus(code);
-        response.getWriter().println(respuesta);
+
 
     }
 }

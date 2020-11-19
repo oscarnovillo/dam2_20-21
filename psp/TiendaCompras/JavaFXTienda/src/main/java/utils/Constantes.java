@@ -1,11 +1,11 @@
 package utils;
 
 public class Constantes {
-    public static final String CESTA = "cesta";
-    public static final String PRODUCTOS = "productos";
-    public static final String LOGIN = "login";
-    public static final String LOGOUT = "logout";
-    public static final String PARAMETRO_PRODUCTOS = "producto";
+    public static final String URL_CESTA = "cesta";
+    public static final String URL_PRODUCTOS = "productos";
+    public static final String URL_LOGIN = "login";
+    public static final String URL_LOGOUT = "logout";
+    public static final String PARAMETRO_PRODUCTOS = "productos";
     public static final String PARAMETRO_OPCION_CESTA = "opcion";
     public static final String OPCION_ADD_CESTA = "add";
     public static final String OPCION_VER_CESTA = "ver";

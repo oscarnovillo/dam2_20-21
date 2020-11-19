@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicReference;
 
 @WebServlet(name = "ServletLogin", urlPatterns = {"/login"})
 public class ServletLogin extends HttpServlet {
@@ -33,9 +32,7 @@ public class ServletLogin extends HttpServlet {
                     request.getSession().setAttribute("nombreUsuario", usuario.getUsername());
                     response.setStatus(HttpServletResponse.SC_OK);
                 })
-                .peekLeft(s -> {
-                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                });
+                .peekLeft(s -> response.setStatus(HttpServletResponse.SC_FORBIDDEN));
 
 
         // no devuelve nada, con el code se controla todo
