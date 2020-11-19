@@ -21,12 +21,12 @@ public class SvProductos_cliente {
         return daoProducto_cliente.verCesta();
     }
 
-    public String buyCesta() {
+    public Either<String,String> buyCesta() {
         DaoProducto_cliente daoProducto_cliente = new DaoProducto_cliente();
         return daoProducto_cliente.buyCesta();
     }
 
-    public String clearCesta() {
+    public Either<String,String>  clearCesta() {
         DaoProducto_cliente daoProducto_cliente = new DaoProducto_cliente();
         return daoProducto_cliente.clearCesta();
     }

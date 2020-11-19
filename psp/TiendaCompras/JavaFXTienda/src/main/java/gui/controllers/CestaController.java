@@ -1,15 +1,14 @@
 package gui.controllers;
 
+import io.vavr.control.Either;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import servicios.SvProductos_cliente;
-import utils.Constantes;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class CestaController implements Initializable {
@@ -32,21 +31,32 @@ public class CestaController implements Initializable {
 
     @FXML
     private void clickComprar(ActionEvent actionEvent) {
-        String buy = sv_productos.buyCesta();
-        if (buy.equals(Constantes.COMPRA_EXITOSA)) {
-            viewProductosCesta.getItems().clear();
-        }
-        alert.setContentText(buy);
+
+        Either<String, String> respuesta = sv_productos.buyCesta();
+        respuesta
+                .peek(s -> {
+                    viewProductosCesta.getItems().clear();
+                    alert.setAlertType(Alert.AlertType.INFORMATION);
+                })
+                .peekLeft(s -> {
+                    alert.setAlertType(Alert.AlertType.ERROR);
+                });
+        alert.setContentText(respuesta.isRight() ? respuesta.get() : respuesta.getLeft());
         alert.showAndWait();
     }
 
     @FXML
     private void clickVaciar(ActionEvent actionEvent) {
-        String clear = sv_productos.clearCesta();
-        if (viewProductosCesta.getItems() != null) {
-            viewProductosCesta.getItems().clear();
-        }
-        alert.setContentText(clear);
+        Either<String, String> respuesta = sv_productos.clearCesta();
+        respuesta
+                .peek(s -> {
+                    viewProductosCesta.getItems().clear();
+                    alert.setAlertType(Alert.AlertType.INFORMATION);
+                })
+                .peekLeft(s -> {
+                    alert.setAlertType(Alert.AlertType.ERROR);
+                });
+        alert.setContentText(respuesta.isRight() ? respuesta.get() : respuesta.getLeft());
         alert.showAndWait();
     }
 

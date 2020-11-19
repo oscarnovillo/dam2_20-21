@@ -4,10 +4,12 @@ import config.ConfigurationSingleton_Client;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import lombok.extern.log4j.Log4j2;
-import okhttp3.*;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import utils.Constantes;
 
-import java.io.IOException;
 import java.net.ConnectException;
 import java.util.Arrays;
 import java.util.List;
@@ -117,58 +119,67 @@ public class DaoProducto_cliente {
         return resultado.get();
     }
 
-    public String buyCesta() {
-        String mensaje = null;
-        try {
-            OkHttpClient clientOK = ConfigurationSingleton_OkHttpClient.getInstance();
-            //Por POST
-            String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.CESTA;
+    public Either<String, String> buyCesta() {
 
-            RequestBody formBody = new FormBody.Builder()
-                    .add(Constantes.PARAMETRO_OPCION_CESTA, Constantes.OPCION_BUY_CESTA)
-                    .build();
 
-            Request request = new Request.Builder()
-                    .url(url)
-                    .post(formBody)
-                    .build();
-            Response resp = clientOK.newCall(request).execute();
-            mensaje = resp.body().string();
-        } catch (ConnectException e) {
-            log.info(e.getMessage(), e);
-            mensaje = "El servidor va lento y no se\nha podido COMPRAR.\nDisculpe las molestias";
-        } catch (IOException e) {
-            log.info(e.getMessage(), e);
-            mensaje = "Ha habido problemas al realizar la compra";
-        }
-        return mensaje;
+        //Por POST
+        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.CESTA;
+
+        RequestBody formBody = new FormBody.Builder()
+                .add(Constantes.PARAMETRO_OPCION_CESTA, Constantes.OPCION_BUY_CESTA)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(formBody)
+                .build();
+        return buyLimpiarCesta(request);
+
     }
 
-    public String clearCesta() {
+    public Either<String, String> clearCesta() {
         String mensaje = null;
-        try {
-            OkHttpClient clientOK = ConfigurationSingleton_OkHttpClient.getInstance();
-            //Por POST
-            String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.CESTA;
 
-            RequestBody formBody = new FormBody.Builder()
-                    .add(Constantes.PARAMETRO_OPCION_CESTA, Constantes.OPCION_CLEAR_CESTA)
-                    .build();
+        OkHttpClient clientOK = ConfigurationSingleton_OkHttpClient.getInstance();
+        //Por POST
+        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.CESTA;
 
-            Request request = new Request.Builder()
-                    .url(url)
-                    .post(formBody)
-                    .build();
-            Response resp = clientOK.newCall(request).execute();
-            mensaje = resp.body().string();
-        } catch (ConnectException e) {
-            log.info(e.getMessage(), e);
-            mensaje = "El servidor va lento y no se\nha podido LIMPIAR.\nDisculpe las molestias";
-        } catch (IOException e) {
-            log.info(e.getMessage(), e);
-            mensaje = "Ha habido problemas al limpiar la cesta";
-        }
-        return mensaje;
+        RequestBody formBody = new FormBody.Builder()
+                .add(Constantes.PARAMETRO_OPCION_CESTA, Constantes.OPCION_CLEAR_CESTA)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(formBody)
+                .build();
+        return buyLimpiarCesta(request);
+    }
+
+
+    private Either<String, String> buyLimpiarCesta(Request request) {
+        AtomicReference<Either<String, String>> resultado = new AtomicReference<>();
+
+        OkHttpClient clientOK = ConfigurationSingleton_OkHttpClient.getInstance();
+        Try.of(() -> clientOK.newCall(request).execute())
+                .onSuccess(response -> {
+                    if (response.isSuccessful()) {
+                        Try.of(() -> response.body().string())
+                                .onSuccess(s ->
+                                        resultado.set(Either.right(s)))
+                                .onFailure(throwable -> resultado.set(Either.left("error de comunicacion")));
+                    } else {
+                        Try.of(() -> response.body().string())
+                                .onSuccess(s ->
+                                        resultado.set(Either.left(s)))
+                                .onFailure(throwable -> resultado.set(Either.left("error de comunicacion")));
+                    }
+                })
+                .onFailure(ConnectException.class, throwable -> {
+                    log.error(throwable.getMessage(), throwable);
+                    resultado.set(Either.left("El servidor va lento y no se\nha podido CERRAR.\nDisculpe las molestias"));
+                });
+
+        return resultado.get();
     }
 }
 
