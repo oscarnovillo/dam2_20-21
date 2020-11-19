@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.ProductosController">
+   <children>
+      <ListView fx:id="viewProductos" layoutX="87.0" layoutY="69.0" prefHeight="303.0" prefWidth="426.0" />
+      <Label layoutX="228.0" layoutY="14.0" text="Productos">
+         <font>
+            <Font name="Bauhaus 93" size="33.0" />
+         </font>
+      </Label>
+      <Button layoutX="255.0" layoutY="405.0" mnemonicParsing="false" onAction="#clickAdd" text="ADD CESTA" />
+      <Label layoutX="87.0" layoutY="372.0" text="***Puedes seleccionar varios productos con Ctrl + MouseClick en el producto" />
+   </children>
+</AnchorPane>

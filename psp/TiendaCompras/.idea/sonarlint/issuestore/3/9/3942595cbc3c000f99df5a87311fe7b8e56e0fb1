@@ -1,0 +1,12 @@
+
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶êæ-
+|
+java:S1989"fHandle the following exceptions that could be thrown by "verProductos": ServletException, IOException.(¬ªÂæ
+|
+java:S1989"fHandle the following exceptions that could be thrown by "verProductos": ServletException, IOException.(¬ªÂæ
+D
+java:S1172".Remove this unused method parameter "request".(ŞßÇò
+
+java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(ŞßÇò
+M
+java:S1481"2Remove this unused "paginaDestino" local variable.(µ‰ô¶ùÿÿÿÿ

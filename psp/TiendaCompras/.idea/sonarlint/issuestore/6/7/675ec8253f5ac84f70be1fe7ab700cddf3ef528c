@@ -1,0 +1,16 @@
+
+G
+java:S1602$",Remove useless curly braces around statement(ü«ÔÙşÿÿÿÿ
+G
+java:S1135)"2Complete the task associated to this TODO comment.(•ï­V
+^
+java:S1128"HRemove this unused import 'java.util.concurrent.atomic.AtomicReference'.(×‡µó
+u
+java:S1989"_Handle the following exceptions that could be thrown by "login": ServletException, IOException.(ğæÓ
+u
+java:S1989"_Handle the following exceptions that could be thrown by "login": ServletException, IOException.(ğæÓ
+’
+java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(ÅşÀùÿÿÿÿ
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶êæ-
+‡
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ÅşÀùÿÿÿÿ

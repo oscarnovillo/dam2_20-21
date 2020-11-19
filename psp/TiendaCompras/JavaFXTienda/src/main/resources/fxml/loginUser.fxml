@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="pantalla_login" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.LoginController">
+    <children>
+        <Label layoutX="145.0" layoutY="46.0" text="Tiendecita cutre">
+            <font>
+                <Font name="Bauhaus 93" size="42.0" />
+            </font>
+        </Label>
+        <GridPane layoutX="148.0" layoutY="136.0" prefHeight="120.0" prefWidth="302.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="83.00001525878906" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.99998474121094" minWidth="10.0" prefWidth="218.99998474121094" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="Usuario" />
+                <Label text="Contraseña" GridPane.rowIndex="1" />
+                <TextField fx:id="textUsuario" GridPane.columnIndex="1" />
+            <PasswordField fx:id="textPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            </children>
+        </GridPane>
+        <GridPane layoutX="250.0" layoutY="337.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="oscar -&gt; oscar" />
+
+            </children>
+        </GridPane>
+        <Button layoutX="264.0" layoutY="281.0" mnemonicParsing="false" onAction="#clickEntrar" text="ENTRAR" />
+    </children>
+</AnchorPane>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.CestaController">
+    <children>
+        <ListView fx:id="viewProductosCesta" layoutX="124.0" layoutY="68.0" prefHeight="318.0" prefWidth="359.0"/>
+        <Label layoutX="257.0" layoutY="14.0" text="Cesta">
+            <font>
+                <Font name="Bauhaus 93" size="33.0"/>
+            </font>
+        </Label>
+        <HBox layoutX="99.0" layoutY="413.0" spacing="50.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#clickComprar" text="COMPRAR"/>
+                <Button mnemonicParsing="false" onAction="#clickVaciar" text="VACIAR"/>
+                <Button mnemonicParsing="false" onAction="#clickVolver" text="VOLVER PRODUCTOS"/>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

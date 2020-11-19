@@ -1,0 +1,12 @@
+
+™
+java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(€—Œ³úÿÿÿÿ8³µÈúÝ.
+m	java:S128&"LEnd this switch case with an unconditional break, return or throw statement.(€ãÔÌúÿÿÿÿ8æ…÷úÝ.
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(€—Œ³úÿÿÿÿ
+7	java:S131%""Add a default case to this switch.(°€àâ
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶êæ-
+z
+java:S1989"_Handle the following exceptions that could be thrown by "cesta": ServletException, IOException.(–Ú¯îøÿÿÿÿ
+z
+java:S1989"_Handle the following exceptions that could be thrown by "cesta": ServletException, IOException.(–Ú¯îøÿÿÿÿ

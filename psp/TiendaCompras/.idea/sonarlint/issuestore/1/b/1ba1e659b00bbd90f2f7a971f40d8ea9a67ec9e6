@@ -1,0 +1,14 @@
+
+O
+java:S1481:"-Remove this unused "clientOK" local variable.(”Ó½çúÿÿÿÿ8ÆÇœûİ.
+x
+java:S1192%"VDefine a constant instead of duplicating this literal "error de comunicacion" 4 times.(ÇÙ°Ãøÿÿÿÿ8³ç‰ûİ.
+Q
+java:S37407"/Provide the parametrized type for this generic.(ËøĞÌûÿÿÿÿ8ñ©‡ûİ.
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ëõ²Çüÿÿÿÿ
+^
+java:S1854:"<Remove this useless assignment to local variable "clientOK".(”Ó½çúÿÿÿÿ8ÆÇœûİ.
+_
+java:S1854K"=Remove this useless assignment to local variable "resultado".(ûáµûÿÿÿÿ8ş¸™ûİ.
+P
+java:S1481K".Remove this unused "resultado" local variable.(ûáµûÿÿÿÿ8àë™ûİ.
