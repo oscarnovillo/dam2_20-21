@@ -1,6 +1,7 @@
 package EE.servlets;
 
 import dao.modelo.Usuario;
+import io.vavr.control.Either;
 import servicios.SvUsuarios;
 
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ public class ServletLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         login(request, response);
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         login(request, response);
@@ -32,7 +34,7 @@ public class ServletLogin extends HttpServlet {
                     request.getSession().setAttribute("nombreUsuario", usuario.getUsername());
                     response.setStatus(HttpServletResponse.SC_OK);
                 })
-                .peekLeft(s -> response.setStatus(HttpServletResponse.SC_FORBIDDEN));
+                .peekLeft(s -> response.setStatus(HttpServletResponse.SC_UNAUTHORIZED));
 
 
         // no devuelve nada, con el code se controla todo

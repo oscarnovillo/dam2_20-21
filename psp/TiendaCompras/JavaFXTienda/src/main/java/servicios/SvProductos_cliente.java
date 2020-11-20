@@ -17,6 +17,12 @@ public class SvProductos_cliente {
         return daoProducto_cliente.addCesta(list_productos);
     }
 
+    public Either<String, Producto> editarProducto(Producto producto) {
+        DaoProducto_cliente daoProducto_cliente = new DaoProducto_cliente();
+        return daoProducto_cliente.editarProducto(producto);
+    }
+
+
     public Either<String, List<Producto>> verCesta() {
         DaoProducto_cliente daoProducto_cliente = new DaoProducto_cliente();
         return daoProducto_cliente.verCesta();

@@ -20,7 +20,7 @@ public class FilterLogin implements Filter {
         if (usuarioLogin != null) {
             chain.doFilter(req, resp);
         } else {
-            ((HttpServletResponse)resp).setStatus(HttpServletResponse.SC_FORBIDDEN);
+            ((HttpServletResponse)resp).setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
 

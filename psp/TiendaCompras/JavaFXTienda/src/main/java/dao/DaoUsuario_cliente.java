@@ -34,7 +34,7 @@ public class DaoUsuario_cliente {
             if (resp.isSuccessful()) {
                 mensaje = resp.body().string();
             } else {
-                mensaje = "Usuario no valido";
+                mensaje = resp.body().string();
             }
         } catch (ConnectException e) {
             mensaje = "El servidor va lento y no se\nha podido conectar.\nDisculpe las molestias";

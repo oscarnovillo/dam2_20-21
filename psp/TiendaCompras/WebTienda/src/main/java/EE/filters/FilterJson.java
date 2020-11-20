@@ -27,11 +27,13 @@ public class FilterJson implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
 
         AtomicBoolean seguir = new AtomicBoolean(true);
+
         Gson json = new Gson();
         Optional.ofNullable(req.getParameter(Constantes.PARAM_PRODUCTO))
                 .ifPresent(o -> {
                     Try.of(() -> json.fromJson(o, Producto.class))
-                            .onSuccess(producto -> req.setAttribute(Constantes.PARAM_PRODUCTO, producto))
+                            .onSuccess(producto ->
+                                    req.setAttribute(Constantes.PARAM_PRODUCTO, producto))
                             .onFailure(throwable -> {
                                 log.error(throwable.getMessage(), throwable);
                                 ((HttpServletResponse) resp).setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -41,7 +43,8 @@ public class FilterJson implements Filter {
                 });
         Optional.ofNullable(req.getParameter(Constantes.PARAM_PRODUCTOS))
                 .ifPresent(sProductos -> {
-                    Try.of(() -> json.fromJson(sProductos, new TypeToken<List<Producto>>() {}.getType()))
+                    Try.of(() -> json.fromJson(sProductos,
+                            new TypeToken<List<Producto>>() {}.getType()))
                             .onSuccess(producto -> req.setAttribute(Constantes.PARAM_PRODUCTOS, producto))
                             .onFailure(throwable -> {
                                 log.error(throwable.getMessage(), throwable);

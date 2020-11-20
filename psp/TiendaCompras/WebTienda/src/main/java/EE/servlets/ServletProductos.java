@@ -18,12 +18,27 @@ import java.util.stream.Collectors;
 public class ServletProductos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //INSERTAR
         verProductos(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //SELECT
         verProductos(request, response);
+    }
+
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //update
+        Producto p = (Producto)req.getAttribute(Constantes.PARAM_PRODUCTO);
+
+
+        // ir a BD a Actualizar, llamadno a Servicios que llama al DAO.
+
+        req.setAttribute(Constantes.PARAM_RESPUESTA,p);
+
     }
 
     protected void verProductos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +51,7 @@ public class ServletProductos extends HttpServlet {
         else
         {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            request.setAttribute(Constantes.PARAM_RESPUESTA,productos.getLeft());
+            request.setAttribute(Constantes.PARAM_ERROR,productos.getLeft());
         }
 
     }

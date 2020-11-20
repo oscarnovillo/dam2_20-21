@@ -22,6 +22,7 @@ public class ConfigurationSingleton_OkHttpClient {
             clientOK = new OkHttpClient.Builder()
                     .cookieJar(new JavaNetCookieJar(cookieManager))
                     .build();
+
         }
         return clientOK;
     }

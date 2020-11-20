@@ -54,8 +54,10 @@ public class ProductosController implements Initializable {
             alert.showAndWait();
         } else {
             sv_productos.getTodosProductos()
-                    .peek(productos ->
-                            viewProductos.getItems().addAll(productos))
+                    .peek(productos -> {
+                        viewProductos.getItems().clear();
+                        viewProductos.getItems().addAll(productos);
+                    })
                     .peekLeft(s -> {
                         alert.setContentText(s);
                         alert.showAndWait();
@@ -65,6 +67,9 @@ public class ProductosController implements Initializable {
 
     @FXML
     private void editarProducto(ActionEvent actionEvent) {
+
+        sv_productos.editarProducto(productoActual);
+
     }
 
     @FXML
@@ -79,6 +84,6 @@ public class ProductosController implements Initializable {
     private void cogerProductoListView(ActionEvent actionEvent) {
         productoActual = viewProductos.getSelectionModel().getSelectedItem();
         txtNombre.setText(productoActual.getNombreProducto());
-        txtPrecio.setText(""+productoActual.getPrecioProducto());
+        txtPrecio.setText("" + productoActual.getPrecioProducto());
     }
 }

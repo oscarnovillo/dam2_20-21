@@ -27,3 +27,5 @@ W
 'src/main/java/dao/DBConnectionPool.java,2\9\299b42bb1e6854997ec216a7ea7031195666e722
 \
 ,src/main/java/tutorial/HashPasswordTest.java,3\f\3fcf13165904d562c5a52a7b00f66a30564a5cca
+B
+config/config.yaml,5\1\51c347deb3d0a913cd1171b574d79293a866eb3f

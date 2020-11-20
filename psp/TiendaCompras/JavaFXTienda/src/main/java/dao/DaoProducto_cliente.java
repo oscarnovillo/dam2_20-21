@@ -7,10 +7,7 @@ import dao.modelo.Producto;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import lombok.extern.log4j.Log4j2;
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+import okhttp3.*;
 import utils.Constantes;
 
 import java.net.ConnectException;
@@ -46,6 +43,32 @@ public class DaoProducto_cliente {
                 .post(formBody)
                 .build();
         return parseaListaProductos(request);
+    }
+
+
+    public Either<String, Producto> editarProducto(Producto producto) {
+        //Por PUT para actualizar
+        String url = ConfigurationSingleton_Client.getInstance().getPath_base() + Constantes.URL_PRODUCTOS;
+
+        Gson gson = new Gson();
+
+        HttpUrl.Builder urlBuilder
+                = HttpUrl.parse(url).newBuilder();
+        urlBuilder.addQueryParameter("producto", gson.toJson(producto));
+        String urlConParams = urlBuilder.build().toString();
+
+        Request request = new Request.Builder()
+                .url(urlConParams)
+                .put(RequestBody.create("HOla Alvaro que tal la familia",MediaType.get("application/json")))
+                .build();
+        OkHttpClient clientOK = ConfigurationSingleton_OkHttpClient.getInstance();
+
+        AtomicReference<Either<String, Producto>> resultado = new AtomicReference<>();
+        Try.of(() -> clientOK.newCall(request).execute())
+                .onSuccess(response -> {
+                    resultado.set(Either.right(producto));
+                } );
+        return resultado.get();
     }
 
     public Either<String, List<Producto>> verCesta() {
