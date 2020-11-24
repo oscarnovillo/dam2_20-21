@@ -1,16 +1,14 @@
 
-G
-java:S1602$",Remove useless curly braces around statement(ό«ΤΩώÿÿÿÿ
-G
-java:S1135)"2Complete the task associated to this TODO comment.(•ο­V
-^
-java:S1128"HRemove this unused import 'java.util.concurrent.atomic.AtomicReference'.(Χ‡µσ
-u
-java:S1989"_Handle the following exceptions that could be thrown by "login": ServletException, IOException.(πζΣ
-u
-java:S1989"_Handle the following exceptions that could be thrown by "login": ServletException, IOException.(πζΣ
-’
-java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(Εώΐωÿÿÿÿ
-n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶κζ-
-‡
-java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Εώΐωÿÿÿÿ
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶κζ-8εθώªή.
+P
+java:S1128"3Remove this unused import 'io.vavr.control.Either'.(χΏ’8εθώªή.
+|
+java:S1989"_Handle the following exceptions that could be thrown by "login": ServletException, IOException.(πζΣ8εθώªή.
+|
+java:S1989"_Handle the following exceptions that could be thrown by "login": ServletException, IOException.(πζΣ8εθώªή.
+™
+java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(Εώΐωÿÿÿÿ8εθώªή.
+
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Εώΐωÿÿÿÿ8εθώªή.
+N
+java:S1135("2Complete the task associated to this TODO comment.(•ο­V8εθώªή.

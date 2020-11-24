@@ -1,12 +1,14 @@
 
-n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶êæ-
-|
-java:S1989"fHandle the following exceptions that could be thrown by "verProductos": ServletException, IOException.(¬ªÂæ
-|
-java:S1989"fHandle the following exceptions that could be thrown by "verProductos": ServletException, IOException.(¬ªÂæ
-D
-java:S1172".Remove this unused method parameter "request".(ŞßÇò
-
-java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(ŞßÇò
-M
-java:S1481"2Remove this unused "paginaDestino" local variable.(µ‰ô¶ùÿÿÿÿ
+”
+java:S1130,"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(ŞßÇò8“Ô«ªŞ.
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶êæ-8Ï³Ÿ©Ş.
+ƒ
+java:S1989"fHandle the following exceptions that could be thrown by "verProductos": ServletException, IOException.(¬ªÂæ8Ï³Ÿ©Ş.
+Z
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8Ï³Ÿ©Ş.
+T
+java:S1481."2Remove this unused "paginaDestino" local variable.(µ‰ô¶ùÿÿÿÿ8Ï³Ÿ©Ş.
+‰
+java:S1130,"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ŞßÇò8“Ô«ªŞ.
+ƒ
+java:S1989"fHandle the following exceptions that could be thrown by "verProductos": ServletException, IOException.(¬ªÂæ8Ï³Ÿ©Ş.

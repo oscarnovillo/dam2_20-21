@@ -55,12 +55,13 @@ public class DBConnectionPool {
         return connection;
     }
 
-    public DataSource getDataSourceFromServer() throws NamingException {
-        Context ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("jdbc/db4free");
-        return ds;
-
-    }
+    // dataosurce from tomcat
+//    public DataSource getDataSourceFromServer() throws NamingException {
+//        Context ctx = new InitialContext();
+//        DataSource ds = (DataSource) ctx.lookup("jdbc/db4free");
+//        return ds;
+//
+//    }
 
     private HikariDataSource getDataSourceHikari() {
         HikariConfig config = new HikariConfig();

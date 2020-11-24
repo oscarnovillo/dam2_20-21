@@ -1,12 +1,22 @@
 
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶êæ-8£‹”ªŞ.
+O
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8£‹”ªŞ.
+Z
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8£‹”ªŞ.
+P
+java:S1128"3Remove this unused import 'io.vavr.control.Either'.(÷¿œ’8£‹”ªŞ.
+
+java:S1989"_Handle the following exceptions that could be thrown by "cesta": ServletException, IOException.(–Ú¯îøÿÿÿÿ8£‹”ªŞ.
+
+java:S1989"_Handle the following exceptions that could be thrown by "cesta": ServletException, IOException.(–Ú¯îøÿÿÿÿ8£‹”ªŞ.
+t
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(€—Œ³úÿÿÿÿ8£‹”ªŞ.
 ™
-java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(€—Œ³úÿÿÿÿ8³µÈúİ.
-m	java:S128&"LEnd this switch case with an unconditional break, return or throw statement.(€ãÔÌúÿÿÿÿ8æ…÷úİ.
-m
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(€—Œ³úÿÿÿÿ
-7	java:S131%""Add a default case to this switch.(°€àâ
-n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶êæ-
-z
-java:S1989"_Handle the following exceptions that could be thrown by "cesta": ServletException, IOException.(–Ú¯îøÿÿÿÿ
-z
-java:S1989"_Handle the following exceptions that could be thrown by "cesta": ServletException, IOException.(–Ú¯îøÿÿÿÿ
+java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(€—Œ³úÿÿÿÿ8£‹”ªŞ.
+
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(€—Œ³úÿÿÿÿ8£‹”ªŞ.
+m	java:S128*"LEnd this switch case with an unconditional break, return or throw statement.(€ãÔÌúÿÿÿÿ8£‹”ªŞ.
+>	java:S131)""Add a default case to this switch.(°€àâ8£‹”ªŞ.
+o
+java:S2441M"MMake "List" and its parameters serializable or don't store it in the session.(ŠŞ¢ıÿÿÿÿ8£‹”ªŞ.
