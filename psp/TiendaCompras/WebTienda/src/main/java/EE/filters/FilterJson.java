@@ -3,6 +3,7 @@ package EE.filters;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import dao.modelo.Producto;
+import dao.modelo.Usuario;
 import io.vavr.control.Try;
 import lombok.extern.log4j.Log4j2;
 import utils.Constantes;
@@ -34,6 +35,19 @@ public class FilterJson implements Filter {
                     Try.of(() -> json.fromJson(o, Producto.class))
                             .onSuccess(producto ->
                                     req.setAttribute(Constantes.PARAM_PRODUCTO, producto))
+                            .onFailure(throwable -> {
+                                log.error(throwable.getMessage(), throwable);
+                                ((HttpServletResponse) resp).setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                                seguir.set(false);
+                            });
+
+                });
+
+        Optional.ofNullable(req.getParameter("usuario"))
+                .ifPresent(o -> {
+                    Try.of(() -> json.fromJson(o, Usuario.class))
+                            .onSuccess(producto ->
+                                    req.setAttribute("usuario", producto))
                             .onFailure(throwable -> {
                                 log.error(throwable.getMessage(), throwable);
                                 ((HttpServletResponse) resp).setStatus(HttpServletResponse.SC_BAD_REQUEST);

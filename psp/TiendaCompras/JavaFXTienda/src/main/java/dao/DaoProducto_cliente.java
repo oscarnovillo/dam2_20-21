@@ -59,15 +59,31 @@ public class DaoProducto_cliente {
 
         Request request = new Request.Builder()
                 .url(urlConParams)
-                .put(RequestBody.create("HOla Alvaro que tal la familia",MediaType.get("application/json")))
+                .put(RequestBody.create("HOla Alvaro que tal la familia", MediaType.get("application/json")))
                 .build();
         OkHttpClient clientOK = ConfigurationSingleton_OkHttpClient.getInstance();
 
         AtomicReference<Either<String, Producto>> resultado = new AtomicReference<>();
         Try.of(() -> clientOK.newCall(request).execute())
                 .onSuccess(response -> {
-                    resultado.set(Either.right(producto));
-                } );
+                    if (response.isSuccessful()) {
+                        try {
+                            resultado.set(
+                                    Either.right(gson.fromJson(response.body().string(), Producto.class)));
+                        } catch (Exception e) {
+                            resultado.set(Either.left("ocurrio un error copjn el parseo de datos del servidor"));
+                        }
+                    }
+                    else
+                    {
+                        try {
+                            resultado.set(Either.left(response.body().string() + response.code()));
+                        }catch (Exception e) {
+                            resultado.set(Either.left("ocurrio un error con el servidor"));
+                        }
+
+                    }
+                });
         return resultado.get();
     }
 
@@ -100,10 +116,11 @@ public class DaoProducto_cliente {
                     if (response.isSuccessful()) {
                         Try.of(() -> response.body().string())
                                 .onSuccess(sProducto ->
-                                        Try.of(() -> gson.fromJson(sProducto, new TypeToken<List<Producto>>() {}.getType()))
-                                                .map(o -> (List)o)
-                                        .onSuccess(o -> resultado.set(Either.right(o)))
-                                        .onFailure(throwable -> resultado.set(Either.left("el objeto del servidor no se pudo parsear"))))
+                                        Try.of(() -> gson.fromJson(sProducto, new TypeToken<List<Producto>>() {
+                                        }.getType()))
+                                                .map(o -> (List) o)
+                                                .onSuccess(o -> resultado.set(Either.right(o)))
+                                                .onFailure(throwable -> resultado.set(Either.left("el objeto del servidor no se pudo parsear"))))
                                 .onFailure(throwable -> resultado.set(Either.left("error de comunicacion")));
                     } else {
                         Try.of(() -> response.body().string())

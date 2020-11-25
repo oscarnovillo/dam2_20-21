@@ -23,3 +23,5 @@ W
 'src/main/java/main/TestTransaccion.java,c\6\c61985a75268241393a56f1da2582a22c3b32445
 R
 "src/main/java/main/TestUpdate.java,9\a\9a3c0ee74b6987761795cd809757beadef6b56b9
+W
+'src/main/java/config/Configuration.java,7\f\7f9a1455549e9958f1cfe6993a695569484b133b
