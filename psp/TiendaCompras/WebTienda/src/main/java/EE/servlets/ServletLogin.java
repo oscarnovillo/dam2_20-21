@@ -4,6 +4,7 @@ import dao.modelo.Usuario;
 import io.vavr.control.Either;
 import servicios.SvUsuarios;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +24,11 @@ public class ServletLogin extends HttpServlet {
         login(request, response);
     }
 
+    @Inject
+    public SvUsuarios svUsuarios;
+
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SvUsuarios svUsuarios = new SvUsuarios();
+       // SvUsuarios svUsuarios = new SvUsuarios();
 
 
         svUsuarios.usuarioLogin(new Usuario(request.getParameter("user"),

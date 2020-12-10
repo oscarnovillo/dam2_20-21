@@ -21,7 +21,8 @@ public class ListenerConfig implements ServletContextListener
          You can initialize servlet context related data here.
       */
 
-        ConfigurationSingleton.cargarInstance(sce.getServletContext().getResourceAsStream("/WEB-INF/config/config.yaml"));
+//        ConfigurationSingleton.cargarInstance(sce.getServletContext().getResourceAsStream("/WEB-INF/config/config.yaml")
+//                ,sce.getServletContext().getRealPath("/WEB-INF/"));
     }
 
     public void contextDestroyed(ServletContextEvent sce) {

@@ -1,10 +1,10 @@
 
-k	java:S117d"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×Œ³øÿÿÿÿ
-s	java:S116"^Rename this field "pantalla_bienvenida" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™¤––
-t	java:S116!"_Rename this field "controller_productos" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìêÑŸ
-s	java:S116#"YRename this field "pantalla_cesta" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’´ÔÞýÿÿÿÿ
-u	java:S116$"[Rename this field "controller_cesta" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù¬”¸þÿÿÿÿ
-p	java:S116"[Rename this field "controller_login" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äò¼€
-r	java:S116 "]Rename this field "pantalla_productos" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯¾Äù
-s	java:S116"YRename this field "pantalla_login" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü‡ÊÕøÿÿÿÿ
-u	java:S116"`Rename this field "controller_bienvenida" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éëŒà
+r	java:S117d"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×Œ³øÿÿÿÿ8ÆâšŒÞ.
+z	java:S116"YRename this field "pantalla_login" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü‡ÊÕøÿÿÿÿ8ÆâšŒÞ.
+w	java:S116"[Rename this field "controller_login" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äò¼€8ÆâšŒÞ.
+z	java:S116"^Rename this field "pantalla_bienvenida" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™¤––8ÆâšŒÞ.
+|	java:S116"`Rename this field "controller_bienvenida" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éëŒà8ÆâšŒÞ.
+y	java:S116 "]Rename this field "pantalla_productos" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯¾Äù8ÆâšŒÞ.
+{	java:S116!"_Rename this field "controller_productos" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìêÑŸ8ÆâšŒÞ.
+z	java:S116#"YRename this field "pantalla_cesta" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’´ÔÞýÿÿÿÿ8ÆâšŒÞ.
+|	java:S116$"[Rename this field "controller_cesta" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù¬”¸þÿÿÿÿ8ÆâšŒÞ.

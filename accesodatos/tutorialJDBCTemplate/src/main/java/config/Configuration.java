@@ -5,6 +5,8 @@
  */
 package config;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;
@@ -16,6 +18,8 @@ import java.util.logging.Logger;
  *
  * @author oscar
  */
+@Getter
+@Setter
 public class Configuration {
 
     private static Configuration config;
@@ -35,7 +39,7 @@ public class Configuration {
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Configuration.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
         return config;
     }
@@ -45,37 +49,5 @@ public class Configuration {
     private String passDB;
 
 
-    public String getUrlDB() {
-      
-        return urlDB;
-    }
-
-    public void setUrlDB(String urlDB) {
-        this.urlDB = urlDB;
-    }
-
-    public String getDriverDB() {
-        return driverDB;
-    }
-
-    public void setDriverDB(String driverDB) {
-        this.driverDB = driverDB;
-    }
-
-    public String getUserDB() {
-        return userDB;
-    }
-
-    public void setUserDB(String userDB) {
-        this.userDB = userDB;
-    }
-
-    public String getPassDB() {
-        return passDB;
-    }
-
-    public void setPassDB(String passDB) {
-        this.passDB = passDB;
-    }
 
 }

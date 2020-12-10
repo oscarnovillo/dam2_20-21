@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.yaml.snakeyaml.Yaml;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,12 +25,12 @@ public class ConfigurationSingleton {
     }
 
     //Metodo para cargar
-    static ConfigurationSingleton cargarInstance(InputStream file) {
+    static ConfigurationSingleton cargarInstance(InputStream file,String path) {
 
         if (config == null) {
             try {
                 Yaml yaml = new Yaml();
-                config = yaml.loadAs(file,
+                config = yaml.loadAs(new FileInputStream(path + "config/config.yaml"),
                         ConfigurationSingleton.class);
             } catch (Exception ex) {
                 Logger.getLogger(ConfigurationSingleton.class.getName()).log(Level.SEVERE, null, ex);
