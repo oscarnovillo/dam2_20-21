@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity
-@Table(name = "armas_facciones", schema = "hibernate", catalog = "")
+//@Entity
+//@Table(name = "armas_facciones", schema = "hibernate", catalog = "")
 public class ArmasFaccionesTest {
     private int id;
     private String nombreFaccion;

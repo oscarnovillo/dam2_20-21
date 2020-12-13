@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity
+//@Entity
 public class Espias {
     private int id;
     private String nombre;

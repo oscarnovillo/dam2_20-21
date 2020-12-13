@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity
+//@Entity
 public class Faccion {
     private String nombre;
     private String contacto;

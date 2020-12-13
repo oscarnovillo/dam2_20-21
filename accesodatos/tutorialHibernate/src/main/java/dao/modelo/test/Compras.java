@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
-@Entity
+//@Entity
 public class Compras {
     private int id;
     private int idArmasFaccion;
