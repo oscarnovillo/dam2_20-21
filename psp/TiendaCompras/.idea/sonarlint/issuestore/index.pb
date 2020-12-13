@@ -51,8 +51,6 @@ c
 3WebTienda/src/main/java/servicios/HashPassword.java,6\1\611b302d223e1305fbe6047bc1ca1e4ebccb9e2e
 ù
 m.idea/dataSources/6601e480-c397-4946-b74e-71a28e7548e1/storage_v2/_src_/schema/information_schema.FNRwLQ.meta,5\b\5b630c50f9f4b4f1384628f72ec2ec679d5091f3
-W
-'WebTienda/src/main/resources/log4j2.xml,2\e\2e9810d8c992890619219cc3f615cf4a48283b60
 o
 ?JavaFXTienda/src/main/java/gui/controllers/LoginController.java,c\0\c0867ae8f5e631c0463c358e5ca63dcc03cdef2a
 c

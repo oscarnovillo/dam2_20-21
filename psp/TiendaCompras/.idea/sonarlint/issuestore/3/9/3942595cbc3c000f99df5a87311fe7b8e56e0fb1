@@ -1,14 +1,23 @@
 
-‰
-java:S1130,"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ŞßÇò8Ô˜šŞ.
-|
-java:S1989"fHandle the following exceptions that could be thrown by "verProductos": ServletException, IOException.(¬ªÂæ
-M
-java:S1481."2Remove this unused "paginaDestino" local variable.(µ‰ô¶ùÿÿÿÿ
-Z
-java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8‚Ä™Ş.
-n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶êæ-
-”
-java:S1130,"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(ŞßÇò8©—ƒŞ.
-|
-java:S1989"fHandle the following exceptions that could be thrown by "verProductos": ServletException, IOException.(¬ªÂæ
+’
+java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(ŞßÇò8Ô˜šŞ.
+l	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶êæ-
+K
+java:S1481"2Remove this unused "paginaDestino" local variable.(µ‰ô¶ùÿÿÿÿ
+X
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8‚Ä™Ş.
+z
+java:S1989"fHandle the following exceptions that could be thrown by "verProductos": ServletException, IOException.(¬ªÂæ
+‡
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ŞßÇò8©—ƒŞ.
+k
+java:S1301"KReplace this "switch" statement by "if" statements to increase readability.(õÙÆ‚úÿÿÿÿ8Ÿá²Œå.
+u
+java:S4144"UUpdate this method so that its implementation is not identical to "doPut" on line 44.(–àËµÿÿÿÿÿ8Ÿá²Œå.
+c
+java:S1871"HThis case's code block is the same as the block for the case on line 26.(¡È›8Ÿá²Œå.
+A	java:S131""Add a default case to this switch.(õÙÆ‚úÿÿÿÿ8Ÿá²Œå.
+H
+java:S1172"(Remove this unused method parameter "p".(±ÜÎùÿÿÿÿ8Ÿá²Œå.
+T
+java:S3400"9Remove this method and declare a constant for this value.(”·³›8Ÿá²Œå.

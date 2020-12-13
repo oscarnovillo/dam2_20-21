@@ -1,6 +1,4 @@
 
-n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ëõ²Çüÿÿÿÿ8èÍà‘Ş.
-x
-java:S1192k"VDefine a constant instead of duplicating this literal "error de comunicacion" 4 times.(ÇÙ°Ãøÿÿÿÿ8èÍà‘Ş.
-I
-java:S1602D",Remove useless curly braces around statement(ûŠßó8æ‹Ìß.
+l	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ëõ²Çüÿÿÿÿ8èÍà‘Ş.
+v
+java:S1192"VDefine a constant instead of duplicating this literal "error de comunicacion" 4 times.(ÇÙ°Ãøÿÿÿÿ8èÍà‘Ş.
