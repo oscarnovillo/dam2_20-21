@@ -31,5 +31,12 @@ public class Arma {
     private Collection<ArmasFacciones> armasFaccionesById;
 
 
-
+    @Override
+    public String toString() {
+        return "Arma{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                '}';
+    }
 }
