@@ -7,5 +7,14 @@
       <jdbc-driver>org.h2.Driver</jdbc-driver>
       <jdbc-url>jdbc:h2:$PROJECT_DIR$/myDb</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="@localhost" uuid="d5648238-f49c-42ad-aa46-70757bbcd0f4">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+      <driver-properties>
+        <property name="serverTimezone" value="GMT" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>

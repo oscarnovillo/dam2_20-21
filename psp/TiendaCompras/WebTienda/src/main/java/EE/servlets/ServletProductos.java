@@ -39,9 +39,14 @@ public class ServletProductos extends HttpServlet {
         insertarProducto((Producto) request.getAttribute(Constantes.PARAM_PRODUCTO));
     }
 
+    @Override
+    protected void doTrace(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    }
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         //update
         Producto p = (Producto) req.getAttribute(Constantes.PARAM_PRODUCTO);
 

@@ -5,10 +5,10 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
-<!--        <property name="hibernate.connection.url">jdbc:mysql://dam2.mysql.iesquevedo.es:3335/hibernate</property>-->
-<!--        <property name="connection.username">root</property>-->
-<!--        <property name="connection.password">quevedo2020</property>-->
-<!--        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>-->
+        <property name="hibernate.connection.url">jdbc:mysql://dam2.mysql.iesquevedo.es:3335/hibernate</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">quevedo2020</property>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <!-- pool configuration -->
         <property name="hibernate.hikari.connectionTimeout">20000</property>
         <property name="hibernate.hikari.minimumIdle">2</property>
@@ -16,14 +16,12 @@
         <property name="hibernate.hikari.idleTimeout">300000</property>
         <!-- DB schema will be updated if needed -->
 <!--        <property name="hibernate.hbm2ddl.auto">update</property>-->
-        <property name="connection.url">jdbc:mysql://dam2.mysql.iesquevedo.es:3335</property>
-        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+
 
         <mapping class="dao.modelo.Arma"/>
         <mapping class="dao.modelo.Faccion"/>
         <mapping class="dao.modelo.ArmasFacciones"/>
-        <mapping class="dao.modelo.Espia"/>
-        <mapping class="dao.modelo.Batalla"/>
+
 
     </session-factory>
 </hibernate-configuration>

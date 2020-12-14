@@ -1,6 +1,7 @@
 package dao;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 import config.ConfigurationSingleton_Client;
 import dao.modelo.Producto;
@@ -10,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import okhttp3.*;
 import utils.Constantes;
 
+import java.io.IOException;
 import java.net.ConnectException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
@@ -73,12 +75,10 @@ public class DaoProducto_cliente {
                         } catch (Exception e) {
                             resultado.set(Either.left("ocurrio un error copjn el parseo de datos del servidor"));
                         }
-                    }
-                    else
-                    {
+                    } else {
                         try {
                             resultado.set(Either.left(response.body().string() + response.code()));
-                        }catch (Exception e) {
+                        } catch (Exception e) {
                             resultado.set(Either.left("ocurrio un error con el servidor"));
                         }
 
@@ -111,28 +111,59 @@ public class DaoProducto_cliente {
         AtomicReference<Either<String, List<Producto>>> resultado = new AtomicReference<>();
         OkHttpClient clientOK = ConfigurationSingleton_OkHttpClient.getInstance();
 
-        Try.of(() -> clientOK.newCall(request).execute())
-                .onSuccess(response -> {
-                    if (response.isSuccessful()) {
-                        Try.of(() -> response.body().string())
-                                .onSuccess(sProducto ->
-                                        Try.of(() -> gson.fromJson(sProducto, new TypeToken<List<Producto>>() {
-                                        }.getType()))
-                                                .map(o -> (List) o)
-                                                .onSuccess(o -> resultado.set(Either.right(o)))
-                                                .onFailure(throwable -> resultado.set(Either.left("el objeto del servidor no se pudo parsear"))))
-                                .onFailure(throwable -> resultado.set(Either.left("error de comunicacion")));
-                    } else {
-                        Try.of(() -> response.body().string())
-                                .onSuccess(s ->
-                                        resultado.set(Either.left(s)))
-                                .onFailure(throwable -> resultado.set(Either.left("error de comunicacion")));
-                    }
-                })
-                .onFailure(ConnectException.class, throwable -> {
-                    log.error(throwable.getMessage(), throwable);
-                    resultado.set(Either.left("El servidor va lento y no se\nha podido CERRAR.\nDisculpe las molestias"));
-                });
+
+        try {
+            Response response = clientOK.newCall(request).execute();
+            if (response.isSuccessful()) {
+                resultado.set(Either.right(gson.fromJson(response.body().string(),
+                        new TypeToken<List<Producto>>() {
+                        }.getType())));
+            } else {
+                resultado.set(Either.left(response.body().string()));
+            }
+        } catch (JsonParseException e) {
+
+
+
+
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            resultado.set(Either.left("Error comunicaciones"));
+        }
+
+
+        Try.of(() -> clientOK.newCall(request).
+
+                execute())
+                .
+
+                        onSuccess(response ->
+
+                        {
+                            if (response.isSuccessful()) {
+                                Try.of(() -> {
+                                    return gson.fromJson(response.body().string(), new TypeToken<List<Producto>>() {
+                                    }.getType());
+                                })
+                                        .map(o -> (List) o)
+                                        .onSuccess(t -> resultado.set(Either.right(t)))
+                                        .onFailure(throwable -> resultado.set(Either.left("Error de datos")));
+
+                            } else {
+                                Try.of(() -> response.body().string())
+                                        .onSuccess(s ->
+                                                resultado.set(Either.left(s)))
+                                        .onFailure(throwable -> resultado.set(Either.left("error de comunicacion")));
+                            }
+                        })
+                .
+
+                        onFailure(ConnectException.class, throwable ->
+
+                        {
+                            log.error(throwable.getMessage(), throwable);
+                            resultado.set(Either.left("El servidor va lento y no se\nha podido CERRAR.\nDisculpe las molestias"));
+                        });
 
         return resultado.get();
     }

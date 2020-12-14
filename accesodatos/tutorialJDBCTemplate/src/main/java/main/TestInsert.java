@@ -15,30 +15,40 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class TestInsert {
 
     public static void main(String[] args) {
         CreateModel.createModel();
         DBConnection db = new DBConnection();
-        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(
-                db.getDataSource())
-                .withTableName("asignaturas")
-                .usingGeneratedKeyColumns("ID");
-        Asignatura a = new Asignatura();
-        a.setCiclo("ciclo");
-        a.setCurso("curso");
-        a.setNombre("nombre");
-        a.setId(200);
-        Map<String, Object> parameters = new HashMap<>();
 
-        parameters.put("NOMBRE", a.getNombre());
-        parameters.put("CICLO", a.getCiclo());
-        parameters.put("CURSO", a.getCurso());
-        SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(a);
-        a.setId((int) jdbcInsert.executeAndReturnKey(namedParameters).longValue());
+        try {
+            SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(
+                    db.getDataSource())
+                    .withTableName("asignaturas")
+                    .usingGeneratedKeyColumns("ID");
+            Asignatura a = new Asignatura();
+            a.setCiclo("ciclo");
+            a.setCurso("curso");
+            a.setNombre("damn");
+            a.setId(200);
+            Map<String, Object> parameters = new HashMap<>();
 
-        System.out.println(a);
+            parameters.put("NOMBRE", a.getNombre());
+            parameters.put("CICLO", a.getCiclo());
+            parameters.put("CURSO", a.getCurso());
+            SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(a);
+            a.setId((int) jdbcInsert.executeAndReturnKey(namedParameters).longValue());
+            System.out.println(a);
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         JdbcTemplate jtm = new JdbcTemplate(
@@ -54,7 +64,7 @@ public class TestInsert {
             return ps;
         }, keyHolder);
 
-        System.out.println((int) keyHolder.getKey());
+        System.out.println(Optional.ofNullable(keyHolder.getKey()).orElse(null));
 
     }
 }

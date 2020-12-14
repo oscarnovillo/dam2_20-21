@@ -1,5 +1,5 @@
 
-j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìîïÅ8ãà‘Ş.
-i	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Í®ôŒ8ãà‘Ş.
-x
-java:S3923""[Remove this conditional structure or edit its code blocks so that they're not all the same.(ñ´ğ8é‹Ìß.
+`	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Í®ôŒ
+v
+java:S3923"[Remove this conditional structure or edit its code blocks so that they're not all the same.(ñ´ğ8·ğÅ©Ş.
+a	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìîïÅ

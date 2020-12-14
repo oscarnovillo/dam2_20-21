@@ -25,7 +25,5 @@ R
 "src/main/java/main/TestUpdate.java,9\a\9a3c0ee74b6987761795cd809757beadef6b56b9
 W
 'src/main/java/config/Configuration.java,7\f\7f9a1455549e9958f1cfe6993a695569484b133b
-U
-%src/main/java/dao/modelo/Miembro.java,7\d\7d3e075fd586c134d96fb747dc74c2a97cab7a8c
 T
 $src/main/java/dao/modelo/Alumno.java,1\0\1032a6b75e9c05948a0852d10a07c48acdc7855e

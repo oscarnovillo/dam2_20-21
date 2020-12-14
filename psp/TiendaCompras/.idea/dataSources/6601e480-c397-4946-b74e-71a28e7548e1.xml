@@ -1017,470 +1017,425 @@ SELECT|sys.sys_config:null
       <ObjectGrants>SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,RELOAD,SHUTDOWN,PROCESS,FILE,REFERENCES,INDEX,ALTER,SHOW DATABASES,SUPER,CREATE TEMPORARY TABLES,LOCK TABLES,EXECUTE,REPLICATION SLAVE,REPLICATION CLIENT,CREATE VIEW,SHOW VIEW,CREATE ROUTINE,ALTER ROUTINE,CREATE USER,EVENT,TRIGGER,CREATE TABLESPACE,CREATE ROLE,DROP ROLE!
 </ObjectGrants>
     </user>
-    <table id="320" parent="32" name="productos"/>
-    <table id="321" parent="32" name="users"/>
-    <table id="322" parent="41" name="articulos"/>
-    <table id="323" parent="41" name="articulos_leidos"/>
-    <table id="324" parent="41" name="autores"/>
-    <table id="325" parent="41" name="lectores"/>
-    <table id="326" parent="41" name="periodicos"/>
-    <table id="327" parent="41" name="suscripciones"/>
-    <table id="328" parent="41" name="tipos_articulo"/>
-    <table id="329" parent="41" name="tipos_usuario"/>
-    <table id="330" parent="41" name="usuarios"/>
-    <column id="331" parent="320" name="id_producto">
+    <table id="320" parent="26" name="articulos"/>
+    <table id="321" parent="26" name="articulos_leidos"/>
+    <table id="322" parent="26" name="autores"/>
+    <table id="323" parent="26" name="lectores"/>
+    <table id="324" parent="26" name="periodicos"/>
+    <table id="325" parent="26" name="suscripciones"/>
+    <table id="326" parent="26" name="tipos_articulo"/>
+    <table id="327" parent="26" name="tipos_usuario"/>
+    <table id="328" parent="26" name="usuarios"/>
+    <column id="329" parent="320" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="332" parent="320" name="nombre">
-      <Position>2</Position>
-      <DataType>varchar(200)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="333" parent="320" name="precio">
-      <Position>3</Position>
-      <DataType>double|0s</DataType>
-    </column>
-    <key id="334" parent="320" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_producto</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="335" parent="321" name="id_user">
-      <Position>1</Position>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="336" parent="321" name="username">
-      <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="337" parent="321" name="password">
-      <Position>3</Position>
-      <DataType>varchar(512)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="338" parent="321" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_user</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="339" parent="322" name="id">
-      <Position>1</Position>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="340" parent="322" name="titular">
+    <column id="330" parent="320" name="titular">
       <Position>2</Position>
       <DataType>varchar(250)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="341" parent="322" name="descripcion">
+    <column id="331" parent="320" name="descripcion">
       <Position>3</Position>
       <DataType>varchar(2000)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="342" parent="322" name="id_periodico">
+    <column id="332" parent="320" name="id_periodico">
       <Position>4</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="343" parent="322" name="id_tipo">
+    <column id="333" parent="320" name="id_tipo">
       <Position>5</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="344" parent="322" name="id_autor">
+    <column id="334" parent="320" name="id_autor">
       <Position>6</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="345" parent="322" name="articulos_id_uindex">
+    <index id="335" parent="320" name="articulos_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="346" parent="322" name="articulos__periodico_fk">
+    <index id="336" parent="320" name="articulos_periodicos_id_fk">
       <ColNames>id_periodico</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="347" parent="322" name="articulos_tipoarituclos__fk">
+    <index id="337" parent="320" name="articulos_tipos_articulo_id_fk">
       <ColNames>id_tipo</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="348" parent="322" name="articulos_autores__fk">
+    <index id="338" parent="320" name="articulos_autores_id_fk">
       <ColNames>id_autor</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="349" parent="322" name="PRIMARY">
+    <key id="339" parent="320" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="350" parent="322" name="articulos_id_uindex">
+    <key id="340" parent="320" name="articulos_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>articulos_id_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="351" parent="322" name="articulos__periodico_fk">
+    <foreign-key id="341" parent="320" name="articulos_periodicos_id_fk">
       <ColNames>id_periodico</ColNames>
       <RefTableName>periodicos</RefTableName>
-      <RefColNames>id_periodico</RefColNames>
+      <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="352" parent="322" name="articulos_tipoarituclos__fk">
+    <foreign-key id="342" parent="320" name="articulos_tipos_articulo_id_fk">
       <ColNames>id_tipo</ColNames>
       <RefTableName>tipos_articulo</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="353" parent="322" name="articulos_autores__fk">
+    <foreign-key id="343" parent="320" name="articulos_autores_id_fk">
       <ColNames>id_autor</ColNames>
       <RefTableName>autores</RefTableName>
-      <RefColNames>id_autor</RefColNames>
+      <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="354" parent="323" name="id">
+    <column id="344" parent="321" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="355" parent="323" name="id_lector">
+    <column id="345" parent="321" name="id_lector">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="356" parent="323" name="id_articulo">
+    <column id="346" parent="321" name="id_articulo">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="357" parent="323" name="rating">
+    <column id="347" parent="321" name="rating">
       <Position>4</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="358" parent="323" name="articulos_leidos_id_uindex">
+    <index id="348" parent="321" name="articulos_leidos_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="359" parent="323" name="articulos_leidos_lectores__fk">
+    <index id="349" parent="321" name="articulos_leidos_lectores_id_fk">
       <ColNames>id_lector</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="360" parent="323" name="articulos_leidos_articulos__fk">
+    <index id="350" parent="321" name="articulos_leidos_articulos_id_fk">
       <ColNames>id_articulo</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="361" parent="323" name="PRIMARY">
+    <key id="351" parent="321" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="362" parent="323" name="articulos_leidos_id_uindex">
+    <key id="352" parent="321" name="articulos_leidos_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>articulos_leidos_id_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="363" parent="323" name="articulos_leidos_lectores__fk">
+    <foreign-key id="353" parent="321" name="articulos_leidos_lectores_id_fk">
       <ColNames>id_lector</ColNames>
       <RefTableName>lectores</RefTableName>
-      <RefColNames>id_lector</RefColNames>
+      <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="364" parent="323" name="articulos_leidos_articulos__fk">
+    <foreign-key id="354" parent="321" name="articulos_leidos_articulos_id_fk">
       <ColNames>id_articulo</ColNames>
       <RefTableName>articulos</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="365" parent="324" name="id_autor">
+    <column id="355" parent="322" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="366" parent="324" name="nombre">
+    <column id="356" parent="322" name="nombre">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="367" parent="324" name="apellidos">
+    <column id="357" parent="322" name="apellidos">
       <Position>3</Position>
       <DataType>varchar(250)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="368" parent="324" name="autores_nombre_apellidos_uindex">
+    <index id="358" parent="322" name="autores_nombre_apellidos_uindex">
       <ColNames>nombre
 apellidos</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="369" parent="324" name="PRIMARY">
+    <key id="359" parent="322" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_autor</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="370" parent="324" name="autores_nombre_apellidos_uindex">
+    <key id="360" parent="322" name="autores_nombre_apellidos_uindex">
       <ColNames>nombre
 apellidos</ColNames>
       <UnderlyingIndexName>autores_nombre_apellidos_uindex</UnderlyingIndexName>
     </key>
-    <column id="371" parent="325" name="id_lector">
+    <column id="361" parent="323" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="372" parent="325" name="nombre">
+    <column id="362" parent="323" name="nombre">
       <Position>2</Position>
       <DataType>varchar(250)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="373" parent="325" name="fechaNacimiento">
+    <column id="363" parent="323" name="fechaNacimiento">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="374" parent="325" name="lectores_id_uindex">
-      <ColNames>id_lector</ColNames>
+    <index id="364" parent="323" name="lectores_id_uindex">
+      <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="375" parent="325" name="lectores_nombre_uindex">
+    <index id="365" parent="323" name="lectores_nombre_uindex">
       <ColNames>nombre</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="376" parent="325" name="PRIMARY">
+    <key id="366" parent="323" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_lector</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="377" parent="325" name="lectores_id_uindex">
-      <ColNames>id_lector</ColNames>
+    <key id="367" parent="323" name="lectores_id_uindex">
+      <ColNames>id</ColNames>
       <UnderlyingIndexName>lectores_id_uindex</UnderlyingIndexName>
     </key>
-    <key id="378" parent="325" name="lectores_nombre_uindex">
+    <key id="368" parent="323" name="lectores_nombre_uindex">
       <ColNames>nombre</ColNames>
       <UnderlyingIndexName>lectores_nombre_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="379" parent="325" name="lectores_usuarios_id_usuario_fk">
-      <ColNames>id_lector</ColNames>
+    <foreign-key id="369" parent="323" name="lectores_usuarios_id_usuario_fk">
+      <ColNames>id</ColNames>
       <RefTableName>usuarios</RefTableName>
-      <RefColNames>id_usuario</RefColNames>
+      <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="380" parent="326" name="id_periodico">
+    <column id="370" parent="324" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="381" parent="326" name="nombre">
+    <column id="371" parent="324" name="nombre">
       <Position>2</Position>
       <DataType>varchar(250)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="382" parent="326" name="director">
+    <column id="372" parent="324" name="precio">
       <Position>3</Position>
+      <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="373" parent="324" name="director">
+      <Position>4</Position>
       <DataType>varchar(250)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="383" parent="326" name="id_administrador">
-      <Position>4</Position>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="384" parent="326" name="precio">
+    <column id="374" parent="324" name="id_administrador">
       <Position>5</Position>
-      <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>0</DefaultExpression>
+      <DataType>int|0s</DataType>
     </column>
-    <index id="385" parent="326" name="Periodicos_id_uindex">
-      <ColNames>id_periodico</ColNames>
+    <index id="375" parent="324" name="Periodicos_id_uindex">
+      <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="386" parent="326" name="Periodicos_nombre_uindex">
+    <index id="376" parent="324" name="Periodicos_nombre_uindex">
       <ColNames>nombre</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="387" parent="326" name="periodicos_usuarios_id_usuario_fk">
+    <index id="377" parent="324" name="periodicos_usuarios_id_fk">
       <ColNames>id_administrador</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="388" parent="326" name="PRIMARY">
+    <key id="378" parent="324" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_periodico</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="389" parent="326" name="Periodicos_id_uindex">
-      <ColNames>id_periodico</ColNames>
+    <key id="379" parent="324" name="Periodicos_id_uindex">
+      <ColNames>id</ColNames>
       <UnderlyingIndexName>Periodicos_id_uindex</UnderlyingIndexName>
     </key>
-    <key id="390" parent="326" name="Periodicos_nombre_uindex">
+    <key id="380" parent="324" name="Periodicos_nombre_uindex">
       <ColNames>nombre</ColNames>
       <UnderlyingIndexName>Periodicos_nombre_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="391" parent="326" name="periodicos_usuarios_id_usuario_fk">
+    <foreign-key id="381" parent="324" name="periodicos_usuarios_id_fk">
       <ColNames>id_administrador</ColNames>
       <RefTableName>usuarios</RefTableName>
-      <RefColNames>id_usuario</RefColNames>
+      <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="392" parent="327" name="id">
+    <column id="382" parent="325" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="393" parent="327" name="id_lector">
+    <column id="383" parent="325" name="id_lector">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="394" parent="327" name="id_periodico">
+    <column id="384" parent="325" name="id_periodico">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="395" parent="327" name="fecha_inicio">
+    <column id="385" parent="325" name="fecha_inicio">
       <Position>4</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="396" parent="327" name="fecha_baja">
+    <column id="386" parent="325" name="fecha_baja">
       <Position>5</Position>
       <DataType>date|0s</DataType>
     </column>
-    <index id="397" parent="327" name="suscripciones_id_uindex">
+    <index id="387" parent="325" name="suscripciones_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="398" parent="327" name="suscripciones__lectores_fk">
+    <index id="388" parent="325" name="suscripciones_lectores_id_fk">
       <ColNames>id_lector</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="399" parent="327" name="suscripciones_periodico__fk">
+    <index id="389" parent="325" name="suscripciones_periodicos_id_fk">
       <ColNames>id_periodico</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="400" parent="327" name="PRIMARY">
+    <key id="390" parent="325" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="401" parent="327" name="suscripciones_id_uindex">
+    <key id="391" parent="325" name="suscripciones_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>suscripciones_id_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="402" parent="327" name="suscripciones__lectores_fk">
+    <foreign-key id="392" parent="325" name="suscripciones_lectores_id_fk">
       <ColNames>id_lector</ColNames>
       <RefTableName>lectores</RefTableName>
-      <RefColNames>id_lector</RefColNames>
+      <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="403" parent="327" name="suscripciones_periodico__fk">
+    <foreign-key id="393" parent="325" name="suscripciones_periodicos_id_fk">
       <ColNames>id_periodico</ColNames>
       <RefTableName>periodicos</RefTableName>
-      <RefColNames>id_periodico</RefColNames>
+      <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="404" parent="328" name="id">
+    <column id="394" parent="326" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="405" parent="328" name="tipo">
+    <column id="395" parent="326" name="tipo">
       <Position>2</Position>
       <DataType>varchar(250)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="406" parent="328" name="tipos_articulo_id_uindex">
+    <index id="396" parent="326" name="tipos_articulo_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="407" parent="328" name="tipos_articulo_tipo_uindex">
+    <index id="397" parent="326" name="tipos_articulo_tipo_uindex">
       <ColNames>tipo</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="408" parent="328" name="PRIMARY">
+    <key id="398" parent="326" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="409" parent="328" name="tipos_articulo_id_uindex">
+    <key id="399" parent="326" name="tipos_articulo_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>tipos_articulo_id_uindex</UnderlyingIndexName>
     </key>
-    <key id="410" parent="328" name="tipos_articulo_tipo_uindex">
+    <key id="400" parent="326" name="tipos_articulo_tipo_uindex">
       <ColNames>tipo</ColNames>
       <UnderlyingIndexName>tipos_articulo_tipo_uindex</UnderlyingIndexName>
     </key>
-    <column id="411" parent="329" name="id_tipo_usuario">
+    <column id="401" parent="327" name="id_tipo_usuario">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="412" parent="329" name="tipo">
+    <column id="402" parent="327" name="tipo">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="413" parent="329" name="descripcion">
+    <column id="403" parent="327" name="descripcion">
       <Position>3</Position>
       <DataType>varchar(250)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="414" parent="329" name="PRIMARY">
+    <key id="404" parent="327" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_tipo_usuario</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="415" parent="330" name="id_usuario">
+    <column id="405" parent="328" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="416" parent="330" name="user">
+    <column id="406" parent="328" name="user">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="417" parent="330" name="password">
+    <column id="407" parent="328" name="password">
       <Position>3</Position>
       <DataType>varchar(512)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="418" parent="330" name="primera_vez">
+    <column id="408" parent="328" name="primera_vez">
       <Position>4</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <column id="419" parent="330" name="mail">
+    <column id="409" parent="328" name="mail">
       <Position>5</Position>
       <DataType>varchar(250)|0s</DataType>
     </column>
-    <column id="420" parent="330" name="id_tipo_usuario">
+    <column id="410" parent="328" name="id_tipo_usuario">
       <Position>6</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="421" parent="330" name="usuarios_tipo_usuario__fk">
+    <index id="411" parent="328" name="usuarios_tipos_usuario_id_tipo_usuario_fk">
       <ColNames>id_tipo_usuario</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="422" parent="330" name="PRIMARY">
+    <key id="412" parent="328" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_usuario</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="423" parent="330" name="usuarios_tipo_usuario__fk">
+    <foreign-key id="413" parent="328" name="usuarios_tipos_usuario_id_tipo_usuario_fk">
       <ColNames>id_tipo_usuario</ColNames>
       <RefTableName>tipos_usuario</RefTableName>
       <RefColNames>id_tipo_usuario</RefColNames>

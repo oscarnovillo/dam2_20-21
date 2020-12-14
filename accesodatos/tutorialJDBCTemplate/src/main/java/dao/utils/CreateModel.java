@@ -45,7 +45,8 @@ public class CreateModel {
                             + "  NOMBRE varchar(250) NOT NULL,\n"
                             + "  CURSO varchar(250) NOT NULL,\n"
                             + "  CICLO varchar(250) NOT NULL,\n"
-                            + "  PRIMARY KEY (ID)\n"
+                            + "  PRIMARY KEY (ID),\n"
+                            + " UNIQUE KEY NOMBRE (NOMBRE)"
                             + ");");
 
             filas = stmt.executeUpdate();

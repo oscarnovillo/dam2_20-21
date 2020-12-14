@@ -77,7 +77,7 @@ public class AsignaturasDaoImplSpring {
 //  public Asignatura addAsignaturaJDBCTemplate(Asignatura a) {
 //
 //    SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(
-//        DBConnectionPool.getInstance().getDataSource())
+//        DBConnection.getInstance().getDataSource())
 //            .withTableName("asignaturas")
 //            .usingGeneratedKeyColumns("ID");
 //    Map<String, Object> parameters = new HashMap<>();
