@@ -31,4 +31,11 @@ public class ArmasFacciones {
     @ManyToOne
     @JoinColumn(name = "id_arma",referencedColumnName = "id",nullable = false)
     private Arma arma;
+
+    @Override
+    public String toString() {
+        return "ArmasFacciones{" +
+                "id=" + id +
+                '}';
+    }
 }

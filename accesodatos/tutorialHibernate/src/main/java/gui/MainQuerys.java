@@ -1,7 +1,11 @@
 package gui;
 
+import dao.modelo.Arma;
+import dao.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class MainQuerys {
 
@@ -9,6 +13,21 @@ public class MainQuerys {
         Session session = HibernateUtils.getSession();
 
         Query q = session.createQuery("from Arma ");
+
+        q.stream().forEach(System.out::println);
+
+
+        List<Arma> armas = q.getResultList();
+
+        armas.stream().forEach(System.out::println);
+
+
+        q = session.createQuery("select distinct(a) from Arma a " +
+                "inner join ArmasFacciones  af on af.arma.id = a.id " +
+                "where af.faccion.nombre = 'no lo se' ");
+
+        q.stream().forEach(System.out::println);
+
 
 //        List<Teacher> teachers = q.getResultList();
 //        teachers.forEach(teacher -> teacher.getSubjectsByIdteacher().forEach(subject -> subject.getName()));

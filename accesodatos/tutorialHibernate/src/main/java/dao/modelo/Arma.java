@@ -28,15 +28,8 @@ public class Arma {
 
 
     @OneToMany(mappedBy="arma")
-    private Collection<ArmasFacciones> armasFaccionesById;
+    private List<ArmasFacciones> armasFaccionesById;
 
 
-    @Override
-    public String toString() {
-        return "Arma{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", precio=" + precio +
-                '}';
-    }
+
 }

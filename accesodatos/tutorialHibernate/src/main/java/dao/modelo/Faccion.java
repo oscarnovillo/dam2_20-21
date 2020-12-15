@@ -34,6 +34,9 @@ public class Faccion {
     @OneToMany(mappedBy="faccion")
     private List<ArmasFacciones> armasFacciones;
 
+    @OneToMany(mappedBy ="faccionUno")
+    private List<Batalla> batallas;
+
 
 
 }

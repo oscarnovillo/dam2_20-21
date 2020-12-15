@@ -14,11 +14,11 @@
         <Logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE">
+        <Logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="ERROR">
             <AppenderRef ref="Console"/>
         </Logger>
 
-        <Root level="TRACE">
+        <Root level="ERROR">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>

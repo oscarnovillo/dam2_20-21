@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
 
+import javax.persistence.PersistenceException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class DaoArmas {
                 resultado = Either.left("arma no encontrada");
             else resultado = Either.right(a);
 
+
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             resultado = Either.left(e.getMessage());
@@ -37,6 +39,10 @@ public class DaoArmas {
         try (Session session = HibernateUtilsSingleton.getInstance().getSession()) {
 
             Arma a = session.bySimpleNaturalId(Arma.class).load(nombre);
+
+//            session.byNaturalId(Arma.class)
+//                    .using("nombre","iojlo")
+//                   .load();
             if (a == null)
                 resultado = Either.left("arma no encontrada");
             else resultado = Either.right(a);
@@ -104,6 +110,30 @@ public class DaoArmas {
         }
         return resultado;
     }
+
+    public Either<String, Arma> delArma(Arma a) {
+        Either<String,  Arma> resultado = null;
+        try (Session session = HibernateUtils.getSession()) {
+
+            session.beginTransaction();
+            session.delete(a);
+            session.getTransaction().commit();
+            resultado = Either.right(a);
+
+        }catch (PersistenceException e) {
+//            if (e.getCause().getCause() instanceof SQLIntegrityConstraintViolationException)
+                resultado = Either.left("arma tiene datos asociados");
+//            else
+//                resultado = Either.left(e.getMessage());
+            log.error(e.getMessage(), e);
+        }
+        catch (Exception e) {
+            log.error(e.getMessage(), e);
+            resultado = Either.left(e.getMessage());
+        }
+        return resultado;
+    }
+
 
 
 }
