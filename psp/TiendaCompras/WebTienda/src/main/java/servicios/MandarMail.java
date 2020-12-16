@@ -51,7 +51,7 @@ public class MandarMail {
 //    }
 
 
-    public void generateAndSendEmail(String to, String msg, String subject) throws AddressException, MessagingException {
+    public void generateAndSendEmail(String to, String msg, String subject) throws MessagingException {
         Properties mailServerProperties;
         Session getMailSession;
         MimeMessage generateMailMessage;
