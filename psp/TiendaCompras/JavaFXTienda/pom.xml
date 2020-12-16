@@ -13,9 +13,6 @@
 
 
     <dependencies>
-
-
-
         <!--OkHttpClient-->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>

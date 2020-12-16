@@ -41,3 +41,9 @@ Y
 )src/main/java/dao/modelo/test/Espias.java,7\7\77e6a0174913e5fda2660dfd75665e6b4dd81843
 Z
 *src/main/java/dao/modelo/test/Faccion.java,0\e\0ed5c41972b37586b80474cf81791e24f9a42679
+S
+#src/main/java/dao/modelo/Espia.java,f\0\f04448f4f26c57e1a04aca2a06105bbd020d8d92
+T
+$src/main/java/gui/MainInsEspias.java,6\3\6361dfbe1ba426fb547a2d7c2a675a9d03882338
+Q
+!src/main/java/gui/MainQuerys.java,f\d\fdda46e71d9e60c3a49e00f47c2dccb249a27386

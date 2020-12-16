@@ -1,0 +1,8 @@
+
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(∂ÍÊ-
+v
+java:S1989"`Handle the following exceptions that could be thrown by "logout": ServletException, IOException.(⁄ê¢ı
+v
+java:S1989"`Handle the following exceptions that could be thrown by "logout": ServletException, IOException.(⁄ê¢ı
+ç
+java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(”Ããß
