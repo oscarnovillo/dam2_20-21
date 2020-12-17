@@ -14,20 +14,37 @@ public class MainQuerys {
 
         Query q = session.createQuery("from Arma ");
 
-        q.stream().forEach(System.out::println);
-
-
-        List<Arma> armas = q.getResultList();
-
-        armas.stream().forEach(System.out::println);
+//        q.stream().forEach(System.out::println);
+//
+//
+//        List<Arma> armas = q.getResultList();
+//
+//        armas.stream().forEach(System.out::println);
 
 
         q = session.createQuery("select distinct(a) from Arma a " +
-                "inner join ArmasFacciones  af on af.arma.id = a.id " +
-                "where af.faccion.nombre = 'no lo se' ");
+                "left join a.armasFaccionesById as af inner join af.faccion as f " +
+                "where f.numeroSistemasControlados > 0 ",Arma.class);
 
         q.stream().forEach(System.out::println);
 
+
+        q = session.createQuery("select distinct(a.id) from Arma a " +
+                "left join a.armasFaccionesById as af inner join af.faccion as f " +
+                "where f.numeroSistemasControlados > 0 ",Integer.class);
+
+        q.stream().forEach(o -> System.out.println(o));
+
+//        q = session.createQuery("select a.id,a.nombre from Arma a " +
+//                "left join a.armasFaccionesById as af inner join af. as f " +
+//                "where f.numeroSistemasControlados > 0 ");
+
+        q.stream().forEach(o -> System.out.println(((Object[])o)[0]));
+
+//
+//        q = session.createQuery("select b from Batalla b " +
+//                "inner join a.armasFaccionesById as af inner join af.faccion as f " +
+//                "where f.numeroSistemasControlados > 0 ");
 
 //        List<Teacher> teachers = q.getResultList();
 //        teachers.forEach(teacher -> teacher.getSubjectsByIdteacher().forEach(subject -> subject.getName()));

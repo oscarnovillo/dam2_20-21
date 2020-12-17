@@ -1,57 +1,57 @@
 
-]
-java:S3457¹"AFormat specifiers should be used instead of string concatenation.(¾ì¦¤ýÿÿÿÿ
-s	java:S1167"YRename this field "SALT_BYTE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉžÒÛùÿÿÿÿ
-<
-java:S1170="!Make this final field static too.(ýèàÅùÿÿÿÿ
-U
-java:S4719Ñ"9Replace charset name argument with StandardCharsets.UTF_8(Û†ÉØÿÿÿÿÿ
-?
-java:S5542í"#Use secure mode and padding scheme.(ø¾¢çýÿÿÿÿ
-n	java:S1168"YRename this field "HASH_BYTE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ý¥Æä
-<
-java:S11704"!Make this final field static too.(€Ò¾»úÿÿÿÿ
-O
-java:S1117u"9Rename "salt" which hides the field declared at line 225.(ûŠë÷
-T	java:S106†"9Replace this use of System.out or System.err by a logger.(Ï¢þýÿÿÿÿ
-P
-java:S4719À"9Replace charset name argument with StandardCharsets.UTF_8(ô½Ì†
-]
-java:S1192À"FDefine a constant instead of duplicating this literal "UTF-8" 4 times.(ô½Ì†
-\	java:S112Í"FDefine and throw a dedicated exception instead of using a generic one.(¯½Í¥
-<
-java:S1170<"!Make this final field static too.(ÝŠÁµýÿÿÿÿ
-<
-java:S11707"!Make this final field static too.(ÉžÒÛùÿÿÿÿ
-p
-java:S11924"UDefine a constant instead of duplicating this literal "PBKDF2WithHmacSHA256" 3 times.(€Ò¾»úÿÿÿÿ
-q	java:S116="WRename this field "PBKDF2_INDEX" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ýèàÅùÿÿÿÿ
-O
-java:S1117T"9Rename "salt" which hides the field declared at line 225.(†±ï•
-?
-java:S5542"#Use secure mode and padding scheme.(ªŒðÚûÿÿÿÿ
-C
-java:S1172ã"-Remove this unused method parameter "secret".(îž`
 7
 java:S11709"!Make this final field static too.(çõ‚
-q	java:S1169"\Rename this field "PBKDF2_ITERATIONS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çõ‚
-x
-java:S1488É"aImmediately return this expression instead of assigning it to the temporary variable "sinCifrar".(£ûÀ¼
-7
-java:S11708"!Make this final field static too.(ý¥Æä
-{
-java:S1488Â"_Immediately return this expression instead of assigning it to the temporary variable "cifrado".(€¨Êòýÿÿÿÿ
+T	java:S106†"9Replace this use of System.out or System.err by a logger.(Ï¢þýÿÿÿÿ
+?
+java:S5542"#Use secure mode and padding scheme.(ªŒðÚûÿÿÿÿ
 P
 java:S4719É"9Replace charset name argument with StandardCharsets.UTF_8(£ûÀ¼
-o	java:S116<"URename this field "SALT_INDEX" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÝŠÁµýÿÿÿÿ
-u	java:S1164"[Rename this field "PBKDF2_ALGORITHM" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€Ò¾»úÿÿÿÿ
-I
-java:S1172ö"-Remove this unused method parameter "secret".(ßï®åüÿÿÿÿ
-P
-java:S4719ï"9Replace charset name argument with StandardCharsets.UTF_8(Œ˜ù»
-:
-java:S5542Ö"#Use secure mode and padding scheme.(ì‹ÁÉ
+?
+java:S5542í"#Use secure mode and padding scheme.(ø¾¢çýÿÿÿÿ
 7
 java:S1170;"!Make this final field static too.(â®í˜
+\	java:S112Í"FDefine and throw a dedicated exception instead of using a generic one.(¯½Í¥
+u	java:S1164"[Rename this field "PBKDF2_ALGORITHM" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€Ò¾»úÿÿÿÿ
+q	java:S1169"\Rename this field "PBKDF2_ITERATIONS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çõ‚
+O
+java:S1117u"9Rename "salt" which hides the field declared at line 225.(ûŠë÷
+:
+java:S5542Ö"#Use secure mode and padding scheme.(ì‹ÁÉ
+p
+java:S11924"UDefine a constant instead of duplicating this literal "PBKDF2WithHmacSHA256" 3 times.(€Ò¾»úÿÿÿÿ
+P
+java:S4719À"9Replace charset name argument with StandardCharsets.UTF_8(ô½Ì†
+C
+java:S1172ã"-Remove this unused method parameter "secret".(îž`
+]
+java:S1192À"FDefine a constant instead of duplicating this literal "UTF-8" 4 times.(ô½Ì†
+q	java:S116="WRename this field "PBKDF2_INDEX" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ýèàÅùÿÿÿÿ
+o	java:S116<"URename this field "SALT_INDEX" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÝŠÁµýÿÿÿÿ
+s	java:S1167"YRename this field "SALT_BYTE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉžÒÛùÿÿÿÿ
+7
+java:S11708"!Make this final field static too.(ý¥Æä
 o	java:S116;"ZRename this field "ITERATION_INDEX" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â®í˜
+<
+java:S1170<"!Make this final field static too.(ÝŠÁµýÿÿÿÿ
+I
+java:S1172ö"-Remove this unused method parameter "secret".(ßï®åüÿÿÿÿ
+<
+java:S11707"!Make this final field static too.(ÉžÒÛùÿÿÿÿ
+P
+java:S4719ï"9Replace charset name argument with StandardCharsets.UTF_8(Œ˜ù»
+]
+java:S3457¹"AFormat specifiers should be used instead of string concatenation.(¾ì¦¤ýÿÿÿÿ
 T	java:S106ñ"9Replace this use of System.out or System.err by a logger.(ÑÐœ†ûÿÿÿÿ
+<
+java:S1170="!Make this final field static too.(ýèàÅùÿÿÿÿ
+{
+java:S1488Â"_Immediately return this expression instead of assigning it to the temporary variable "cifrado".(€¨Êòýÿÿÿÿ
+O
+java:S1117T"9Rename "salt" which hides the field declared at line 225.(†±ï•
+<
+java:S11704"!Make this final field static too.(€Ò¾»úÿÿÿÿ
+x
+java:S1488É"aImmediately return this expression instead of assigning it to the temporary variable "sinCifrar".(£ûÀ¼
+n	java:S1168"YRename this field "HASH_BYTE_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ý¥Æä
+U
+java:S4719Ñ"9Replace charset name argument with StandardCharsets.UTF_8(Û†ÉØÿÿÿÿÿ

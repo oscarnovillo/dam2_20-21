@@ -65,3 +65,7 @@ X
 (WebTienda/src/main/java/utils/Utils.java,e\e\eeabf5cd5af999b79a7a76bc2ad4c5ec2dcce1ce
 a
 1WebTienda/src/main/java/servicios/MandarMail.java,0\6\066d72a3e9955da6fa2434ce7c0497df28e66acc
+Z
+*JavaFXTienda/src/main/java/gui/MainFx.java,2\6\26d236ca01342ea7fe0766b74ba1370a2877195f
+d
+4WebTienda/src/main/java/EE/servlets/ServletMail.java,b\2\b2b7b14220a0d21cbb1fd594f704b46dadc97209
