@@ -12,7 +12,7 @@ public class MainQuerys {
     public static void main(String[] args) {
         Session session = HibernateUtils.getSession();
 
-        Query q = session.createQuery("from Arma ");
+        Query<Arma> q = session.createQuery("from Arma ");
 
 //        q.stream().forEach(System.out::println);
 //
@@ -23,23 +23,39 @@ public class MainQuerys {
 
 
         q = session.createQuery("select distinct(a) from Arma a " +
-                "left join a.armasFaccionesById as af inner join af.faccion as f " +
+                "inner join a.armasFaccionesById as af " +
+                "inner join af.faccion as f " +
                 "where f.numeroSistemasControlados > 0 ",Arma.class);
 
         q.stream().forEach(System.out::println);
 
 
-        q = session.createQuery("select distinct(a.id) from Arma a " +
+        System.out.println();
+        q = session.createQuery("select distinct(af.arma) from ArmasFacciones af " +
+                " inner join af.faccion f "+
+                "where f.numeroSistemasControlados > 0 ",Arma.class);
+
+
+        q.stream().forEach(o -> System.out.println(o.toStringTodo()));
+
+        Query q1 = session.createQuery("select af.arma,af.faccion.contacto from ArmasFacciones af " +
+                " inner join af.faccion f "+
+                "where f.numeroSistemasControlados > :numero ")
+                .setParameter("numero",0);
+
+
+        q1.stream().forEach(o -> {
+            Object[] resultado = (Object[])o;
+            System.out.println(resultado[0]+" {"+resultado[1]+"}");
+
+
+        });
+
+        q1 = session.createQuery("select a.id,a.nombre from Arma a " +
                 "left join a.armasFaccionesById as af inner join af.faccion as f " +
-                "where f.numeroSistemasControlados > 0 ",Integer.class);
+                "where f.numeroSistemasControlados > 0 ");
 
-        q.stream().forEach(o -> System.out.println(o));
-
-//        q = session.createQuery("select a.id,a.nombre from Arma a " +
-//                "left join a.armasFaccionesById as af inner join af. as f " +
-//                "where f.numeroSistemasControlados > 0 ");
-
-        q.stream().forEach(o -> System.out.println(((Object[])o)[0]));
+        q1.stream().forEach(o -> System.out.println(((Object[])o)[0]));
 
 //
 //        q = session.createQuery("select b from Batalla b " +

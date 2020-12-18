@@ -1,9 +1,0 @@
-
-R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8å„ö¹æ.
-n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ëõ²Çüÿÿÿÿ8èÍà‘Ş.
-E	java:S108|")Either remove or fill this block of code.(ú¬«Û8å„ö¹æ.
-y
-java:S1192œ"VDefine a constant instead of duplicating this literal "error de comunicacion" 3 times.(ÇÙ°Ãøÿÿÿÿ8èÍà‘Ş.
-q
-java:S1602"SRemove useless curly braces around statement and then remove useless return keyword(¤‹Óí8å„ö¹æ.

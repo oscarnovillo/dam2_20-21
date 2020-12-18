@@ -1,6 +1,6 @@
 
-^
-java:S1128"ARemove this unused import 'javax.mail.internet.AddressException'.(ÏŠŠÂ8ÚÛòíæ.
 X	java:S125 "<This block of commented-out lines of code should be removed.(ê…Ã8ô Åæ.
 ]	java:S125
 "<This block of commented-out lines of code should be removed.(­Ğİ¤ûÿÿÿÿ8Œˆ¡Åæ.
+^
+java:S1128"ARemove this unused import 'javax.mail.internet.AddressException'.(ÏŠŠÂ8Â»“©ç.

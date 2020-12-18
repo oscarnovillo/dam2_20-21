@@ -33,7 +33,7 @@ public class Utils {
         SecureRandom sr = new SecureRandom();
         byte[] bits = new byte[32];
         sr.nextBytes(bits);
-        return Base64.getEncoder().encodeToString(bits);
+        return Base64.getUrlEncoder().encodeToString(bits);
     }
 
 
