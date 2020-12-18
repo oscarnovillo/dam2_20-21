@@ -45,3 +45,7 @@ T
 $src/main/java/gui/MainInsEspias.java,6\3\6361dfbe1ba426fb547a2d7c2a675a9d03882338
 Q
 !src/main/java/gui/MainQuerys.java,f\d\fdda46e71d9e60c3a49e00f47c2dccb249a27386
+U
+%src/main/java/dao/modelo/Batalla.java,2\5\258bab046e8fcf7f9d933ad74b6699be58678f61
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
