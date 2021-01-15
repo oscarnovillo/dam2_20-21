@@ -33,13 +33,15 @@ public class MainInsEspias {
 
         e.setNombre("actualizado");
         e.setId(2);
-        try (Session session = HibernateUtilsSingleton.getInstance().getSession()) {
+
+        try ( Session session = HibernateUtilsSingleton.getInstance().getSession()) {
             session.beginTransaction();
             session.update(e);
             session.getTransaction().commit();
 
         }
         catch (Exception ex) {
+
             log.error(ex.getMessage(), ex);
         }
 

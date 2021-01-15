@@ -1,12 +1,12 @@
 
-S	java:S106"9Replace this use of System.out or System.err by a logger.(¶ìÓÈ8‹ÂğÉÙ.
+S	java:S106"9Replace this use of System.out or System.err by a logger.(½“Îô8Ò¡¨Ù.
+U	java:S125"<This block of commented-out lines of code should be removed.(ÒØæ58‹ÂğÉÙ.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(”Ï¡ùÿÿÿÿ8‹ÂğÉÙ.
 \
 java:S1854"<Remove this useless assignment to local variable "clientOK".(‹½íøÿÿÿÿ8‹ÂğÉÙ.
+S	java:S106"9Replace this use of System.out or System.err by a logger.(¶ìÓÈ8‹ÂğÉÙ.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(”Ï¡ùÿÿÿÿ8‹ÂğÉÙ.
 S	java:S106"9Replace this use of System.out or System.err by a logger.(½“Îô8‹ÂğÉÙ.
-X	java:S106"9Replace this use of System.out or System.err by a logger.(”Ï¡ùÿÿÿÿ8‹ÂğÉÙ.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(Ê‡å8‹ÂğÉÙ.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(½“Îô8Ò¡¨Ù.
-X	java:S106"9Replace this use of System.out or System.err by a logger.(”Ï¡ùÿÿÿÿ8‹ÂğÉÙ.
-U	java:S125"<This block of commented-out lines of code should be removed.(ÒØæ58‹ÂğÉÙ.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(¶ìÓÈ8Ò¡¨Ù.
 S	java:S106"9Replace this use of System.out or System.err by a logger.(Ê‡å8Ò¡¨Ù.
+S	java:S106"9Replace this use of System.out or System.err by a logger.(¶ìÓÈ8Ò¡¨Ù.
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Ê‡å8‹ÂğÉÙ.

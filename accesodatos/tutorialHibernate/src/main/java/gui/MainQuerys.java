@@ -78,12 +78,14 @@ public class MainQuerys {
 //        session.close();
 //
 //        session = HibernateUtils.getSession();
-//        q = session.createQuery("select t,count(s.name) from Subject as s inner join s.teacherByIdteacher as t " +
+//        q = session.createQuery("select t,count(s.name) as rating from Subject as s inner join s.teacherByIdteacher as t " +
 //                " where " +
 //                " t.startDate < :fecha ");
 //        q.setParameter("fecha", LocalDate.now().minus(1, ChronoUnit.YEARS));
-//        q.stream().forEach(o -> {
+//        q.stream().map(o -> new Informe((Object[]o)[0])).forEach(o -> {
 //            Object[] result = (Object[])o;
+//            Teacher t = (Teacher)result[0];
+//            String s = (String)result[1];
 //
 //            Arrays.stream(result).forEach(System.out::println);
 //

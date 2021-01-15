@@ -1,15 +1,15 @@
 
+z
+java:S1989"_Handle the following exceptions that could be thrown by "login": ServletException, IOException.(ğæÓ8ÑÛ½Ùï.
+L
+java:S1135"2Complete the task associated to this TODO comment.(•ï­V8ÃâšŒŞ.
 N
-java:S1135,"2Complete the task associated to this TODO comment.(•ï­V8ÃâšŒŞ.
-P
-java:S1128"3Remove this unused import 'io.vavr.control.Either'.(÷¿œ’8ïà¹²á.
-|
-java:S1989"_Handle the following exceptions that could be thrown by "login": ServletException, IOException.(ğæÓ8ÃâšŒŞ.
-
-java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ÅşÀùÿÿÿÿ8‹òƒŞ.
-|
-java:S1989"_Handle the following exceptions that could be thrown by "login": ServletException, IOException.(ğæÓ8ÃâšŒŞ.
-™
-java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(ÅşÀùÿÿÿÿ8‹òƒŞ.
-X	java:S125"<This block of commented-out lines of code should be removed.(ĞË³Š8Æñ½ƒâ.
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶êæ-8ÃâšŒŞ.
+java:S1128"3Remove this unused import 'io.vavr.control.Either'.(÷¿œ’8ïà¹²á.
+—
+java:S1130"wRemove the declaration of thrown exception 'javax.servlet.ServletException', as it cannot be thrown from method's body.(ÅşÀùÿÿÿÿ8ÑÛ½Ùï.
+s	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶êæ-8ÃâšŒŞ.
+Œ
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ÅşÀùÿÿÿÿ8ÑÛ½Ùï.
+z
+java:S1989"_Handle the following exceptions that could be thrown by "login": ServletException, IOException.(ğæÓ8ÑÛ½Ùï.
+V	java:S125"<This block of commented-out lines of code should be removed.(ĞË³Š8Æñ½ƒâ.

@@ -1,0 +1,5 @@
+
+w	java:S116"]Rename this field "batallasByNombre_0" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®ÌºÎùÿÿÿÿ
+e	java:S117m"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ÖÎ[
+c	java:S100i"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÇÃÃ
+b	java:S100m"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ÖÎ[
