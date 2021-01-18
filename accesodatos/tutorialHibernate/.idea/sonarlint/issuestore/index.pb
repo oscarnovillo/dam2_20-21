@@ -9,8 +9,6 @@ B
 +src/main/java/dao/utils/HibernateUtils.java,a\9\a908c88b77a815ee026e95614bb3b8a32b41e4f9
 d
 4src/main/java/dao/utils/HibernateUtilsSingleton.java,2\3\2363af0417e977adcf56da79a7d8801477ffd863
-M
-src/main/resources/log4j2.xml,3\6\36b9f0d33e4b7e602e3cd701314fae81543db66f
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 L
@@ -47,3 +45,7 @@ T
 $src/main/java/gui/MainInsEspias.java,6\3\6361dfbe1ba426fb547a2d7c2a675a9d03882338
 Q
 !src/main/java/gui/MainQuerys.java,f\d\fdda46e71d9e60c3a49e00f47c2dccb249a27386
+U
+%src/main/java/dao/modelo/Batalla.java,2\5\258bab046e8fcf7f9d933ad74b6699be58678f61
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0

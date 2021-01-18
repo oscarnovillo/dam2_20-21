@@ -30,6 +30,20 @@ public class Arma {
     @OneToMany(mappedBy="arma")
     private List<ArmasFacciones> armasFaccionesById;
 
+    @Override
+    public String toString() {
+        return "Arma{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                "*";
+    }
 
-
+    public String toStringTodo() {
+        return "Arma{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                '}';
+    }
 }

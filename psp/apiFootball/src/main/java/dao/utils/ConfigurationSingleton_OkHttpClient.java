@@ -31,7 +31,8 @@ public class ConfigurationSingleton_OkHttpClient {
 
                         Request.Builder builder1 = original.newBuilder()
                                 .header("X-Auth-Token", "2deee83e549c4a6e9709871d0fd58a0a")
-                                .url(original.url().newBuilder().addQueryParameter("headToken","adfsdf").build());
+                                .url(original.url().newBuilder().addQueryParameter("headToken","adfsdf")
+                                        .build());
                         Request request = builder1.build();
                         return chain.proceed(request);}
                     )
