@@ -6,6 +6,7 @@ import dao.modelo.Area;
 import dao.modelo.Competition;
 import dao.modelo.Usuario;
 import io.reactivex.Single;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
 import io.reactivex.schedulers.Schedulers;
 import io.vavr.control.Either;
@@ -167,7 +168,7 @@ public class ApiFootballController implements Initializable {
                 .doFinally(() -> this.principalController
                         .getPantallaPrincipal().setCursor(Cursor.DEFAULT));
 
-                s.subscribe(result -> result.peek(System.out::println)
+                Disposable sd = s.subscribe(result -> result.peek(System.out::println)
                                 .peekLeft(error -> {
                                     alert.setContentText(error);
                                     alert.showAndWait();
@@ -176,6 +177,7 @@ public class ApiFootballController implements Initializable {
                             alert.setContentText(throwable.getMessage());
                             alert.showAndWait();
                         });
+
 
 
 //        var tarea = new Task<Either<String, List<Team>>>() {
