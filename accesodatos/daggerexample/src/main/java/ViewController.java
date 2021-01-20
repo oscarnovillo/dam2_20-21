@@ -37,8 +37,8 @@ import java.util.ResourceBundle;
 
 public class ViewController implements Initializable {
 
-    @Inject Service service;
-    @FXML Label label;
+    @Inject   Service service;
+    @FXML private Label label;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

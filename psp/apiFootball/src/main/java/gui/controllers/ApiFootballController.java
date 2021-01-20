@@ -1,13 +1,15 @@
 package gui.controllers;
 
 import dao.DaoAreas;
+import dao.DaoUsuarios;
 import dao.modelo.Area;
 import dao.modelo.Competition;
-import dao.modelo.Team;
+import dao.modelo.Usuario;
+import io.reactivex.Single;
+import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
+import io.reactivex.schedulers.Schedulers;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +26,7 @@ import java.util.ResourceBundle;
 public class ApiFootballController implements Initializable {
     public ListView<Area> listAreas;
     public ListView<Competition> listCompetitions;
-    public ListView<Team> listTeams;
+    public ListView listTeams;
     public TextField texto;
     private Alert alert;
 
@@ -128,34 +130,19 @@ public class ApiFootballController implements Initializable {
 
     public void cargarTeams(ActionEvent actionEvent) {
 
-        var tarea = new Task<Either<String, List<Team>>>() {
-            public StringProperty test = new SimpleStringProperty();
+        var tarea = new Task<Either<String, Usuario>>() {
+            //public StringProperty test;
             @Override
-            protected Either<String, List<Team>> call() throws Exception {
-
-                DaoAreas dao = new DaoAreas();
-                test.setValue(" cargo uno");
-                Thread.sleep(1000);
-                test.setValue(" cargo dos");
-//                Thread.sleep(5000);
-                return dao.getTeams(listCompetitions.getSelectionModel().getSelectedItem(), "2020");
-
-
+            protected Either<String, Usuario> call() throws Exception {
+                DaoUsuarios dao = new DaoUsuarios();
+                return dao.updateUsuario(new Usuario(null, "nombrecito"));
             }
         };
-
-
-        texto.textProperty().bind(tarea.test);
-
 //        fxText.textProperty().bind(tarea.valueProperty());
         tarea.setOnSucceeded(workerStateEvent -> {
-            Try.of(() -> tarea.get().peek(team -> listTeams.getItems().addAll(team))
+            tarea.getValue().peek(System.out::println)
                     .peekLeft(s -> {
                         alert.setContentText(s);
-                        alert.showAndWait();
-                    }))
-                    .onFailure(throwable -> {
-                        alert.setContentText(throwable.getMessage());
                         alert.showAndWait();
                     });
             this.principalController.getPantallaPrincipal().setCursor(Cursor.DEFAULT);
@@ -165,13 +152,78 @@ public class ApiFootballController implements Initializable {
             alert.showAndWait();
             this.principalController.getPantallaPrincipal().setCursor(Cursor.DEFAULT);
         });
-
-
         new Thread(tarea).start();
 //        ExecutorService executorService = Executors.newFixedThreadPool(1);
 //        executorService.submit(tarea);
         this.principalController.getPantallaPrincipal().setCursor(Cursor.WAIT);
 
+        Single<Either<String,Usuario>> s = Single.fromCallable(() ->
+                {
+                        DaoUsuarios dao = new DaoUsuarios();
+                        return dao.updateUsuario(new Usuario(null, "nombrecito"));
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(JavaFxScheduler.platform())
+                .doFinally(() -> this.principalController
+                        .getPantallaPrincipal().setCursor(Cursor.DEFAULT));
+
+                s.subscribe(result -> result.peek(System.out::println)
+                                .peekLeft(error -> {
+                                    alert.setContentText(error);
+                                    alert.showAndWait();
+                                }),
+                        throwable -> {
+                            alert.setContentText(throwable.getMessage());
+                            alert.showAndWait();
+                        });
+
+
+//        var tarea = new Task<Either<String, List<Team>>>() {
+//            public StringProperty test = new SimpleStringProperty();
+//            @Override
+//            protected Either<String, List<Team>> call() throws Exception {
+//
+//                DaoAreas dao = new DaoAreas();
+//                test.setValue(" cargo uno");
+//                Thread.sleep(1000);
+//                test.setValue(" cargo dos");
+////                Thread.sleep(5000);
+//                return dao.getTeams(listCompetitions.getSelectionModel().getSelectedItem(), "2020");
+//
+//
+//            }
+//        };
+//
+//
+//        texto.textProperty().bind(tarea.test);
+//
+////        fxText.textProperty().bind(tarea.valueProperty());
+//        tarea.setOnSucceeded(workerStateEvent -> {
+//            Try.of(() -> tarea.get().peek(team -> listTeams.getItems().addAll(team))
+//                    .peekLeft(s -> {
+//                        alert.setContentText(s);
+//                        alert.showAndWait();
+//                    }))
+//                    .onFailure(throwable -> {
+//                        alert.setContentText(throwable.getMessage());
+//                        alert.showAndWait();
+//                    });
+//            this.principalController.getPantallaPrincipal().setCursor(Cursor.DEFAULT);
+//        });
+//        tarea.setOnFailed(workerStateEvent -> {
+//            alert.setContentText(workerStateEvent.getSource().getException().getMessage());
+//            alert.showAndWait();
+//            this.principalController.getPantallaPrincipal().setCursor(Cursor.DEFAULT);
+//        });
+//
+//
+//        new Thread(tarea).start();
+////        ExecutorService executorService = Executors.newFixedThreadPool(1);
+////        executorService.submit(tarea);
+//        this.principalController.getPantallaPrincipal().setCursor(Cursor.WAIT);
+
 
     }
+
+
 }

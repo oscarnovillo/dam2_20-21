@@ -88,6 +88,9 @@ public class MainController {
         selection.setDisable(true);
         Single.just(runTask(20))
                 .subscribeOn(Schedulers.computation())
+                .observeOn(JavaFxScheduler.platform())
+
+
                 .doFinally(() -> selection.setDisable(false))
                 .map(result -> result.time > 500 ? new Result(result.name + " (slow)", result.time) : result)
                 .map(Result::toString)
@@ -99,7 +102,7 @@ public class MainController {
                             return "Done";
                         })
                 )
-                .observeOn(JavaFxScheduler.platform())
+
                 .subscribe(result -> observableList.add(result),
                         throwable -> observableList.add(throwable.toString()))
 

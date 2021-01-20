@@ -1,6 +1,7 @@
 package EE.rest;
 
 
+import EE.errores.ApiError;
 import dao.modelo.Usuario;
 import servicios.ServiciosUsuarios;
 

@@ -1,7 +1,7 @@
 package dao;
 
-import EE.rest.ApiError;
-import EE.rest.CustomException;
+import EE.errores.ApiError;
+import EE.errores.CustomException;
 import dao.modelo.Usuario;
 import io.vavr.control.Either;
 

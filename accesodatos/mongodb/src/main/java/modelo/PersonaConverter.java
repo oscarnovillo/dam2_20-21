@@ -37,7 +37,7 @@ public class PersonaConverter {
             Optional.ofNullable(d.getDate("fecha"))
                 .map(date -> date.toInstant().atZone(ZoneId.of("UTC")).toLocalDate())
                 .orElse(null))
-        ._id(d.getObjectId("_id"))
+        .id(d.getObjectId("_id"))
         .cosas(lista.stream().map(document ->
             Things.builder()
             .nombre(((Document)document).getString("nombre"))

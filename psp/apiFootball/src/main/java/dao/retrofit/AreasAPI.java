@@ -4,11 +4,10 @@ package dao.retrofit;
 import dao.modelo.Area;
 import dao.modelo.AreasRequest;
 import dao.modelo.CompetitionsRequest;
-import dao.modelo.TeamsRequest;
+//import dao.modelo.TeamsRequest;
+import dao.modelo.Usuario;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
 
 public interface AreasAPI {
@@ -22,7 +21,12 @@ public interface AreasAPI {
   @GET("competitions/")
   Call<CompetitionsRequest> loadCompetitions(@Query("areas") long areas);
 
-  @GET("competitions/{id}/teams")
-  Call<TeamsRequest> loadTeams(@Path("id") long id,@Query("season") String season);
+  @POST("api/users")
+  Call<Usuario> addUsuario(@Body Usuario usuario);
+
+
+
+
+//  Call<TeamsRequest> loadTeams(@Path("id") long id,@Query("season") String season);
 
 }

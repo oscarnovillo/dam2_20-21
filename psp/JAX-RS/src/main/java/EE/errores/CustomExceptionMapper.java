@@ -1,4 +1,4 @@
-package EE.rest;
+package EE.errores;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

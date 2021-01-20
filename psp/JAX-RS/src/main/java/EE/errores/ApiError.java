@@ -1,4 +1,4 @@
-package EE.rest;
+package EE.errores;
 
 import lombok.Data;
 import lombok.Getter;

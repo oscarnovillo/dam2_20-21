@@ -19,15 +19,7 @@ public class DaoAreas {
     public Either<String, List<Area>> getAreas() {
         Either<String, List<Area>> resultado = null;
 
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ConfigurationSingleton_Client.getInstance().getPath_base())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(ConfigurationSingleton_OkHttpClient.getInstance())
-                .build();
+        Retrofit retrofit = ConfigurationSingleton_OkHttpClient.getInstance();
 
         AreasAPI areasAPI = retrofit.create(AreasAPI.class);
 
@@ -55,15 +47,7 @@ public class DaoAreas {
     public Either<String, List<Competition>> getCompetitions(Area area) {
         Either<String, List<Competition>> resultado = null;
 
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ConfigurationSingleton_Client.getInstance().getPath_base())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(ConfigurationSingleton_OkHttpClient.getInstance())
-                .build();
+        Retrofit retrofit = ConfigurationSingleton_OkHttpClient.getInstance();
 
         AreasAPI areasAPI = retrofit.create(AreasAPI.class);
 
@@ -88,41 +72,33 @@ public class DaoAreas {
         return resultado;
     }
 
-    public Either<String, List<Team>> getTeams(Competition competition,String season) {
-        Either<String, List<Team>> resultado = null;
-
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ConfigurationSingleton_Client.getInstance().getPath_base())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(ConfigurationSingleton_OkHttpClient.getInstance())
-                .build();
-
-        AreasAPI areasAPI = retrofit.create(AreasAPI.class);
-
-        Call<TeamsRequest> call = areasAPI.loadTeams(competition.getId(),season);
-        try {
-            Response<TeamsRequest> response = call.execute();
-            if (response.isSuccessful())
-            {
-                TeamsRequest changesList = response.body();
-                resultado = Either.right(changesList.getTeams());
-            }
-            else
-            {
-                resultado = Either.left("ERROR "+response.errorBody().toString());
-            }
-        }
-        catch (Exception e)
-        {
-            resultado= Either.left("Error de comunicacion");
-        }
-
-        return resultado;
-    }
+//    public Either<String, List<Team>> getTeams(Competition competition,String season) {
+//        Either<String, List<Team>> resultado = null;
+//
+//        Retrofit retrofit = ConfigurationSingleton_OkHttpClient.getInstance();
+//
+//        AreasAPI areasAPI = retrofit.create(AreasAPI.class);
+//
+//        Call<TeamsRequest> call = areasAPI.loadTeams(competition.getId(),season);
+//        try {
+//            Response<TeamsRequest> response = call.execute();
+//            if (response.isSuccessful())
+//            {
+//                TeamsRequest changesList = response.body();
+//                resultado = Either.right(changesList.getTeams());
+//            }
+//            else
+//            {
+//                resultado = Either.left("ERROR "+response.errorBody().toString());
+//            }
+//        }
+//        catch (Exception e)
+//        {
+//            resultado= Either.left("Error de comunicacion");
+//        }
+//
+//        return resultado;
+//    }
 
 
 

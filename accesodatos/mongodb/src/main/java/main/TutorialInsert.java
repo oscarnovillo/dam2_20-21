@@ -60,16 +60,16 @@ public class TutorialInsert {
         PersonaConverter pc = new PersonaConverter();
         Document d1 = pc.convertPersonaDocument(p);
         est.insertOne(d1);
-        p.set_id(d.getObjectId("_id"));
+        p.setId(d.getObjectId("_id"));
         System.out.println(p);
 
 
         MongoCollection<Persona> col = db.getCollection("est", Persona.class).withCodecRegistry(pojoCodecRegistry);
         Persona p1 = new Persona();
-        p1.setName("jj");
+        p1.setName(null);
 
         cosas = new ArrayList<>();
-        cosas.add(Things.builder().nombre("cachos").cantidad(2).build());
+        cosas.add(Things.builder().nombre("temp").cantidad(2).build());
         p1.setCosas(cosas);
         col.insertOne(p1);
 

@@ -1,9 +1,14 @@
 package dao.utils;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import config.ConfigurationSingleton_Client;
 import lombok.extern.log4j.Log4j2;
 import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.net.CookieManager;
 import java.net.CookiePolicy;
@@ -14,10 +19,12 @@ import java.time.temporal.ChronoUnit;
 public class ConfigurationSingleton_OkHttpClient {
     private static OkHttpClient clientOK;
 
+    private static Retrofit retrofit;
+
     private ConfigurationSingleton_OkHttpClient() {
     }
 
-    public static OkHttpClient getInstance() {
+    public static Retrofit getInstance() {
         if (clientOK == null) {
             CookieManager cookieManager = new CookieManager();
             cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
@@ -38,9 +45,17 @@ public class ConfigurationSingleton_OkHttpClient {
                     )
                     .cookieJar(new JavaNetCookieJar(cookieManager))
                     .build();
-
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
+             retrofit = new Retrofit.Builder()
+                    .baseUrl(ConfigurationSingleton_Client.getInstance().getPath_base())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .client(clientOK)
+                    .build();
         }
-        return clientOK;
+
+        return retrofit;
     }
 
 }

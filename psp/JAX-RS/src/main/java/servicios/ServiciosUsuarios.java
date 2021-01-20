@@ -1,7 +1,7 @@
 package servicios;
 
-import EE.rest.ApiError;
-import EE.rest.OtraException;
+import EE.errores.ApiError;
+import EE.errores.OtraException;
 import dao.DaoUsuario;
 import dao.modelo.Usuario;
 import io.vavr.control.Either;
@@ -34,7 +34,7 @@ public class ServiciosUsuarios {
         validator.validate(u).stream().forEach(
                 testDtoConstraintViolation ->
                         error.append(testDtoConstraintViolation.getMessage()));
-        if (error !=null)
+        if (!error.toString().isEmpty())
             throw new OtraException(error.toString());
         return dao.addUser(u);
     }
