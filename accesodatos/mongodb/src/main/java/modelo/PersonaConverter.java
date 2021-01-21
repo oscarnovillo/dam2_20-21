@@ -27,7 +27,6 @@ public class PersonaConverter {
 
   public Persona convertDocumentPersona(Document d) {
 
-
     List<Document> lista = d.getList("cosas",Document.class);
     if (lista == null)
       lista = new ArrayList();

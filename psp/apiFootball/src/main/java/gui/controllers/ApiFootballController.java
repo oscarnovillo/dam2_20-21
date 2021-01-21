@@ -167,8 +167,7 @@ public class ApiFootballController implements Initializable {
                 .observeOn(JavaFxScheduler.platform())
                 .doFinally(() -> this.principalController
                         .getPantallaPrincipal().setCursor(Cursor.DEFAULT));
-
-                Disposable sd = s.subscribe(result -> result.peek(System.out::println)
+                s.subscribe(result -> result.peek(System.out::println)
                                 .peekLeft(error -> {
                                     alert.setContentText(error);
                                     alert.showAndWait();

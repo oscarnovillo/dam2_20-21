@@ -1,7 +1,0 @@
-
-}
-java:S1450"bRemove the "principalController" field and declare it as a local variable in the relevant methods.(Íœ„‘øÿÿÿÿ
-œ
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•‘ÝŸüÿÿÿÿ
-R
-java:S1068"7Remove this unused "principalController" private field.(Íœ„‘øÿÿÿÿ

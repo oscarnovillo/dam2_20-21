@@ -30,7 +30,7 @@ import static org.bson.codecs.pojo.Conventions.ANNOTATION_CONVENTION;
 public class TutorialFind {
 
   public static void main(String[] args) {
-    MongoClient mongo = MongoClients.create("mongodb://informatica.iesquevedo.es:2323");
+    MongoClient mongo = MongoClients.create("mongodb://dam2.mysql.iesquevedo.es:2323");
 
     MongoDatabase db = mongo.getDatabase("oscar");
 
