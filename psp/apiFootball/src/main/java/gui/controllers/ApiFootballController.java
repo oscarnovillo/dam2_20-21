@@ -2,6 +2,7 @@ package gui.controllers;
 
 import dao.DaoAreas;
 import dao.DaoUsuarios;
+import dao.modelo.ApiError;
 import dao.modelo.Area;
 import dao.modelo.Competition;
 import dao.modelo.Usuario;
@@ -131,10 +132,10 @@ public class ApiFootballController implements Initializable {
 
     public void cargarTeams(ActionEvent actionEvent) {
 
-        var tarea = new Task<Either<String, Usuario>>() {
+        var tarea = new Task<Either<ApiError, Usuario>>() {
             //public StringProperty test;
             @Override
-            protected Either<String, Usuario> call() throws Exception {
+            protected Either<ApiError, Usuario> call() throws Exception {
                 DaoUsuarios dao = new DaoUsuarios();
                 return dao.updateUsuario(new Usuario(null, "nombrecito"));
             }
@@ -143,7 +144,7 @@ public class ApiFootballController implements Initializable {
         tarea.setOnSucceeded(workerStateEvent -> {
             tarea.getValue().peek(System.out::println)
                     .peekLeft(s -> {
-                        alert.setContentText(s);
+                        alert.setContentText(s.getMessage());
                         alert.showAndWait();
                     });
             this.principalController.getPantallaPrincipal().setCursor(Cursor.DEFAULT);
@@ -158,10 +159,10 @@ public class ApiFootballController implements Initializable {
 //        executorService.submit(tarea);
         this.principalController.getPantallaPrincipal().setCursor(Cursor.WAIT);
 
-        Single<Either<String,Usuario>> s = Single.fromCallable(() ->
+        Single<Either<ApiError,Usuario>> s = Single.fromCallable(() ->
                 {
                         DaoUsuarios dao = new DaoUsuarios();
-                        return dao.updateUsuario(new Usuario(null, "nombrecito"));
+                        return dao.updateUsuario(new Usuario(null, ""));
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(JavaFxScheduler.platform())
@@ -169,7 +170,7 @@ public class ApiFootballController implements Initializable {
                         .getPantallaPrincipal().setCursor(Cursor.DEFAULT));
                 s.subscribe(result -> result.peek(System.out::println)
                                 .peekLeft(error -> {
-                                    alert.setContentText(error);
+                                    alert.setContentText(error.getMessage());
                                     alert.showAndWait();
                                 }),
                         throwable -> {
