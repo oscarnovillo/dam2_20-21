@@ -7,6 +7,7 @@ import io.vavr.control.Either;
 
 import javax.ws.rs.core.Response;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class DaoUsuario {
         }
         else
         {
-            return Either.left(new ApiError("error not found", LocalDate.now()));
+            return Either.left(new ApiError("error not found", LocalDateTime.now()));
         }
     }
 

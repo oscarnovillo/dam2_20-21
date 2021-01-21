@@ -3,16 +3,19 @@ package dao.modelo;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-@RequiredArgsConstructor
 
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class ApiError {
 
   private  String message;
-  private  LocalDate fecha;
+  private LocalDateTime fecha;
 
 
 }

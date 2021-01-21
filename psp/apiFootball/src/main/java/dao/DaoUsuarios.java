@@ -1,19 +1,24 @@
 package dao;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import dao.modelo.ApiError;
-import dao.modelo.Area;
-import dao.modelo.AreasRequest;
 import dao.modelo.Usuario;
 import dao.retrofit.AreasAPI;
 import dao.utils.ConfigurationSingleton_OkHttpClient;
 import io.vavr.control.Either;
+import io.vavr.control.Try;
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
 import okhttp3.MediaType;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-import java.util.List;
+import java.lang.reflect.Type;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class DaoUsuarios {
 
@@ -35,14 +40,17 @@ public class DaoUsuarios {
             }
             else
             {
-                ApiError api = new ApiError();
+                String respuesta = response.errorBody().string();
+                AtomicReference<ApiError> api = new AtomicReference<>();
                 if (response.errorBody().contentType().equals(MediaType.get("application/json"))) {
-                    Gson g = new Gson();
-                    api = g.fromJson(response.errorBody().string(),ApiError.class);
+                    Jsonb jsonb = JsonbBuilder.create();
+                    Try.of(() -> jsonb.fromJson(respuesta,ApiError.class))
+                       .onSuccess(  apiError -> api.set(apiError))
+                       .onFailure(throwable -> api.set(ApiError.builder().message(throwable.getMessage()+"Error de parseo de la respuesta").build()))   ;
                 }
                 else
-                    api.setMessage(response.errorBody().string());
-                resultado = Either.left(api);
+                    api.set(ApiError.builder().message("Error de comunicacion").build());
+                resultado = Either.left(api.get());
             }
         }
         catch (Exception e)

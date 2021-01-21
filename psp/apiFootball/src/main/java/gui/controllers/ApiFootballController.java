@@ -132,32 +132,32 @@ public class ApiFootballController implements Initializable {
 
     public void cargarTeams(ActionEvent actionEvent) {
 
-        var tarea = new Task<Either<ApiError, Usuario>>() {
-            //public StringProperty test;
-            @Override
-            protected Either<ApiError, Usuario> call() throws Exception {
-                DaoUsuarios dao = new DaoUsuarios();
-                return dao.updateUsuario(new Usuario(null, "nombrecito"));
-            }
-        };
-//        fxText.textProperty().bind(tarea.valueProperty());
-        tarea.setOnSucceeded(workerStateEvent -> {
-            tarea.getValue().peek(System.out::println)
-                    .peekLeft(s -> {
-                        alert.setContentText(s.getMessage());
-                        alert.showAndWait();
-                    });
-            this.principalController.getPantallaPrincipal().setCursor(Cursor.DEFAULT);
-        });
-        tarea.setOnFailed(workerStateEvent -> {
-            alert.setContentText(workerStateEvent.getSource().getException().getMessage());
-            alert.showAndWait();
-            this.principalController.getPantallaPrincipal().setCursor(Cursor.DEFAULT);
-        });
-        new Thread(tarea).start();
-//        ExecutorService executorService = Executors.newFixedThreadPool(1);
-//        executorService.submit(tarea);
-        this.principalController.getPantallaPrincipal().setCursor(Cursor.WAIT);
+//        var tarea = new Task<Either<ApiError, Usuario>>() {
+//            //public StringProperty test;
+//            @Override
+//            protected Either<ApiError, Usuario> call() throws Exception {
+//                DaoUsuarios dao = new DaoUsuarios();
+//                return dao.updateUsuario(new Usuario(null, "nombrecito"));
+//            }
+//        };
+////        fxText.textProperty().bind(tarea.valueProperty());
+//        tarea.setOnSucceeded(workerStateEvent -> {
+//            tarea.getValue().peek(System.out::println)
+//                    .peekLeft(s -> {
+//                        alert.setContentText(s.getMessage());
+//                        alert.showAndWait();
+//                    });
+//            this.principalController.getPantallaPrincipal().setCursor(Cursor.DEFAULT);
+//        });
+//        tarea.setOnFailed(workerStateEvent -> {
+//            alert.setContentText(workerStateEvent.getSource().getException().getMessage());
+//            alert.showAndWait();
+//            this.principalController.getPantallaPrincipal().setCursor(Cursor.DEFAULT);
+//        });
+//        new Thread(tarea).start();
+////        ExecutorService executorService = Executors.newFixedThreadPool(1);
+////        executorService.submit(tarea);
+//        this.principalController.getPantallaPrincipal().setCursor(Cursor.WAIT);
 
         Single<Either<ApiError,Usuario>> s = Single.fromCallable(() ->
                 {

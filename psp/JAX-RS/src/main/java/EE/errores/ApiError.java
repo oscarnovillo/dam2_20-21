@@ -1,18 +1,21 @@
 package EE.errores;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import lombok.extern.log4j.Log4j2;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-@RequiredArgsConstructor
-@Data
+@Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class ApiError {
 
-  private final String message;
-  private final LocalDate fecha;
+  private String message;
+  private LocalDateTime fecha;
 
 
 }
