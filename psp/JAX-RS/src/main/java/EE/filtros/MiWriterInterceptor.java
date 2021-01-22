@@ -22,6 +22,7 @@ public class MiWriterInterceptor implements WriterInterceptor {
     public void aroundWriteTo(WriterInterceptorContext context)
             throws IOException, WebApplicationException {
         Object entity = context.getEntity();
+
         if (entity instanceof UsuarioGetDTO) {
             UsuarioGetDTO u = (UsuarioGetDTO) context.getEntity();
             u.setName("secreto");

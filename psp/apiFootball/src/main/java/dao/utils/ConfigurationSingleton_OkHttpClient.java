@@ -1,7 +1,6 @@
 package dao.utils;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 import config.ConfigurationSingleton_Client;
 import lombok.extern.log4j.Log4j2;
 import okhttp3.JavaNetCookieJar;
@@ -10,9 +9,12 @@ import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.lang.reflect.Type;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 @Log4j2
@@ -45,10 +47,19 @@ public class ConfigurationSingleton_OkHttpClient {
                     )
                     .cookieJar(new JavaNetCookieJar(cookieManager))
                     .build();
-            Gson gson = new GsonBuilder()
-                    .setLenient()
-                    .create();
-             retrofit = new Retrofit.Builder()
+            Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
+                @Override
+                public LocalDateTime deserialize(JsonElement json, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+                    return LocalDateTime.parse(json.getAsJsonPrimitive().getAsString());
+                }
+            }).registerTypeAdapter(LocalDateTime.class, new JsonSerializer<LocalDateTime>(){
+                        @Override
+                        public JsonElement serialize(LocalDateTime localDateTime, Type type, JsonSerializationContext jsonSerializationContext) {
+                            return new JsonPrimitive(localDateTime.toString());
+                        }
+                    }
+            ).create();
+            retrofit = new Retrofit.Builder()
                     .baseUrl(ConfigurationSingleton_Client.getInstance().getPath_base())
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .client(clientOK)

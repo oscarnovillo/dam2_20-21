@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -15,5 +16,7 @@ public class Usuario {
 
     @NotEmpty
     private String name;
+
+    private LocalDateTime primerSopapoDeMiMadre;
 
 }

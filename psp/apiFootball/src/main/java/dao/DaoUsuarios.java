@@ -56,7 +56,7 @@ public class DaoUsuarios {
         catch (Exception e)
         {
 
-            resultado= Either.left(ApiError.builder().message("Error de comunicacion").build());
+            resultado= Either.left(ApiError.builder().message(e.getMessage()).build());
         }
 
         return resultado;

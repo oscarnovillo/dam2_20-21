@@ -28,7 +28,7 @@ public class ServiciosUsuarios {
         return dao.dameTodos();
     }
 
-    public Either<ApiError, Usuario> addUser(Usuario u)
+    public  Usuario addUser(Usuario u)
     {
         final StringBuilder error = new StringBuilder();
         validator.validate(u).stream().forEach(

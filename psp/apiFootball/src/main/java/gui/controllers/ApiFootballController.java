@@ -22,6 +22,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -162,7 +163,7 @@ public class ApiFootballController implements Initializable {
         Single<Either<ApiError,Usuario>> s = Single.fromCallable(() ->
                 {
                         DaoUsuarios dao = new DaoUsuarios();
-                        return dao.updateUsuario(new Usuario(null, ""));
+                        return dao.updateUsuario(new Usuario(null, "nombre", LocalDateTime.now()));
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(JavaFxScheduler.platform())

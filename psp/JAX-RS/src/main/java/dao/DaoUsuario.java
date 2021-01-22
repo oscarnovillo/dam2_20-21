@@ -38,10 +38,10 @@ public class DaoUsuario {
         return Either.right(usuarios);
     }
 
-    public Either<ApiError, Usuario> addUser(Usuario user)
+    public Usuario addUser(Usuario user)
     {
         user.setId("" + usuarios.size());
         usuarios.add(user);
-        return Either.right(user);
+        return user;
     }
 }

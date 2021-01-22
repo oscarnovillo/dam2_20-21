@@ -75,6 +75,6 @@ public class RestUsuarios {
     @POST
     @Reader
     public Usuario addUsuario(Usuario user) {
-        return su.addUser(user).get();
+        return su.addUser(user);
     }
 }
