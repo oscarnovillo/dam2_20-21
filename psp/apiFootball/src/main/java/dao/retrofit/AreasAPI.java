@@ -24,6 +24,9 @@ public interface AreasAPI {
   @POST("api/users")
   Call<Usuario> addUsuario(@Body Usuario usuario);
 
+  @DELETE("api/users")
+  Call<Usuario> delUsuario(@Query("usuario") Usuario usuario);
+
 
 
 

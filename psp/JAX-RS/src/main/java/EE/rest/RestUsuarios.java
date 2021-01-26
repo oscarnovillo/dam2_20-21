@@ -77,4 +77,9 @@ public class RestUsuarios {
     public Usuario addUsuario(Usuario user) {
         return su.addUser(user);
     }
+
+    @DELETE
+    public Usuario delUsuario(Usuario user) {
+        return user;
+    }
 }

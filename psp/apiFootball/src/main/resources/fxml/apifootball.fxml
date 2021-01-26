@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="pantalla_login" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.ApiFootballController">
+<AnchorPane fx:id="pantalla_login" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.ApiFootballController">
     <children>
         <Label layoutX="61.0" layoutY="14.0" text="Areas">
             <font>
@@ -24,5 +24,6 @@
       <Button layoutX="598.0" layoutY="498.0" mnemonicParsing="false" onAction="#cargarTeams" text="Button" />
       <TextField fx:id="texto" layoutX="675.0" layoutY="119.0" />
       <ProgressBar layoutX="675.0" layoutY="177.0" prefWidth="200.0" progress="0.0" />
+      <Button layoutX="660.0" layoutY="498.0" mnemonicParsing="false" onAction="#delUsuario" text="del" />
     </children>
 </AnchorPane>
