@@ -40,13 +40,13 @@ public class MainAesTestIVRandom {
 
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
             // en el jdk8 esta limitado a 128 bits, desde el 9 puede ser de 256
-            KeySpec spec = new PBEKeySpec(secret.toCharArray(), sSalt.getBytes(), 65536, 128);
+            KeySpec spec = new PBEKeySpec(secret.toCharArray(), sSalt.getBytes(), 65536, 256);
             SecretKey tmp = factory.generateSecret(spec);
             SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
 
             Cipher cipher = Cipher.getInstance("AES/CTR/noPadding");
             cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivspec);
-            return Base64.getEncoder().encodeToString(Bytes.concat(iv,cipher.doFinal(strToEncrypt.getBytes("UTF-8"))));
+            return Base64.getUrlEncoder().encodeToString(Bytes.concat(iv,cipher.doFinal(strToEncrypt.getBytes("UTF-8"))));
         } catch (Exception e) {
             System.out.println("Error while encrypting: " + e.toString());
         }
@@ -55,13 +55,13 @@ public class MainAesTestIVRandom {
 
     public static String decrypt(String strToDecrypt, String secret) {
         try {
-            byte[] decoded = Base64.getDecoder().decode(strToDecrypt);
+            byte[] decoded = Base64.getUrlDecoder().decode(strToDecrypt);
             byte[] iv = Arrays.copyOf(decoded, 16);
 
             IvParameterSpec ivspec = new IvParameterSpec(iv);
 
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-            KeySpec spec = new PBEKeySpec(secret.toCharArray(), sSalt.getBytes(), 65536,128);
+            KeySpec spec = new PBEKeySpec(secret.toCharArray(), sSalt.getBytes(), 65536,256);
             SecretKey tmp = factory.generateSecret(spec);
             SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
 

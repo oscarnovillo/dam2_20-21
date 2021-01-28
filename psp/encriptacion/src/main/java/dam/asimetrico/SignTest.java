@@ -28,7 +28,7 @@ public class SignTest {
         String nombre = "albertoastudillo";
         try {
             // Anadir provider JCE (provider por defecto no soporta RSA)
-           // Security.addProvider(new BouncyCastleProvider());  // Cargar el provider BC
+            // Security.addProvider(new BouncyCastleProvider());  // Cargar el provider BC
             //Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
             Cipher cifrador = Cipher.getInstance("RSA");
 
@@ -72,7 +72,7 @@ public class SignTest {
             sign.initSign(clavePrivada2);
             sign.update("hola".getBytes());
             byte[] firma = sign.sign();
-            
+
             sign.initVerify(clavePublica2);
             sign.update("hola".getBytes());
             System.out.println(sign.verify(firma));

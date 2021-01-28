@@ -16,6 +16,4 @@ public class ApiError {
 
   private  String message;
   private LocalDateTime fecha;
-
-
 }

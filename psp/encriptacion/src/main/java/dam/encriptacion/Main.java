@@ -28,7 +28,7 @@ public class Main {
 
             String base64encode = Base64.getUrlEncoder().encodeToString(cifrado);
             System.out.println(base64encode);
-            System.out.println(Base64.getUrlEncoder().encodeToString(cifrado));
+            System.out.println(Base64.getEncoder().encodeToString(cifrado));
 
 
             byte[] base64decode = Base64.getUrlDecoder().decode(base64encode);

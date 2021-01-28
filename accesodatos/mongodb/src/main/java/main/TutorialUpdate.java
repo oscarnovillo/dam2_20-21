@@ -37,12 +37,12 @@ public class TutorialUpdate {
             .withCodecRegistry(pojoCodecRegistry);
 
 
-//    List<Things> cosas = new ArrayList<>();
-//    cosas.add(Things.builder().nombre("ll").cantidad(5).build());
-//     System.out.println(est.updateOne(
-//            eq("name", "Boyd Olson"),
-//             set("name","estoy tonto"))
-//            .getModifiedCount());
+    List<Things> cosas = new ArrayList<>();
+    cosas.add(Things.builder().nombre("ll").cantidad(5).build());
+     System.out.println(est.updateOne(
+            eq("name", "Boyd Olson"),
+             set("name","estoy tonto"))
+            .getModifiedCount());
 //
 //    System.out.println(est.updateOne(
 //            eq("name", "estoy tonto"),

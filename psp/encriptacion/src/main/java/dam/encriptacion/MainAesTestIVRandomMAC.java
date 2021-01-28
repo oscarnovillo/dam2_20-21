@@ -49,7 +49,7 @@ public class MainAesTestIVRandomMAC {
 
             Cipher cipher = Cipher.getInstance("AES/GCM/noPadding");
             cipher.init(Cipher.ENCRYPT_MODE, secretKey, parameterSpec);
-            return Base64.getEncoder().encodeToString(Bytes.concat(iv,salt,
+            return Base64.getUrlEncoder().encodeToString(Bytes.concat(iv,salt,
                 cipher.doFinal(strToEncrypt.getBytes("UTF-8"))));
         } catch (Exception e) {
             System.out.println("Error while encrypting: " + e.toString());
@@ -59,7 +59,7 @@ public class MainAesTestIVRandomMAC {
 
     public static String decrypt(String strToDecrypt, String secret) {
         try {
-            byte[] decoded = Base64.getDecoder().decode(strToDecrypt);
+            byte[] decoded = Base64.getUrlDecoder().decode(strToDecrypt);
             
             byte[] iv = Arrays.copyOf(decoded, 12);
             byte []salt = Arrays.copyOfRange(decoded, 12,28);

@@ -27,7 +27,7 @@ public class MainAesTest {
 
     public static String encrypt(String strToEncrypt, String secret) {
         try {
-            byte[] iv = {0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0};
+            byte[] iv = {0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0,0,0};
             IvParameterSpec ivspec = new IvParameterSpec(iv);
 
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
@@ -53,7 +53,7 @@ public class MainAesTest {
 
     public static String decrypt(String strToDecrypt, String secret) {
         try {
-            byte[] iv = {0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0,0, 0};
+            byte[] iv = {0, 0, 0, 0, 0, 0,0, 0,0, 0, 0, 0, 0, 0,0, 0};
             IvParameterSpec ivspec = new IvParameterSpec(iv);
 
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");

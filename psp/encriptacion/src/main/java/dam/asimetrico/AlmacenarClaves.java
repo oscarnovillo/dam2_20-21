@@ -27,7 +27,7 @@ public class AlmacenarClaves {
         //Security.addProvider(new BouncyCastleProvider()); // Cargar el provider BC
 
         /**
-         * * Crear claves RSA 1024 bits
+         * * Crear claves RSA 2048 bits
          */
         KeyPairGenerator generadorRSA = KeyPairGenerator.getInstance("RSA"); // Hace uso del provider BC
         generadorRSA.initialize(2048);
