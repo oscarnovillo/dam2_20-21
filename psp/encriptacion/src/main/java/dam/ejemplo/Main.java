@@ -1,8 +1,10 @@
 package dam.ejemplo;
 
+
 import com.google.common.io.Files;
 import com.google.common.primitives.Bytes;
 import com.google.gson.Gson;
+
 import dam.Cifrado;
 
 import javax.crypto.Cipher;
@@ -11,8 +13,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
 import java.security.*;
@@ -105,9 +106,12 @@ public class Main {
 
         Gson g = new Gson();
 
-        g.toJson(c, Files.newWriter(Paths.get("prueba").toFile(), Charset.defaultCharset()));
+        String json  = g.toJson(c);
+        BufferedWriter f = Files.newWriter(Paths.get("prueba.txt").toFile(), Charset.defaultCharset());
+        g.toJson(c, f);
+        f.close();
 
-
+        //Files.write(json.getBytes(),Paths.get("prueba.txt").toFile());
 
 
 

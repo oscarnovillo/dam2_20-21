@@ -82,8 +82,8 @@ public class Cert {
 
 
         X509Certificate cert =  cert1.generateX509Certificate(signingKey);
-        
 
+//        cert.verify(clavePublica);
 //        X500Name x500Name = new X500Name("CN=***.com, OU=Security&Defense, O=*** Crypto., L=Ottawa, ST=Ontario, C=CA");
 //        SubjectPublicKeyInfo pubKeyInfo = SubjectPublicKeyInfo.getInstance(keyPair.getPublic().getEncoded());
 //        final Date start = new Date();
@@ -120,6 +120,8 @@ public class Cert {
 //            X509Certificate cert = certGen.getSelfCertificate(
 //                    // enter your details according to your application
 //                    new X500Name("CN=Pedro Salazar,O=My Organisation,L=My City,C=DE"), validSecs);
+
+            
 
             PrivateKey pk = clavesRSA.getPrivate();
             PublicKey publicKey = clavesRSA.getPublic();
