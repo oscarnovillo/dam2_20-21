@@ -26,7 +26,10 @@ import java.util.Base64;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        String claveSimetrica = "caca";
+        SecureRandom sr = new SecureRandom();
+        byte[] clave = new byte[16];
+        sr.nextBytes(clave);
+        String claveSimetrica = Base64.getUrlEncoder().encodeToString(clave);
 
         Cifrado c = new Cifrado();
 
@@ -34,19 +37,21 @@ public class Main {
 
         byte[] iv = new byte[12];
         byte[] salt = new byte[16];
-        SecureRandom sr = new SecureRandom();
+
         sr.nextBytes(iv);
         sr.nextBytes(salt);
         GCMParameterSpec parameterSpec = new GCMParameterSpec(128, iv);
 
         c.setIv(Base64.getUrlEncoder().encodeToString(iv));
         c.setSalt(Base64.getUrlEncoder().encodeToString(salt));
+        c.setIteraciones(65536);
 
         SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
         // en el jdk8 esta limitado a 128 bits, desde el 9 puede ser de 256
         KeySpec spec = new PBEKeySpec(claveSimetrica.toCharArray(), salt, 65536, 256);
         SecretKey tmp = factory.generateSecret(spec);
         SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
+
 
         Cipher cipher = Cipher.getInstance("AES/GCM/noPadding");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, parameterSpec);
@@ -106,7 +111,7 @@ public class Main {
 
         Gson g = new Gson();
 
-        String json  = g.toJson(c);
+//        String json  = g.toJson(c);
         BufferedWriter f = Files.newWriter(Paths.get("prueba.txt").toFile(), Charset.defaultCharset());
         g.toJson(c, f);
         f.close();

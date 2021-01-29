@@ -71,8 +71,8 @@ public class Cert {
 
         X509V3CertificateGenerator cert1 = new X509V3CertificateGenerator();
         cert1.setSerialNumber(BigInteger.valueOf(1));   //or generate a random number
-        cert1.setSubjectDN(new X509Principal("CN=Oscar Pepere"));  //see examples to add O,OU etc
-        cert1.setIssuerDN(new X509Principal("CN=Issuer")); //same since it is self-signed
+        cert1.setSubjectDN(new X509Principal("CN=Oscar"));  //see examples to add O,OU etc
+        cert1.setIssuerDN(new X509Principal("CN=Oscar")); //same since it is self-signed
         cert1.setPublicKey(clavesRSA.getPublic());
         cert1.setNotBefore(
                 Date.from(LocalDate.now().plus(365, ChronoUnit.DAYS).atStartOfDay().toInstant(ZoneOffset.UTC)));
@@ -82,6 +82,8 @@ public class Cert {
 
 
         X509Certificate cert =  cert1.generateX509Certificate(signingKey);
+
+
 
 //        cert.verify(clavePublica);
 //        X500Name x500Name = new X500Name("CN=***.com, OU=Security&Defense, O=*** Crypto., L=Ottawa, ST=Ontario, C=CA");
@@ -157,7 +159,7 @@ public class Cert {
             X509Certificate certLoad = (X509Certificate) ksLoad.getCertificate("publica");
             KeyStore.PasswordProtection pt = new KeyStore.PasswordProtection(password);
             PrivateKeyEntry privateKeyEntry = (PrivateKeyEntry) ksLoad.getEntry("privada", pt);
-            RSAPrivateKey keyLoad = (RSAPrivateKey) privateKeyEntry.getPrivateKey();
+            PrivateKey keyLoad = (PrivateKey) privateKeyEntry.getPrivateKey();
 
             System.out.println(certLoad.getIssuerX500Principal());
             System.out.println(certLoad.getSubjectX500Principal());

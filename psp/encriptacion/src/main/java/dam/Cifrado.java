@@ -9,6 +9,7 @@ public class Cifrado {
 
     private String iv;
     private String salt;
+    private int iteraciones;
     private String claveSimetrica;
     private String mensaje;
     private String firma;

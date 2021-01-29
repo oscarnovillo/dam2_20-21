@@ -74,7 +74,7 @@ public class SignTest {
             byte[] firma = sign.sign();
 
             sign.initVerify(clavePublica2);
-            sign.update("hola".getBytes());
+
             System.out.println(sign.verify(firma));
             
         } catch (Exception ex) {
