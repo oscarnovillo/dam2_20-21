@@ -120,6 +120,7 @@ public class PruebaPFX extends HttpServlet {
 
 
                     X509Certificate cert =  cert1.generateX509Certificate(signingKey);
+
 //                    X509Certificate cert = certGen.getSelfCertificate(
 //                            // enter your details according to your application
 //                            new X500Name("CN=Juan Fernandez,O=My Organisation,L=My City,C=DE"), validSecs);
