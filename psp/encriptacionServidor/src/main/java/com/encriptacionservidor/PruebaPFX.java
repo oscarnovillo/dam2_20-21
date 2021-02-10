@@ -5,11 +5,11 @@
  */
 package com.encriptacionservidor;
 
-import org.apache.commons.codec.binary.Base64;
-import sun.security.tools.keytool.CertAndKeyGen;
-import sun.security.x509.X500Name;
-import sun.security.x509.X509CertImpl;
-import sun.security.x509.X509CertInfo;
+
+import org.bouncycastle.jce.X509Principal;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.x509.X509V3CertificateGenerator;
+
 
 import javax.naming.ldap.LdapName;
 import javax.naming.ldap.Rdn;
@@ -22,14 +22,21 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigInteger;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
+import java.util.Base64;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 /**
  *
@@ -56,12 +63,13 @@ public class PruebaPFX extends HttpServlet {
                 try {
                     //mandar clave publica.
                     //Security.addProvider(new BouncyCastleProvider());  // Cargar el provider BC
-                    CertAndKeyGen certGen = new CertAndKeyGen("RSA", "SHA256WithRSA", null);
-                    // generate it with 2048 bits
-                    certGen.generate(2048);
-                    // prepare the validity of the certificate
-                    long validSecs = (long) 365 * 24 * 60 * 60; // valid for one year
-                    // add the certificate information, currently only valid for one year.
+//                    CertAndKeyGen certGen = new CertAndKeyGen("RSA", "SHA256WithRSA", null);
+//                    // generate it with 2048 bits
+//                    certGen.generate(2048);
+//                    // prepare the validity of the certificate
+//                    long validSecs = (long) 365 * 24 * 60 * 60; // valid for one year
+//                    // add the certificate information, currently only valid for one year.
+                    Security.addProvider(new BouncyCastleProvider());
 
                     //firmar x509 por servidor
                     PKCS8EncodedKeySpec clavePrivadaSpec = null;
@@ -93,34 +101,52 @@ public class PruebaPFX extends HttpServlet {
 
                     clavePrivadaServidor = keyFactoryRSA.generatePrivate(clavePrivadaSpec);
 
-                    X509Certificate cert = certGen.getSelfCertificate(
-                            // enter your details according to your application
-                            new X500Name("CN=Juan Fernandez,O=My Organisation,L=My City,C=DE"), validSecs);
+                    String clavePublicaBase64 = request.getParameter("clavePublica");
 
-                    byte[] inCertBytes = cert.getTBSCertificate();
-                    X509CertInfo info = new X509CertInfo(inCertBytes);
+                    X509EncodedKeySpec clavePublicaSpec = new X509EncodedKeySpec(Base64.getUrlDecoder().decode(clavePublicaBase64));
+                    PublicKey clavePublica2 = keyFactoryRSA.generatePublic(clavePublicaSpec);
 
-                    info.set(X509CertInfo.ISSUER, new X500Name("CN=SERVIDOR,O=My Organisation,L=My City,C=DE"));
-                    X509CertImpl certificadoCliente = new X509CertImpl(info);
 
-                    certificadoCliente.sign(clavePrivadaServidor, cert.getSigAlgName());
+                    X509V3CertificateGenerator cert1 = new X509V3CertificateGenerator();
+                    cert1.setSerialNumber(BigInteger.valueOf(1));   //or generate a random number
+                    cert1.setSubjectDN(new X509Principal("CN=usuario que sea"));  //see examples to add O,OU etc
+                    cert1.setIssuerDN(new X509Principal("CN=tuputamadre")); //same since it is self-signed
+                    cert1.setPublicKey(clavePublica2);
+                    cert1.setNotBefore(
+                            Date.from(LocalDate.now().plus(365, ChronoUnit.DAYS).atStartOfDay().toInstant(ZoneOffset.UTC)));
+                    cert1.setNotAfter(new Date());
+                    cert1.setSignatureAlgorithm("SHA1WithRSAEncryption");
+                    PrivateKey signingKey = clavePrivadaServidor;
 
-                    PrivateKey clavePrivadaCliente = certGen.getPrivateKey();
 
+                    X509Certificate cert =  cert1.generateX509Certificate(signingKey);
+//                    X509Certificate cert = certGen.getSelfCertificate(
+//                            // enter your details according to your application
+//                            new X500Name("CN=Juan Fernandez,O=My Organisation,L=My City,C=DE"), validSecs);
+//
+//                    byte[] inCertBytes = cert.getTBSCertificate();
+//                    X509CertInfo info = new X509CertInfo(inCertBytes);
+//
+//                    info.set(X509CertInfo.ISSUER, new X500Name("CN=SERVIDOR,O=My Organisation,L=My City,C=DE"));
+//                    X509CertImpl certificadoCliente = new X509CertImpl(info);
+//
+//                    certificadoCliente.sign(clavePrivadaServidor, cert.getSigAlgName());
+//
+//                    PrivateKey clavePrivadaCliente = certGen.getPrivateKey();
+//
                     KeyStore ks = KeyStore.getInstance("PKCS12");
                     ks.load(null, null);
-                    ks.setCertificateEntry("publica", certificadoCliente);
-                    ks.setKeyEntry("privada", clavePrivadaCliente, null,
-                            new Certificate[]{certificadoCliente});
+                    ks.setCertificateEntry("publica", cert);
+
                     ByteArrayOutputStream fos = new ByteArrayOutputStream();
 
 //                    String webInfPath = request.getServletContext().getRealPath("WEB-INF");
 //                    FileOutputStream fo = new FileOutputStream(webInfPath+"//keystore.pfx");
 //                    ks.store(fo,password);
-                    char[] password = "abc".toCharArray();
-                    ks.store(fos, password);
-                    //String respuesta = new String(Base64.encodeBase64(fos.toByteArray()));
-                    response.getOutputStream().write(Base64.encodeBase64(fos.toByteArray()));
+//                    char[] password = "abc".toCharArray();
+                    ks.store(fos, "".toCharArray());
+                    String respuesta = new String(Base64.getUrlEncoder().encodeToString(fos.toByteArray()));
+                    response.getWriter().print(respuesta);
                     fos.close();
 
                 } catch (Exception e) {
@@ -130,48 +156,48 @@ public class PruebaPFX extends HttpServlet {
             case "MANDAR":
                 try {
 
-                    String publica = request.getParameter("cert");
-                    CertificateFactory cf = CertificateFactory.getInstance("X.509");
-                    X509Certificate cert2 = (X509Certificate) cf.generateCertificate(new ByteArrayInputStream(Base64.decodeBase64(publica)));
-
-                    //cargar clave public de servidor
-                    KeyFactory keyFactoryRSA = null; // Hace uso del provider BC
-
-                    keyFactoryRSA = KeyFactory.getInstance("RSA");
-                    byte[] bufferPub = new byte[5000];
-                    InputStream in = request.getServletContext().getResourceAsStream("/WEB-INF/dam1024.publica");
-                    int charsPub;
-
-                    charsPub = in.read(bufferPub, 0, 5000);
-                    in.close();
-
-                    byte[] bufferPub2 = new byte[charsPub];
-                    System.arraycopy(bufferPub, 0, bufferPub2, 0, charsPub);
-                    //d.readFully(bufferPub, 0, 162);
-                    //in.read(bufferPub, 0, 5000);
-                    in.close();
-
-                    X509EncodedKeySpec clavePublicaSpec = new X509EncodedKeySpec(bufferPub2);
-                    PublicKey clavePublica2 = keyFactoryRSA.generatePublic(clavePublicaSpec);
-
-                    cert2.verify(clavePublica2);
-
-                    String texto = request.getParameter("texto");
-                    byte[] firma = Base64.decodeBase64(request.getParameter("firma"));
-
-                    Signature sign = Signature.getInstance("SHA256WithRSA");
-                    sign.initVerify(cert2.getPublicKey());
-                    sign.update(texto.getBytes());
-
-                    System.out.println(cert2.getIssuerX500Principal());
-                    System.out.println(cert2.getSubjectDN());
-                    LdapName ldapDN = new LdapName(cert2.getSubjectDN().getName());
-                    for (Rdn rdn : ldapDN.getRdns()) {
-                        if (rdn.getType().equals("CN")) {
-                            System.out.println(rdn.getValue());
-                        }
-                    }
-                    System.out.println("FIRMADO " + sign.verify(firma));
+//                    String publica = request.getParameter("cert");
+//                    CertificateFactory cf = CertificateFactory.getInstance("X.509");
+//                    X509Certificate cert2 = (X509Certificate) cf.generateCertificate(new ByteArrayInputStream(Base64.decodeBase64(publica)));
+//
+//                    //cargar clave public de servidor
+//                    KeyFactory keyFactoryRSA = null; // Hace uso del provider BC
+//
+//                    keyFactoryRSA = KeyFactory.getInstance("RSA");
+//                    byte[] bufferPub = new byte[5000];
+//                    InputStream in = request.getServletContext().getResourceAsStream("/WEB-INF/dam1024.publica");
+//                    int charsPub;
+//
+//                    charsPub = in.read(bufferPub, 0, 5000);
+//                    in.close();
+//
+//                    byte[] bufferPub2 = new byte[charsPub];
+//                    System.arraycopy(bufferPub, 0, bufferPub2, 0, charsPub);
+//                    //d.readFully(bufferPub, 0, 162);
+//                    //in.read(bufferPub, 0, 5000);
+//                    in.close();
+//
+//                    X509EncodedKeySpec clavePublicaSpec = new X509EncodedKeySpec(bufferPub2);
+//                    PublicKey clavePublica2 = keyFactoryRSA.generatePublic(clavePublicaSpec);
+//
+//                    cert2.verify(clavePublica2);
+//
+//                    String texto = request.getParameter("texto");
+//                    byte[] firma = Base64.decodeBase64(request.getParameter("firma"));
+//
+//                    Signature sign = Signature.getInstance("SHA256WithRSA");
+//                    sign.initVerify(cert2.getPublicKey());
+//                    sign.update(texto.getBytes());
+//
+//                    System.out.println(cert2.getIssuerX500Principal());
+//                    System.out.println(cert2.getSubjectDN());
+//                    LdapName ldapDN = new LdapName(cert2.getSubjectDN().getName());
+//                    for (Rdn rdn : ldapDN.getRdns()) {
+//                        if (rdn.getType().equals("CN")) {
+//                            System.out.println(rdn.getValue());
+//                        }
+//                    }
+//                    System.out.println("FIRMADO " + sign.verify(firma));
 
                 } catch (Exception e) {
                     Logger.getLogger(PruebaRSA.class.getName()).log(Level.SEVERE, null, e);
