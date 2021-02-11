@@ -135,6 +135,7 @@ public class PruebaPFX extends HttpServlet {
 //
 //                    PrivateKey clavePrivadaCliente = certGen.getPrivateKey();
 //
+
                     KeyStore ks = KeyStore.getInstance("PKCS12");
                     ks.load(null, null);
                     ks.setCertificateEntry("publica", cert);
@@ -153,6 +154,25 @@ public class PruebaPFX extends HttpServlet {
                 } catch (Exception e) {
                     Logger.getLogger(PruebaRSA.class.getName()).log(Level.SEVERE, null, e);
                 }
+                break;
+
+            case "LOGIN":
+
+                // Coger el parametro del usuario, y el de la firma.
+                // "oscar", firma("oscar")
+
+                // ir a bd para encontrar el fichero con la calve publica del usuario
+                // de "oscar"
+
+                // comprobar la firma
+
+                // es correcta se pone en session el login
+
+
+
+
+
+
                 break;
             case "MANDAR":
                 try {
