@@ -24,8 +24,8 @@ import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 public class RellenoMasivo {
 
-    private static int numUsuarios = 100000;
-    private static int numLibros = 1000000;
+    private static int numUsuarios = 1000;
+    private static int numLibros = 100000;
     private static int numMaxEjemplares = 10;
     private static int numMaxPrestamos = 100;
 
@@ -88,7 +88,7 @@ public class RellenoMasivo {
                 }
                 Libro l = Libro.builder()
                         .autor(f.book().author())
-                        .titulo(f.book().title() + " parte " + f.random().nextInt(1, 6000))
+                        .titulo(f.book().title() + " parte " + f.random().nextInt(1, 100))
                         .genero(f.book().genre())
                         .ejemplares(ejemplares)
                         .build();

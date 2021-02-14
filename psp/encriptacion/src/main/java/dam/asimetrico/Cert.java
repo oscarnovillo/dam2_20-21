@@ -123,7 +123,7 @@ public class Cert {
 //                    // enter your details according to your application
 //                    new X500Name("CN=Pedro Salazar,O=My Organisation,L=My City,C=DE"), validSecs);
 
-            
+
 
             PrivateKey pk = clavesRSA.getPrivate();
             PublicKey publicKey = clavesRSA.getPublic();
