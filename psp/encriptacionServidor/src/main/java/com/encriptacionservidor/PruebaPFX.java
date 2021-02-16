@@ -157,7 +157,6 @@ public class PruebaPFX extends HttpServlet {
                 break;
 
             case "LOGIN":
-
                 // Coger el parametro del usuario, y el de la firma.
                 // "oscar", firma("oscar")
 
