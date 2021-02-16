@@ -2,7 +2,9 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../../../../../../:\Educa\oscar\Mis documentos\codigo\dam2_20-21\accesodatos\SparkTest\.idea/dataSources/
+/../../../../../../../:\tools\proyectos\dam2_20-21\accesodatos\SparkTest\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+# Zeppelin ignored files
+/ZeppelinRemoteNotebooks/
