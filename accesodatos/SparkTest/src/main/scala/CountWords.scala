@@ -16,8 +16,8 @@ object CountWords extends App {
   val textFile = spark.read.textFile("datos/el_quijote.txt")
 
 
-
   import spark.implicits._
+
 
   println(textFile.count())
 
@@ -32,7 +32,7 @@ object CountWords extends App {
     .groupByKey(identity).count().withColumnRenamed("count(1)", "count")
 
   wordCounts.sort(desc("count"))
-  val array = wordCounts.orderBy($"count".desc).limit(10).collect()
+  val array = wordCounts.orderBy(col("count").desc).limit(10).collect()
 
   println(array(0).getLong(1))
 

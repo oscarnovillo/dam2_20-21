@@ -5,4 +5,9 @@ class MainClass {
     return "hola"
   }
 
+  def hazAlgoTu(args: Array[String]): Unit = {
+    println("Hello world")
+    "hola"
+  }
+
 }
