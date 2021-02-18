@@ -88,6 +88,8 @@ public class Cert {
 
         String certificado = Base64.getUrlEncoder().encodeToString(cert.getEncoded());
 
+
+
         X509Certificate certBase64 = X509CertUtils.parse(Base64.getUrlDecoder().decode(certificado));
 
         System.out.println("FUNCIONA" +certBase64.getIssuerX500Principal());

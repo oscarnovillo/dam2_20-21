@@ -8,6 +8,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import java.lang.reflect.Type;
 import java.net.CookieManager;
@@ -61,6 +62,7 @@ public class ConfigurationSingleton_OkHttpClient {
             ).create();
             retrofit = new Retrofit.Builder()
                     .baseUrl(ConfigurationSingleton_Client.getInstance().getPath_base())
+                    .addConverterFactory(ScalarsConverterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .client(clientOK)
                     .build();
