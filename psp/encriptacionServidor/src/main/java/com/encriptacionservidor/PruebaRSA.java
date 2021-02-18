@@ -62,6 +62,10 @@ public class PruebaRSA extends HttpServlet {
                     in.close();
                     byte[] bufferCode64 = Base64.getEncoder().encode(bufferPub2);
                     response.getOutputStream().write(bufferCode64);
+
+
+
+
                 } catch (IOException ex) {
                     Logger.getLogger(PruebaRSA.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -5,6 +5,7 @@
  */
 package dam.asimetrico;
 
+import com.nimbusds.jose.util.X509CertUtils;
 import dam.encriptacion.PasswordHash;
 //import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 //import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
@@ -41,9 +42,11 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.security.spec.X509EncodedKeySpec;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
+import java.util.Base64;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -82,6 +85,15 @@ public class Cert {
 
 
         X509Certificate cert =  cert1.generateX509Certificate(signingKey);
+
+        String certificado = Base64.getUrlEncoder().encodeToString(cert.getEncoded());
+
+        X509Certificate certBase64 = X509CertUtils.parse(Base64.getUrlDecoder().decode(certificado));
+
+        System.out.println("FUNCIONA" +certBase64.getIssuerX500Principal());
+
+
+
 
 
 

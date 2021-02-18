@@ -18,10 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.math.BigInteger;
 import java.security.*;
 import java.security.cert.Certificate;
@@ -136,6 +133,8 @@ public class PruebaPFX extends HttpServlet {
 //                    PrivateKey clavePrivadaCliente = certGen.getPrivateKey();
 //
 
+
+
                     KeyStore ks = KeyStore.getInstance("PKCS12");
                     ks.load(null, null);
                     ks.setCertificateEntry("publica", cert);
@@ -150,6 +149,12 @@ public class PruebaPFX extends HttpServlet {
                     String respuesta = new String(Base64.getUrlEncoder().encodeToString(fos.toByteArray()));
                     response.getWriter().print(respuesta);
                     fos.close();
+
+                    String webInfPath = request.getServletContext().getRealPath("/WEB-INF/");
+
+                    FileOutputStream fo = new FileOutputStream(webInfPath+"/ll");
+                    ks.store(fo, "".toCharArray());
+
 
                 } catch (Exception e) {
                     Logger.getLogger(PruebaRSA.class.getName()).log(Level.SEVERE, null, e);
