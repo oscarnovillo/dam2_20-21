@@ -35,14 +35,15 @@ object Madrid extends App {
 
 
   madrid.filter(col("NOMBRE-INSTALACION").like("%Moratalaz%"))
-    .withColumn("TIPO", lastIndexSplitUDF($"DIAS-SEMANA"))
-    .select(col("TITULO"), col("TIPO"))
+    .withColumn("TIPO", lastIndexSplitUDF(col("DIAS-SEMANA")))
+    .select(col("TITULO"), col("TIPO").as("TIPO2"))
     .foreach(row => println(row(0) + " " + row(1)))
 
 //
 //
   madrid.filter(col("NOMBRE-INSTALACION").like("%Moratalaz%"))
-    .withColumn("ULTIMO_DIA-SEMANA", substring_index($"DIAS-SEMANA", ",", -1))
+    .withColumn("ULTIMO_DIA-SEMANA",
+      substring_index($"DIAS-SEMANA", ",", -1))
     .select(col("TITULO"), col("ULTIMO_DIA-SEMANA"))
     .foreach(row => println(row(0) + " " + row(1)))
 //
@@ -60,7 +61,8 @@ object Madrid extends App {
 //
   madrid.filter(!col("NOMBRE-INSTALACION").isNull)
     .groupBy($"NOMBRE-INSTALACION")
-    .agg(max("HORA").as("maxHora"),min("HORA").as("minHora"))
+    .agg(max("HORA").as("maxHora")
+      ,min("HORA").as("minHora"))
     .sort(desc("maxHora"))
     .limit(1)
     .show(false)
@@ -78,10 +80,10 @@ object Madrid extends App {
     .filter(col("count") > col("media")).show(false)
 //
 //
-//  madrid.select(date_format(to_date($"FECHA"), "yyyy-MM")).distinct().show(false)
-//
-//  madrid.withColumn("FECHA2", date_format(to_date($"FECHA"), "yyyy-MM"))
-//    .stat.crosstab("FECHA2", "CODIGO-POSTAL-INSTALACION").sort(asc("FECHA2_CODIGO-POSTAL-INSTALACION"))
-//    .show(false)
-//  madrid.stat.freqItems(Seq("FECHA")).show(false)
+  madrid.select(date_format(to_date($"FECHA"), "yyyy-MM")).distinct().show(false)
+
+  madrid.withColumn("FECHA2", date_format(to_date($"FECHA"), "yyyy-MM"))
+    .stat.crosstab("FECHA2", "CODIGO-POSTAL-INSTALACION").sort(asc("FECHA2_CODIGO-POSTAL-INSTALACION"))
+    .show(false)
+  madrid.stat.freqItems(Seq("FECHA")).show(false)
 }

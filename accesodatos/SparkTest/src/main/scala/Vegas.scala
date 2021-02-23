@@ -11,7 +11,7 @@ object Vegas extends App{
     val fileWriter = new FileWriter(new File("hello.html"))
     fileWriter.write(h)
     fileWriter.close()
-    println(h)
+    //println(h)
   }, true)
 
 
