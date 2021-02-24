@@ -84,7 +84,7 @@ public class Cert {
         PrivateKey signingKey = clavesRSA.getPrivate();
 
 
-        X509Certificate cert =  cert1.generateX509Certificate(signingKey);
+        X509Certificate cert =  cert1.generate(signingKey);
 
         String certificado = Base64.getUrlEncoder().encodeToString(cert.getEncoded());
 

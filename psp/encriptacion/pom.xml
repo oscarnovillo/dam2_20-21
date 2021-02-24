@@ -64,9 +64,10 @@
         </dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk12</artifactId>
-            <version>130</version>
+            <artifactId>bcprov-jdk16</artifactId>
+            <version>1.38</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
