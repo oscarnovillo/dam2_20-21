@@ -23,9 +23,9 @@ public class DaoAreas {
 
         AreasAPI areasAPI = retrofit.create(AreasAPI.class);
 
-        Call<AreasRequest> call = areasAPI.loadAreas();
+//        Call<AreasRequest> call = areasAPI.loadAreas();
         try {
-            Response<AreasRequest> response = call.execute();
+            Response<AreasRequest> response = areasAPI.loadAreas();
             if (response.isSuccessful())
             {
                 AreasRequest changesList = response.body();

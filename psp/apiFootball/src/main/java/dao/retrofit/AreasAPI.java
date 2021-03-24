@@ -7,16 +7,18 @@ import dao.modelo.CompetitionsRequest;
 //import dao.modelo.TeamsRequest;
 import dao.modelo.Usuario;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.*;
 
 
 public interface AreasAPI {
 
   @GET("areas/")
-  Call<AreasRequest> loadAreas();
+  Response<AreasRequest> loadAreas();
 
   @GET("areas/{id}")
   Call<Area> loadOneArea(@Path("id") int id);
+
 
   @GET("competitions/")
   Call<CompetitionsRequest> loadCompetitions(@Query("areas") long areas);

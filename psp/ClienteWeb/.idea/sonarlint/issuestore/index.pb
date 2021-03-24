@@ -25,7 +25,5 @@ V
 &src/main/java/dao/SingletonOkHttp.java,e\7\e77012b33d17e22ca643dc123e18fa8f211535e8
 S
 #src/main/java/main/MainErrores.java,d\c\dc97f29eaad8ec12ce4d5a66fd890007fbfbe34e
-Z
-*src/main/webapp/WEB-INF/config/config.yaml,e\3\e3188cc04dfdb74d4d431b175888a63500a9420c
-W
-'src/main/java/config/Configuration.java,7\f\7f9a1455549e9958f1cfe6993a695569484b133b
+S
+#src/main/java/dao/DBConnection.java,f\1\f165cee95d90c2b7eb0614507df1f683deb219e8

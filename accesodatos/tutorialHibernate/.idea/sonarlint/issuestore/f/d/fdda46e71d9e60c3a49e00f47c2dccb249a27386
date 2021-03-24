@@ -1,16 +1,17 @@
 
-T	java:S106$"9Replace this use of System.out or System.err by a logger.(ìøÈ+8“­“Úï.
-Q
-java:S3740"/Provide the parametrized type for this generic.(â×âõûÿÿÿÿ8“­“Úï.
-X	java:S125/"<This block of commented-out lines of code should be removed.(Ì©ï8“­“Úï.
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(Çı·Šıÿÿÿÿ8“­“Úï.
-]	java:S1251"<This block of commented-out lines of code should be removed.(­¤Öşÿÿÿÿ8“­“Úï.
-]	java:S125H"<This block of commented-out lines of code should be removed.(ÓÔŠ‰úÿÿÿÿ8“­“Úï.
-]	java:S125_"<This block of commented-out lines of code should be removed.(ÓÔŠ‰úÿÿÿÿ8“­“Úï.
-Z	java:S106*"9Replace this use of System.out or System.err by a logger.(ŒÈË¦üÿÿÿÿ8“­“Úï.
-X	java:S125("<This block of commented-out lines of code should be removed.(Ì©ï8“­“Úï.
-H
-java:S1612$",Replace this lambda with a method reference.(ìøÈ+8“­“Úï.
-W
-java:S1854"5Remove this useless assignment to local variable "q".(â×âõûÿÿÿÿ8“­“Úï.
-X	java:S125"<This block of commented-out lines of code should be removed.(ÓÊ’·8“­“Úï.
+[	java:S125"<This block of commented-out lines of code should be removed.(­¤Öşÿÿÿÿ8“­“Úï.
+[	java:S125"<This block of commented-out lines of code should be removed.(ÓÔŠ‰úÿÿÿÿ8“­“Úï.
+V	java:S125"<This block of commented-out lines of code should be removed.(Ì©ï8“­“Úï.
+V	java:S125"<This block of commented-out lines of code should be removed.(ÓÊ’·8“­“Úï.
+P
+java:S1854"5Remove this useless assignment to local variable "q".(¡ÜÀÌ8“­“Úï.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(Çı·Šıÿÿÿÿ8“­“Úï.
+[	java:S125"<This block of commented-out lines of code should be removed.(ÓÔŠ‰úÿÿÿÿ8“­“Úï.
+J
+java:S3740"/Provide the parametrized type for this generic.(Ù¤°8Ê©ÉÂş.
+
+java:S1192"gDefine a constant instead of duplicating this literal "where f.numeroSistemasControlados > 0 " 3 times.(Ú¼Ü@8Ê©ÉÂş.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ8Ê©ÉÂş.
+X	java:S106"9Replace this use of System.out or System.err by a logger.(Ú‚Èøşÿÿÿÿ8Ê©ÉÂş.
+S	java:S106"9Replace this use of System.out or System.err by a logger.(’ªˆõ8Ê©ÉÂş.
+S	java:S106"9Replace this use of System.out or System.err by a logger.(«àÓ¢8Ê©ÉÂş.
