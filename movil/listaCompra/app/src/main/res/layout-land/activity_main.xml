@@ -9,6 +9,11 @@
    android:gravity="center"
     >
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
     <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
@@ -17,14 +22,6 @@
         tools:text="prueba"
         android:layout_margin="8dp"
         />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-         />
-
 
 
 
