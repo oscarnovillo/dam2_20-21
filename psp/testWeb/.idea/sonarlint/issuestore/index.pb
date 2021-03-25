@@ -29,3 +29,5 @@ X
 (src/main/java/servlets/ServletLista.java,f\9\f9ba58e148e25040300ea3519c25798a286dc7fa
 V
 &src/main/java/servicios/Validador.java,3\b\3bf232a3089146850ffb361d3d6284f51d2a1f6c
+J
+src/main/webapp/cutre.html,2\e\2eda059635fa9cebbf1347f9a392ab1c573f1683

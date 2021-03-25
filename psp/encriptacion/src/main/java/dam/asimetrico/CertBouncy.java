@@ -50,7 +50,7 @@ public class CertBouncy {
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
         X509Certificate cert2 = (X509Certificate)cf.generateCertificate(new FileInputStream("caSign.crt"));
 
-        X509Certificate certDeDisco =  X509CertUtils.parse(Files.asByteSource(new File("caSign.crt")).read());
+//        X509Certificate certDeDisco =  X509CertUtils.parse(Files.asByteSource(new File("caSign.crt")).read());
 
         X509EncodedKeySpec clavePublicaSpec = new X509EncodedKeySpec(Files.asByteSource(new File("dam1024.publica")).read());
         PublicKey clavePublicaCA = keyFactoryRSA.generatePublic(clavePublicaSpec);
@@ -81,7 +81,7 @@ public class CertBouncy {
         // yesterday
         certGen.setNotBefore(new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000));
         // in 2 years
-        certGen.setNotAfter(Date.from(LocalDate.now().plus(365, ChronoUnit.DAYS).atStartOfDay().toInstant(ZoneOffset.UTC)));
+        certGen.setNotAfter(Date.from(LocalDate.now().plus(1, ChronoUnit.YEARS).atStartOfDay().toInstant(ZoneOffset.UTC)));
         certGen.setPublicKey(keyPair.getPublic());
         certGen.setSignatureAlgorithm("SHA256WithRSAEncryption");
 //        certGen.addExtension(X509Extensions.ExtendedKeyUsage, true,

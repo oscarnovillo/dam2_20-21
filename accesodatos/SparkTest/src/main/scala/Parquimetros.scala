@@ -74,6 +74,7 @@ object Parquimetros extends App {
   madrid2.withColumn("row_number",row_number.over(windowSpec))
     .withColumn("fecha_finAnterior",lag("fecha_fin",1).over(windowSpec))
     .withColumn("max_importe",sum(regexp_replace(col("importe_tique"),",",".").cast(DoubleType))
+      //.withColumn("ticketInt",col("tique").cast(IntType))
       .over(windowSpec))
     .filter(col("fecha") <  to_timestamp(col("fecha_finAnterior"), "yyyy-MM-dd HH:mm:ss"))
     .show()
