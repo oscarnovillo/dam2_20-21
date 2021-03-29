@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1071827662999",
+    "firebase_url": "https://thunkable-ee177.firebaseio.com",
+    "project_id": "thunkable-ee177",
+    "storage_bucket": "thunkable-ee177.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071827662999:android:3b6cbec650f8307fcfd1d2",
+        "android_client_info": {
+          "package_name": "com.example.listacompra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1071827662999-r16dhiusoja0eqtkg8gjc2lsi8a8tp7q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdFryjTp2700ihjRL_XFbR-uMY50zeOs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1071827662999-r16dhiusoja0eqtkg8gjc2lsi8a8tp7q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071827662999:android:af646680f1e87399",
+        "android_client_info": {
+          "package_name": "com.gmail.oscarnovillo.huawei"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1071827662999-r16dhiusoja0eqtkg8gjc2lsi8a8tp7q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdFryjTp2700ihjRL_XFbR-uMY50zeOs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1071827662999-r16dhiusoja0eqtkg8gjc2lsi8a8tp7q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
