@@ -14,6 +14,13 @@ public class ServiciosTest {
   private Validator validator;
 
 
+
+  @Inject
+  public ServiciosTest(DaoTest d, Validator validator) {
+    this.d = d;
+    this.validator = validator;
+  }
+
   public int dameNumero()
   {
    // DaoTest d = new DaoTestImpl();

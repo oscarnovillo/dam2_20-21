@@ -17,15 +17,14 @@ class ProductoViewHolder(val binding: ItemProductoBinding) : RecyclerView.ViewHo
 
     fun render(
         producto: Producto,
-        onEditarProducto: (Producto, String) -> Unit,
-        onComprarProducto: (Producto) -> Unit,
-        onBorrarProducto: (Producto) -> Unit
+        productosActions : ProductoAdapter.ProductosActions
+
     ) {
         with(binding) {
             tvTask.setText(producto.nombre)
             mtvProducto.text = producto.nombre
             tvTask.setSingleLine()
-            tvTask.setOnFocusChangeListener { v, hasFocus -> if (!hasFocus) editText(producto,onEditarProducto)}
+            tvTask.setOnFocusChangeListener { v, hasFocus -> if (!hasFocus) editText(producto,productosActions::onEditarProducto)}
             filledTextField.visibility = GONE
             mtvProducto.visibility = VISIBLE
         }
@@ -34,6 +33,12 @@ class ProductoViewHolder(val binding: ItemProductoBinding) : RecyclerView.ViewHo
         binding.mtvProducto.setOnClickListener {
             binding.filledTextField.visibility = VISIBLE;
             binding.tvTask.requestFocus()
+//            val imm = binding.root.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+//
+//            // here is one more tricky issue
+//            // imm.showSoftInputMethod doesn't work well
+//            // and imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0) doesn't work well for all cases too
+//            imm?.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
             binding.mtvProducto.visibility = INVISIBLE
         }
 
@@ -48,9 +53,10 @@ class ProductoViewHolder(val binding: ItemProductoBinding) : RecyclerView.ViewHo
             }
         }
 
-        binding.ivTaskDone.setOnClickListener { onComprarProducto(producto) }
+        binding.ivTaskDone.setOnClickListener { productosActions.comprarProducto(producto) }
 
-        binding.ivDelete.setOnClickListener { onBorrarProducto(producto) }
+        binding.ivDelete.setOnClickListener { productosActions.borrarProducto(producto) }
+        binding.ivCambiarTienda.setOnClickListener { productosActions.cambiarProductoDeTienda(producto) }
     }
 
     private fun editText(producto: Producto, onEditarProducto: (Producto, String) -> Unit) {

@@ -45,7 +45,7 @@ public class Principal {
 
     @SneakyThrows
     public void cargarPantalla2() {
-        ServiciosTest sat = new ServiciosTest();
+       // ServiciosTest sat = new ServiciosTest();
         if (panePantalla2 == null) {
             panePantalla2 = fxmlloaderPantalla2.load(getClass().getResourceAsStream("/fxml/pantalla2.fxml"));
             Pantalla2 pantall = fxmlloaderPantalla2.getController();
