@@ -1,12 +1,20 @@
 package dao;
 
+import config.Config;
 import modelo.Periodico;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DaoPeriodicos {
 
+    private Config config;
+
+    @Inject
+    public DaoPeriodicos(Config config) {
+        this.config = config;
+    }
 
     private static List<Periodico> periodicos = new ArrayList<>();
 
@@ -34,6 +42,8 @@ public class DaoPeriodicos {
 
     public boolean updatePeriodicos(Periodico p){
         periodicos.remove(p);
+
+
         return periodicos.add(p);
     }
 

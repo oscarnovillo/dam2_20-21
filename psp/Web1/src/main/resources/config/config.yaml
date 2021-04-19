@@ -1,0 +1,4 @@
+ruta: jdbc:mysql://dam2.mysql.iesquevedo.es:3335/Recuperacion_Cristian
+user: root
+password: quevedo2020
+driverDB: com.mysql.cj.jdbc.Driver

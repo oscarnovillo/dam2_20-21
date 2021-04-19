@@ -23,21 +23,23 @@ public class TestInsert {
         CreateModel.createModel();
         DBConnection db = new DBConnection();
 
+        Asignatura a = new Asignatura();
+        a.setCiclo("ciclo");
+        a.setCurso("curso");
+        a.setNombre("damn");
+        a.setId(200);
         try {
             SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(
                     db.getDataSource())
                     .withTableName("asignaturas")
                     .usingGeneratedKeyColumns("ID");
-            Asignatura a = new Asignatura();
-            a.setCiclo("ciclo");
-            a.setCurso("curso");
-            a.setNombre("damn");
-            a.setId(200);
-            Map<String, Object> parameters = new HashMap<>();
+//            Map<String, Object> parameters = new HashMap<>();
+//
+//            parameters.put("NOMBRE", a.getNombre());
+//            parameters.put("CICLO", a.getCiclo());
+//            parameters.put("CURSO", a.getCurso());
+//            a.setId((int) jdbcInsert.executeAndReturnKey(parameters).longValue());
 
-            parameters.put("NOMBRE", a.getNombre());
-            parameters.put("CICLO", a.getCiclo());
-            parameters.put("CURSO", a.getCurso());
             SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(a);
             a.setId((int) jdbcInsert.executeAndReturnKey(namedParameters).longValue());
             System.out.println(a);

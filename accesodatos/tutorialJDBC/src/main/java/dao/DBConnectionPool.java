@@ -100,5 +100,13 @@ public class DBConnectionPool {
         }
     }
 
+
+    public void closePool()
+    {
+        ((HikariDataSource)hirakiDatasource).close();
+        dbconection = null;
+
+    }
+
 }
 

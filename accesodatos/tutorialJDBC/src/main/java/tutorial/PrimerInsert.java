@@ -30,7 +30,6 @@ public class PrimerInsert {
             stmt.setString(1, "nombre");
             stmt.setInt(3, 7);
 
-
             int numeroFilas = stmt.executeUpdate();
 
             rs = stmt.getGeneratedKeys();

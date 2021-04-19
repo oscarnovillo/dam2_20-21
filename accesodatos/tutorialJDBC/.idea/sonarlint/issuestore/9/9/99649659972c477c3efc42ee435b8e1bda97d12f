@@ -1,5 +1,7 @@
 
-X	java:S106"9Replace this use of System.out or System.err by a logger.( Ë¥ûùÿÿÿÿ8Ñ‰­ÊĞ.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(öå¾ó8Ñ‰­ÊĞ.
-o
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Øíõ­ıÿÿÿÿ8Ñ‰­ÊĞ.
+J
+java:S1481"-Remove this unused "hayError" local variable.(™ú£8ïêñßŠ/
+U	java:S1063"9Replace this use of System.out or System.err by a logger.(öå¾ó8§±€àŠ/
+q
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Øíõ­ıÿÿÿÿ8Ñ‰­ÊĞ.
+Z	java:S106*"9Replace this use of System.out or System.err by a logger.( Ë¥ûùÿÿÿÿ8Ñ‰­ÊĞ.

@@ -1,22 +1,23 @@
 
-[
-java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(‚ÌÆË
-Z
-java:S1128"?Remove this unused import 'java.time.format.DateTimeFormatter'.(‰÷÷ª8¿ì­¾Ý.
-\
-java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(¬ŒÈ­
-T	java:S125"<This block of commented-out lines of code should be removed.(´ Áéüÿÿÿÿ
-h
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ú³œ›øÿÿÿÿ
-P
-java:S1128"5Remove this unused import 'java.util.logging.Logger'.(ƒ¥óš8¿ì­¾Ý.
+S	java:S106R"9Replace this use of System.out or System.err by a logger.(éžó¨þÿÿÿÿ
+^
+java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(¬ŒÈ­
+M
+java:S2589N"7Remove this expression which always evaluates to "true"(þ³ñã
+V	java:S1255"<This block of commented-out lines of code should be removed.(´ Áéüÿÿÿÿ
+]
+java:S2095*"GUse try-with-resources or close this "Statement" in a "finally" clause.(‚ÌÆË
+V	java:S125""<This block of commented-out lines of code should be removed.(Áöšúÿÿÿÿ
+J
+java:S3740"/Provide the parametrized type for this generic.(Ûó©Çûÿÿÿÿ
 K
-java:S2589"7Remove this expression which always evaluates to "true"(þ³ñã
-I
-java:S1128"0Remove this unused import 'java.time.LocalTime'.(à®øÃùÿÿÿÿ
-H
-java:S3740"/Provide the parametrized type for this generic.(Ûó©Çûÿÿÿÿ
-I
-java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èýÿÿÿÿ
-T	java:S125"<This block of commented-out lines of code should be removed.(Áöšúÿÿÿÿ
-Q	java:S106"9Replace this use of System.out or System.err by a logger.(éžó¨þÿÿÿÿ
+java:S1128
+"0Remove this unused import 'java.time.LocalTime'.(à®øÃùÿÿÿÿ
+K
+java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èýÿÿÿÿ
+\
+java:S1128"?Remove this unused import 'java.time.format.DateTimeFormatter'.(‰÷÷ª8¿ì­¾Ý.
+j
+java:S2095,"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ú³œ›øÿÿÿÿ
+R
+java:S1128"5Remove this unused import 'java.util.logging.Logger'.(ƒ¥óš8¿ì­¾Ý.

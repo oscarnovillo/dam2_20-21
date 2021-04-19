@@ -1,7 +1,7 @@
 package EE.servlets;
 
-import dao.DaoPeriodicos;
 import modelo.Periodico;
+import servicios.ServiciosPeriodicos;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -10,14 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ServletPeriodicos", urlPatterns = {"/periodicos"})
 public class ServletPeriodicos extends HttpServlet {
 
     @Inject
-    DaoPeriodicos dao;
+    private ServiciosPeriodicos serviciosPeriodicos;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         hacerAlgo(request, response);
@@ -26,7 +25,7 @@ public class ServletPeriodicos extends HttpServlet {
     private void hacerAlgo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        List<Periodico> periodicos = dao.getPeriodicos();
+        List<Periodico> periodicos = serviciosPeriodicos.getPeriodicos();
         request.setAttribute("periodicos",periodicos);
         request.getRequestDispatcher("periodicos.jsp").forward(request,response);
     }

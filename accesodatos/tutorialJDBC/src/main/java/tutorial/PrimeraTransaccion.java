@@ -21,6 +21,7 @@ public class PrimeraTransaccion {
         DBConnection db = new DBConnection();
         Connection con = null;
         PreparedStatement stmt = null;
+        var hayError = false;
 
         try {
             con = db.getConnection();
@@ -54,6 +55,7 @@ public class PrimeraTransaccion {
             Logger.getLogger("Main").info(e.getMessage());
             db.rollbackCon(con);
         } finally {
+
             db.cerrarStatement(stmt);
             db.cerrarConexion(con);
         }

@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 @Log4j2
 public class PrimeraConexion {
 
+
     @SneakyThrows
     public static void main(String[] args) {
         Connection connection = null;
@@ -41,22 +42,20 @@ public class PrimeraConexion {
             stmt = connection.createStatement();
 
             pst = connection.prepareStatement(
-                    "select * from table_fechas2 where name = ? and numero > ? and date > ?");
+                    "select * from table_fechas2 where name = ? " +
+                            " and numero > ? and date > ?");
             LocalDateTime ldt = LocalDateTime.of(2000,10,10,10,10);
 
             pst.setString(1,name);
             pst.setInt(2,10);
             pst.setTimestamp(3,Timestamp.valueOf(ldt));
 
-
-
-
             //rs = stmt.executeQuery("select * from table_fechas2 where name='" + name + "'");
 
             rs= pst.executeQuery();
         /*
 
-            select * from table_fechas2 where name='2'
+            select id as temarioAD from table_fechas2 where name='2'
             select * from table_fechas2 where name=' 2' OR 1=1 #'
             2' OR 1=1 #
 

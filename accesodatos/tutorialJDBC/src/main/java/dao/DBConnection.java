@@ -19,14 +19,14 @@ public class DBConnection {
         Connection connection = null;
 
         // solo hace falta en web.
-        Class.forName("com.mysql.cj.jdbc.Driver");
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+//
+//        connection = DriverManager.getConnection(
+//                "jdbc:mysql://dam2.mysql.iesquevedo.es:3335/netflisssss",
+//                Configuration.getInstance().getUser(),
+//                Configuration.getInstance().getPassword());
 
-        connection = DriverManager.getConnection(
-                "jdbc:mysql://dam2.mysql.iesquevedo.es:3335/netflisssss",
-                Configuration.getInstance().getUser(),
-                Configuration.getInstance().getPassword());
-
-    //    connection = DBConnectionPool.getInstance().getConnection();
+        connection = DBConnectionPool.getInstance().getConnection();
         return connection;
     }
 

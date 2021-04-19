@@ -21,8 +21,5 @@ public class Servlet extends javax.servlet.http.HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         response.getWriter().println("<html><body>HOLA GET</body></html>");
-
-
-
     }
 }

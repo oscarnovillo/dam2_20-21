@@ -1,5 +1,5 @@
 
-R	java:S106"9Replace this use of System.out or System.err by a logger.(æú‹8áƒ«ÊĞ.
-o
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Øíõ­ıÿÿÿÿ8Àì­¾İ.
-[	java:S125"<This block of commented-out lines of code should be removed.(ˆ³ûÿÿÿÿ8Àì­¾İ.
+T	java:S106""9Replace this use of System.out or System.err by a logger.(æú‹8áƒ«ÊĞ.
+q
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Øíõ­ıÿÿÿÿ8Àì­¾İ.
+]	java:S125&"<This block of commented-out lines of code should be removed.(ˆ³ûÿÿÿÿ8Àì­¾İ.
