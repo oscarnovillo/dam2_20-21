@@ -17,6 +17,10 @@ import javax.inject.Inject;
 
 public class Principal {
 
+
+
+
+
     @FXML
     private BorderPane root;
     @FXML
@@ -28,19 +32,30 @@ public class Principal {
         return alert;
     }
 
-    @Inject
+
     private ServiciosTest st;
 
-    @Inject
+
     private ExampleSingleton eps;
 
-    @Inject
+
     private FXMLLoader fxmlloaderPantalla;
     private AnchorPane panePantalla;
 
-    @Inject
+
     private FXMLLoader fxmlloaderPantalla2;
     private AnchorPane panePantalla2;
+
+
+    @Inject
+    public Principal(ServiciosTest st, ExampleSingleton eps, FXMLLoader fxmlloaderPantalla, FXMLLoader fxmlloaderPantalla2) {
+
+        this.st = st;
+        this.eps = eps;
+        this.fxmlloaderPantalla = fxmlloaderPantalla;
+        this.fxmlloaderPantalla2 = fxmlloaderPantalla2;
+    }
+
 
 
     @SneakyThrows
@@ -76,7 +91,5 @@ public class Principal {
         alert.setContentText(eps.getNow()+"hola " + st.dameNombre(1) + " " + st.dameNumero());
         alert.showAndWait();
         cargarPantalla1();
-
-
     }
 }

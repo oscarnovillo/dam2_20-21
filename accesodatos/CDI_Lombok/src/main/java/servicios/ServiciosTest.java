@@ -7,10 +7,10 @@ import javax.validation.Validator;
 
 public class ServiciosTest {
 
-  @Inject
+
   private DaoTest d;
 
-  @Inject
+
   private Validator validator;
 
 

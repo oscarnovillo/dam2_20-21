@@ -14,11 +14,6 @@ import javax.validation.ValidatorFactory;
 public class Producers {
 
 
-    @Produces
-    public Configuration createConfiguration() {
-
-        return Configuration.getInstance();
-    }
 
     @Produces
     public Validator createValidator()

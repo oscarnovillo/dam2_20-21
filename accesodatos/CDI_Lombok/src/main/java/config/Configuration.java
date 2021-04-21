@@ -11,37 +11,34 @@ import lombok.Setter;
 import org.yaml.snakeyaml.Yaml;
 
 import javax.enterprise.inject.Alternative;
+import javax.inject.Singleton;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * @author dam2
  */
-@Alternative @Getter @Setter
+@Getter
+@Setter
+@Singleton
 public class Configuration {
 
-    private static Configuration config = null;
 
-    private Configuration() {
+    public Configuration() {
 
+        Yaml yaml = new Yaml();
+
+        Iterable<Object> it = yaml
+                .loadAll(yaml.getClass().getResourceAsStream("/config/config.yaml"));
+
+        Map<String,String> m = (Map)it.iterator().next();
+        this.ruta = m.get("ruta");
+        this.user = m.get("user");
+        this.password = m.get("password");
     }
-
-    public static Configuration getInstance() {
-
-        if (config == null) {
-            try {
-                Yaml yaml = new Yaml();
-                config = yaml.loadAs(new FileInputStream("config/config.yaml"),
-                        Configuration.class);
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Configuration.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return config;
-    }
-
 
 
 

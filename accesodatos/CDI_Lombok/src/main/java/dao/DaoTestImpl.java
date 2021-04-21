@@ -11,9 +11,12 @@ import java.util.Optional;
 
 public class DaoTestImpl implements DaoTest {
 
+  private Configuration config;
 
   @Inject
-  private Configuration config;
+  public DaoTestImpl(Configuration config) {
+    this.config = config;
+  }
 
   public int dameNumero()
   {
