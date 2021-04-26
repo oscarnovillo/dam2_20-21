@@ -4,43 +4,31 @@ package com.example.listacompra
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.EditText
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.listacompra.databinding.ActivityMainBinding
 import com.example.listacompra.modelo.Producto
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.Serializable
-import java.time.LocalDate
 
 
 class MainActivity : AppCompatActivity() {
 
-    //lateinit var button: Button
-    lateinit var fbRecargar: FloatingActionButton
-
     private lateinit var binding: ActivityMainBinding
 
-    lateinit var etProducto: EditText
-    lateinit var rvCompra: RecyclerView
     lateinit var adapter: ProductoAdapter
-    private lateinit var database: DatabaseReference
-// ...
 
-    var productos = mutableListOf<Producto>()
-    var tiendas = mutableListOf<String>()
-
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
@@ -54,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             R.id.action_edit -> {
 
                 val intent = Intent(this, TiendasActivity::class.java).apply {
-                    putExtra("tiendas", tiendas as Serializable)
+                    putExtra("tiendas", viewModel.tiendas.value as Serializable)
                 }
                 startActivity(intent)
                 finish()
@@ -68,21 +56,7 @@ class MainActivity : AppCompatActivity() {
                         view.dismiss()
                     }
                     .setPositiveButton("YES") { view, _ ->
-                        val date: LocalDate = LocalDate.now()
-                        val tamañoAnterior = productos.size
-                        date.toString()
-                        productos.filter { producto -> producto.comprado }.forEach { producto ->
-                            database.child("tiendas/${binding.myToolbar.title.toString()}/listas/${date.toString()}/${producto.nombre}")
-                                .setValue(producto)
-                            database.child("tiendas/${binding.myToolbar.title.toString()}/listas/actual/${producto.nombre}")
-                                .removeValue()
-                        }
-                        productos =
-                            productos.filter { producto -> !producto.comprado }.toMutableList()
-                        adapter.submitList(productos)
-                        adapter.notifyItemRangeRemoved(productos.size - 1, tamañoAnterior)
-
-                        //adapter.notifyDataSetChanged()
+                        viewModel.comprar()
                         view.dismiss()
                     }
                     .setCancelable(false)
@@ -94,12 +68,13 @@ class MainActivity : AppCompatActivity() {
             R.id.action_selectTienda -> {
                 val dialog = AlertDialog.Builder(this)
                     .setTitle(getString(R.string.select_tienda_dialog))
-//                    .setMessage(R.string.app_name)
                     .setItems(
-                        tiendas.toTypedArray(),
-                        DialogInterface.OnClickListener { dialog, which ->
-                            cargarListaProductos(tiendas[which])
-                        })
+                        viewModel.tiendas.value?.toTypedArray()
+                    ) { _, which ->
+                        viewModel.cargarListaProductos(
+                            viewModel.tiendas.value?.get(which).orEmpty()
+                        )
+                    }
                     .setNegativeButton("Cancel") { view, _ ->
                         view.dismiss()
                     }
@@ -120,55 +95,69 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        setSupportActionBar(binding.myToolbar)
+        // si el target es menor que 1.8 build gradle options
+        // ViewModelProvider(this)[MainViewModel::class.java]
+        viewModel = ViewModelProvider(this).get()
 
-        //menuInflater.inflate(R.menu.menu,binding.myToolbar.menu)
-
-        database = Firebase.database.reference
-
-        initUI()
-
-        binding.rvCompras.layoutManager = LinearLayoutManager(this)
         adapter = ProductoAdapter(
             object : ProductoAdapter.ProductosActions {
                 override fun onEditarProducto(producto: Producto, nuevoNombre: String) =
-                    editarProducto(producto, nuevoNombre)
+                    this@MainActivity.editarProducto(producto,nuevoNombre)
 
-                override fun comprarProducto(producto: Producto) = this@MainActivity.comprarProducto(producto)
+                override fun comprarProducto(producto: Producto) =
+                    this@MainActivity.viewModel.comprarProducto(producto)
 
-                override fun borrarProducto(producto: Producto) = this@MainActivity.borrarProducto(producto)
+                override fun borrarProducto(producto: Producto) =
+                    this@MainActivity.viewModel.borrarProducto(producto)
 
                 override fun cambiarProductoDeTienda(producto: Producto) =
                     this@MainActivity.cambiarProductoDeTienda(producto)
-
             })
-        rvCompra.adapter = adapter
+
+        binding.rvCompras.adapter = adapter
+        binding.rvCompras.layoutManager = LinearLayoutManager(this)
 
 
-        btAdd.setOnClickListener { addTask() }
-        fbRecargar.setOnClickListener { cargarListaProductos(binding.myToolbar.title.toString()) }
+        viewModel.visibility.observe(this, Observer { visible ->
+            binding.progressBar.visibility = if (visible) View.VISIBLE else View.GONE
+        })
 
-        cargarTiendas()
+        viewModel.tiendaActual.observe(this, Observer { tienda ->
+            binding.myToolbar.title = tienda
+        })
 
+        viewModel.errorMessage.observe(this, Observer { error ->
+            Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+        })
 
+        viewModel.productos.observe(this, Observer { productos ->
+            adapter.submitList(productos)
+            adapter.notifyDataSetChanged()
+        })
+
+        btAdd.setOnClickListener { addProducto() }
+        binding.fbRecargar.setOnClickListener { viewModel.cargarListaProductos() }
+
+        if (viewModel.tiendaActual.value == null) {
+            viewModel.cargarTiendas()
+        } else {
+            binding.myToolbar.title = viewModel.tiendaActual.value
+        }
+        setSupportActionBar(binding.myToolbar)
     }
 
-     fun cambiarProductoDeTienda(producto: Producto) {
+    fun hideKeyboard() {
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+    }
+
+    fun cambiarProductoDeTienda(producto: Producto) {
         val dialog = AlertDialog.Builder(this)
             .setTitle(getString(R.string.select_tienda_dialog))
-//                    .setMessage(R.string.app_name)
             .setItems(
-                tiendas.toTypedArray(),
+                viewModel.tiendas.value?.toTypedArray(),
                 DialogInterface.OnClickListener { dialog, which ->
-                    if (tiendas[which] != binding.myToolbar.title.toString()) {
-                        database.child("tiendas/${tiendas[which]}/listas/actual")
-                            .child(producto.nombre).setValue(producto)
-                        database.child("tiendas/${binding.myToolbar.title.toString()}/listas/actual")
-                            .child(producto.nombre).removeValue()
-                        productos.remove(producto)
-
-                        adapter.notifyDataSetChanged()
-                    }
+                    viewModel.cambiarDeTienda(which, producto)
                 })
             .setNegativeButton("Cancel") { view, _ ->
                 view.dismiss()
@@ -180,112 +169,23 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-    private fun cargarTiendas() {
-        binding.progressBar.visibility = View.VISIBLE
-
-        database.child("tiendas").get().addOnSuccessListener {
-            tiendas.clear()
-            it.children.forEach { dataSnapshot ->
-                val tienda = dataSnapshot.key
-                tienda?.let {
-                    tiendas.add(it)
-                }
-                tiendas[0]?.let {
-                    cargarListaProductos(it)
-                }
-            }
-            binding.progressBar.visibility = View.GONE
-        }
-
-
+    private fun editarProducto(producto: Producto, nuevoNombre: String)
+    {
+        viewModel.editarProducto(producto, nuevoNombre)
+        hideKeyboard()
     }
 
-    private fun cargarListaProductos(tienda: String) {
-        binding.myToolbar.title = tienda
-        binding.progressBar.visibility = View.VISIBLE
-        database.child("tiendas").child(tienda).child("listas").child("actual").get()
-            .addOnSuccessListener {
-                productos.clear()
-                it.children.forEach { dataSnapshot ->
-
-                    val user = dataSnapshot.getValue(Producto::class.java)
-                    user?.let {
-                        productos.add(it)
-                    }
-                }
-                productos.sortBy { producto -> producto.comprado }
-                adapter.submitList(productos)
-                adapter.notifyDataSetChanged()
-                //adapter.notifyItemRangeChanged(0, productos.size)
-                Log.d("::::TAG", "Got value ${it.value}")
-                binding.progressBar.visibility = View.GONE
-            }.addOnFailureListener {
-                productos.clear()
-                adapter.notifyDataSetChanged()
-                Toast.makeText(this, "No se pudo cargar los datos", Toast.LENGTH_LONG).show()
-                binding.progressBar.visibility = View.GONE
-                Log.e("firebase", "Error getting data", it)
-            }
+    private fun addProducto() {
+        val newProducto = Producto(binding.etProducto.text.toString(), false)
+        viewModel.addProducto(newProducto)
+        binding.etProducto.setText("")
     }
 
-    private fun initUI() {
-        //button = findViewById(R.id.button)
-        fbRecargar = findViewById(R.id.fbRecargar)
-
-        etProducto = findViewById(R.id.etTienda)
-        rvCompra = findViewById(R.id.rvCompras)
+    override fun onSaveInstanceState(outState: Bundle) {
+//        if (::viewModel.isInitialized)
+//            viewModel.saveState()
+        super.onSaveInstanceState(outState)
     }
-
-    private fun addTask() {
-        Toast.makeText(this, "No se pudo cargar los datos", Toast.LENGTH_LONG).show()
-        val newProducto = Producto(etProducto.text.toString(), false)
-        database.child("tiendas/${binding.myToolbar.title.toString()}/listas/actual")
-            .child(newProducto.nombre).setValue(newProducto)
-        productos.add(newProducto)
-//            prefs.saveTasks(tasks)
-        adapter.notifyItemInserted(productos.size - 1)
-        etProducto.setText("")
-    }
-
-    private fun borrarProducto(producto: Producto) {
-        database.child("tiendas").child(binding.myToolbar.title.toString()).child("listas")
-            .child("actual").child(producto.nombre).removeValue()
-        val indice = productos.indexOf(producto)
-        productos.remove(producto)
-        adapter.notifyItemRemoved(indice)
-    }
-
-    private fun editarProducto(producto: Producto, nombreAnterior: String) {
-        database.child("tiendas").child(binding.myToolbar.title.toString()).child("listas")
-            .child("actual").child(nombreAnterior).removeValue()
-        database.child("tiendas").child(binding.myToolbar.title.toString()).child("listas")
-            .child("actual").child(producto.nombre).setValue(producto)
-        //adapter.notifyDataSetChanged()
-    }
-
-
-    private fun comprarProducto(producto: Producto) {
-        producto.comprado = !producto.comprado
-        database.child("tiendas").child(binding.myToolbar.title.toString()).child("listas")
-            .child("actual").child(producto.nombre).setValue(producto)
-        productos.sortBy { producto -> producto.comprado }
-        adapter.submitList(productos)
-//
-//        adapter = ProductoAdapter(productos) { deleteTask(it) }
-//        rvCompra.swapAdapter(adapter, false)
-
-        adapter.notifyItemRangeChanged(0, productos.size)
-//        prefs.saveTasks(tasks)
-    }
-
-
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        outState?.run {
-//
-//        }
-//        super.onSaveInstanceState(outState)
-//    }
 //
 //    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
 //

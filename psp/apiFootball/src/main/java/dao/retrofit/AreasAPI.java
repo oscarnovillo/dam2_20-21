@@ -6,6 +6,8 @@ import dao.modelo.AreasRequest;
 import dao.modelo.CompetitionsRequest;
 //import dao.modelo.TeamsRequest;
 import dao.modelo.Usuario;
+import io.reactivex.Observable;
+import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.*;
@@ -14,7 +16,7 @@ import retrofit2.http.*;
 public interface AreasAPI {
 
   @GET("areas/")
-  Response<AreasRequest> loadAreas();
+  Single<AreasRequest> loadAreas();
 
   @GET("areas/{id}")
   Call<Area> loadOneArea(@Path("id") int id);
@@ -23,7 +25,7 @@ public interface AreasAPI {
   Call<CompetitionsRequest> loadCompetitions(@Query("areas") long areas);
 
   @POST("api/users")
-  Call<Usuario> addUsuario(@Body Usuario usuario);
+  Observable<Usuario> addUsuario(@Body Usuario usuario);
 
   @DELETE("api/users")
   Call<Usuario> delUsuario(@Query("usuario") Usuario usuario);

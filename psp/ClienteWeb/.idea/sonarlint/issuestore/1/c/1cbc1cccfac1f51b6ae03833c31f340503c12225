@@ -1,11 +1,11 @@
 
-S	java:S106"9Replace this use of System.out or System.err by a logger.(½“Ξτ8¨„τύκ.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(ε‚βώ8¨„τύκ.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(¶μΣΘ8¨„τύκ.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(Κ‡ε8¨„τύκ.
-J
-java:S1481"/Remove this unused "urlBuilder" local variable.(Ξ€8¨„τύκ.
-X
-java:S1854">Remove this useless assignment to local variable "urlBuilder".(ΊΩΟp8¨„τύκ.
-W
-java:S1854"<Remove this useless assignment to local variable "formBody".(Σ¥“Ο8¨„τύκ.
+U	java:S106*"9Replace this use of System.out or System.err by a logger.(½“Ξτ8¨„τύκ.
+U	java:S1061"9Replace this use of System.out or System.err by a logger.(ε‚βώ8¨„τύκ.
+L
+java:S1481"/Remove this unused "urlBuilder" local variable.(Ξ€8¨„τύκ.
+U	java:S106("9Replace this use of System.out or System.err by a logger.(Κ‡ε8¨„τύκ.
+U	java:S106)"9Replace this use of System.out or System.err by a logger.(¶μΣΘ8¨„τύκ.
+Z
+java:S1854">Remove this useless assignment to local variable "urlBuilder".(ΊΩΟp8¨„τύκ.
+Y
+java:S1854"<Remove this useless assignment to local variable "formBody".(Σ¥“Ο8¨„τύκ.

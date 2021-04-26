@@ -1,6 +1,9 @@
 package dao;
 
-import dao.modelo.*;
+import dao.modelo.Area;
+import dao.modelo.AreasRequest;
+import dao.modelo.Competition;
+import dao.modelo.CompetitionsRequest;
 import dao.retrofit.AreasAPI;
 import dao.utils.ConfigurationSingleton_OkHttpClient;
 import io.reactivex.Single;
@@ -11,7 +14,7 @@ import retrofit2.Retrofit;
 
 import java.util.List;
 
-public class DaoAreas {
+public class DaoRxAreas {
 
     public Single<AreasRequest> getAreas() {
 //        Either<String, List<Area>> resultado = null;

@@ -92,11 +92,11 @@ class TiendasActivity : AppCompatActivity() {
 
 
     private fun addTask() {
-        val newProducto = etTienda.text.toString()
+        val newProducto = binding.etTienda.text.toString()
         database.child("tiendas/${newProducto}/nombre").setValue(newProducto)
         tiendas.add(newProducto)
         adapter.notifyItemInserted(tiendas.size-1)
-        etTienda.setText("")
+        binding.etTienda.setText("")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

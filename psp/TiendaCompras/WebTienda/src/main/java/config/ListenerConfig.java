@@ -1,5 +1,8 @@
 package config;
 
+import dao.DBConnection;
+
+import javax.inject.Inject;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -8,11 +11,15 @@ import javax.servlet.annotation.WebListener;
 public class ListenerConfig implements ServletContextListener
         {
 
+
+
     // Public constructor is required by servlet spec
     public ListenerConfig() {
     }
 
-    // -------------------------------------------------------
+
+
+            // -------------------------------------------------------
     // ServletContextListener implementation
     // -------------------------------------------------------
     public void contextInitialized(ServletContextEvent sce) {

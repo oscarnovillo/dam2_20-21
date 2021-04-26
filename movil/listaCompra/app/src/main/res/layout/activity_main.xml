@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:theme="@style/Theme.ListaCompra"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -13,9 +14,10 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/primaryColor"
 
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+
         app:layout_constraintBottom_toTopOf="@id/head_lista"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +42,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/etTienda"
+                android:id="@+id/etProducto"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
@@ -61,7 +63,7 @@
                 android:text="Add"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/addMultiple"
-                app:layout_constraintStart_toEndOf="@+id/etTienda"
+                app:layout_constraintStart_toEndOf="@+id/etProducto"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
