@@ -33,7 +33,7 @@ public class DaoAreas {
             }
             else
             {
-                resultado = Either.left(response.errorBody().toString());
+                resultado = Either.left(response.errorBody().string());
             }
         }
         catch (Exception e)

@@ -8,7 +8,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
+//import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import java.lang.reflect.Type;
 import java.net.CookieManager;
@@ -42,6 +42,8 @@ public class ConfigurationSingleton_OkHttpClient {
                         Request.Builder builder1 = original.newBuilder()
                                 .header("X-Auth-Token", "2deee83e549c4a6e9709871d0fd58a0a")
                                 .url(original.url().newBuilder().addQueryParameter("headToken","adfsdf")
+                                        .addQueryParameter("ts","1")
+
                                         .build());
                         Request request = builder1.build();
                         return chain.proceed(request);}
@@ -62,7 +64,7 @@ public class ConfigurationSingleton_OkHttpClient {
             ).create();
             retrofit = new Retrofit.Builder()
                     .baseUrl(ConfigurationSingleton_Client.getInstance().getPath_base())
-                    .addConverterFactory(ScalarsConverterFactory.create())
+                    //.addConverterFactory(ScalarsConverterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .client(clientOK)
                     .build();

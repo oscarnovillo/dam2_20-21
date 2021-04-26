@@ -19,7 +19,6 @@ public interface AreasAPI {
   @GET("areas/{id}")
   Call<Area> loadOneArea(@Path("id") int id);
 
-
   @GET("competitions/")
   Call<CompetitionsRequest> loadCompetitions(@Query("areas") long areas);
 
