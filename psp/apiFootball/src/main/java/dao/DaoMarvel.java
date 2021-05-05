@@ -19,11 +19,12 @@ import java.lang.reflect.Type;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 public class DaoMarvel {
 
 
-    public Single<MarvelCharacters> getCharacters(String test)
+    public Single<List<dao.modelo.marvel.Character>> getCharacters(String test)
     {
         OkHttpClient clientOK;
 
@@ -70,11 +71,13 @@ public class DaoMarvel {
 
         MarvelApi marvelAPI = retrofit.create(MarvelApi.class);
 
-        return Completable.fromAction(
+        return (Single<List<dao.modelo.marvel.Character>>) Completable.fromAction(
                 () -> {
                     if (test.equals("error")) throw new Exception("error de validacion");
                 })
-                .andThen(marvelAPI.getCharactersRx());
+                .andThen(marvelAPI.getCharactersRx()
+                        .map(marvelCharacters -> marvelCharacters.getData().getCharacters()))
+                ;
 
 //        if (response.isSuccessful())
 //        {
