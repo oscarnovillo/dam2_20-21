@@ -5,6 +5,7 @@ import config.ConfigurationSingleton_Client;
 import dao.modelo.AreasRequest;
 import dao.modelo.marvel.ApiError;
 import dao.modelo.marvel.Marvel;
+import dao.modelo.marvel.MarvelCharacters;
 import dao.retrofit.AreasAPI;
 import dao.retrofit.MarvelApi;
 import io.vavr.control.Either;
@@ -62,7 +63,7 @@ public class MainMarvel {
                 }
         ).create();
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://gateway.marvel.com")
+                .baseUrl("https://gateway.marvel.com/v1/public/")
                 //.addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(clientOK)
@@ -70,7 +71,7 @@ public class MainMarvel {
 
         MarvelApi marvelAPI = retrofit.create(MarvelApi.class);
 
-        Response<Marvel> response = marvelAPI.getCharacters().execute();
+        Response<MarvelCharacters> response = marvelAPI.getCharacters().execute();
 
         if (response.isSuccessful())
         {
@@ -78,7 +79,6 @@ public class MainMarvel {
         }
         else
         {
-
             Gson g = new Gson();
             ApiError apierror = g.fromJson(response.errorBody().string(), ApiError.class);
 
@@ -86,9 +86,6 @@ public class MainMarvel {
             System.out.println("error Code"+ response.message());
             System.out.println("error " +apierror.getMessage());
         }
-
-
-
 
 
     }

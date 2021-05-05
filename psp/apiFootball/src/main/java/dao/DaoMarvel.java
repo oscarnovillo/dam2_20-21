@@ -3,6 +3,7 @@ package dao;
 import com.google.gson.*;
 import dao.modelo.marvel.ApiError;
 import dao.modelo.marvel.Marvel;
+import dao.modelo.marvel.MarvelCharacters;
 import dao.retrofit.MarvelApi;
 import io.reactivex.Completable;
 import io.reactivex.Single;
@@ -22,7 +23,7 @@ import java.time.temporal.ChronoUnit;
 public class DaoMarvel {
 
 
-    public Single<Marvel> getCharacters(String test)
+    public Single<MarvelCharacters> getCharacters(String test)
     {
         OkHttpClient clientOK;
 
@@ -60,7 +61,7 @@ public class DaoMarvel {
                 }
         ).create();
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://gateway.marvel.com")
+                .baseUrl("https://gateway.marvel.com/v1/public/")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

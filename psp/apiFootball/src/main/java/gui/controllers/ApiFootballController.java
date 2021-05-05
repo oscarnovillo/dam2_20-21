@@ -221,12 +221,13 @@ public class ApiFootballController implements Initializable {
                 .observeOn(JavaFxScheduler.platform())
                 .doFinally(() -> this.principalController
                         .getPantallaPrincipal().setCursor(Cursor.DEFAULT));
+
         s.subscribe(System.out::println,
                 throwable -> {
                     alert.setContentText(throwable.getMessage());
                     alert.showAndWait();
                 });
-
+        this.principalController.getPantallaPrincipal().setCursor(Cursor.WAIT);
 
 //        var tarea = new Task<Either<String, List<Team>>>() {
 //            public StringProperty test = new SimpleStringProperty();
@@ -277,8 +278,10 @@ public class ApiFootballController implements Initializable {
 
 
     public void delUsuario(ActionEvent actionEvent) {
+
         Single<Either<ApiError, Usuario>> s = Single.fromCallable(() ->
         {
+
             DaoUsuarios dao = new DaoUsuarios();
             return dao.delUsuario(new Usuario("0", "nombre", LocalDateTime.now()));
         })
@@ -295,5 +298,8 @@ public class ApiFootballController implements Initializable {
                     alert.setContentText(throwable.getMessage());
                     alert.showAndWait();
                 });
+
+        this.principalController
+                .getPantallaPrincipal().setCursor(Cursor.WAIT);
     }
 }

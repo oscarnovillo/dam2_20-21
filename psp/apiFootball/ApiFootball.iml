@@ -10,6 +10,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.squareup.retrofit2:retrofit-converters:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.16" level="project" />
     <orderEntry type="library" name="Maven: io.vavr:vavr:0.10.3" level="project" />
     <orderEntry type="library" name="Maven: io.vavr:vavr-match:0.10.3" level="project" />
@@ -30,8 +31,9 @@
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:11.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:11.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:11.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.retrofit2:adapter-rxjava2:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.retrofit2:retrofit:2.6.1" level="project" />
-    <orderEntry type="library" name="Maven: com.squareup.retrofit2:retrofit-converters:2.6.1" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.retrofit2:converter-scalars:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.retrofit2:converter-gson:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:4.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:2.2.2" level="project" />

@@ -10,7 +10,6 @@ public class ServiciosAreas {
     public Single<AreasRequest> getAreas(int valor) {
         DaoRxAreas dao = new DaoRxAreas();
 
-
         return Completable.fromAction(
                 () -> {
 
