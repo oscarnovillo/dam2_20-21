@@ -14,7 +14,7 @@
         <Logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="ERROR">
+        <Logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE">
             <AppenderRef ref="Console"/>
         </Logger>
 

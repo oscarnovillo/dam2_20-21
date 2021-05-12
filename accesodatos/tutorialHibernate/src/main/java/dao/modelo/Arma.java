@@ -5,7 +5,6 @@ import lombok.Data;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
 @Entity

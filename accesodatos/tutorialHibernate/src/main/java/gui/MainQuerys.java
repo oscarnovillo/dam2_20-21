@@ -1,6 +1,8 @@
 package gui;
 
 import dao.modelo.Arma;
+import dao.modelo.ArmasFacciones;
+import dao.modelo.Informe;
 import dao.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -12,7 +14,7 @@ public class MainQuerys {
     public static void main(String[] args) {
         Session session = HibernateUtils.getSession();
 
-        Query<Arma> q = session.createQuery("from Arma ");
+        //Query<Arma> q = session.createQuery("from Arma ");
 
 //        q.stream().forEach(System.out::println);
 //
@@ -22,40 +24,52 @@ public class MainQuerys {
 //        armas.stream().forEach(System.out::println);
 
 
-        q = session.createQuery("select distinct(a) from Arma a " +
-                "inner join a.armasFaccionesById as af " +
+        Query<Arma> q1 = session.createQuery("select distinct a from Arma a " +
+                "inner join ArmasFacciones af on af.arma.id = a.id " +
                 "inner join af.faccion as f " +
-                "where f.numeroSistemasControlados > 0 ",Arma.class);
+                "where f.numeroSistemasControlados > 0 ", Arma.class);
 
-        q.stream().forEach(System.out::println);
-
-
-        System.out.println();
-        q = session.createQuery("select distinct(af.arma) from ArmasFacciones af " +
-                " inner join af.faccion f "+
-                "where f.numeroSistemasControlados > 0 ",Arma.class);
+        List<Arma> a = q1.getResultList();
+        //q1.stream().forEach(System.out::println);
+        session.close();
 
 
-        q.stream().forEach(o -> System.out.println(o.toStringTodo()));
-
-        Query q1 = session.createQuery("select af.arma,af.faccion.contacto from ArmasFacciones af " +
-                " inner join af.faccion f "+
-                "where f.numeroSistemasControlados > :numero ")
-                .setParameter("numero",0);
+        a.stream().forEach(arma -> System.out.println(arma.getArmasFaccionesById()));
 
 
-        q1.stream().forEach(o -> {
-            Object[] resultado = (Object[])o;
-            System.out.println(resultado[0]+" {"+resultado[1]+"}");
+      //  q.stream().forEach(arma -> System.out.println(arma.getArmasFaccionesById()));
 
 
-        });
 
-        q1 = session.createQuery("select a.id,a.nombre from Arma a " +
-                "left join a.armasFaccionesById as af inner join af.faccion as f " +
-                "where f.numeroSistemasControlados > 0 ");
-
-        q1.stream().forEach(o -> System.out.println(((Object[])o)[0]));
+//
+//        System.out.println();
+//        q = session.createQuery("select distinct(af.arma) from ArmasFacciones af " +
+//                " inner join af.faccion f "+
+//                "where f.numeroSistemasControlados > 0 ",Arma.class);
+//
+//
+//        q.stream().forEach(o -> System.out.println(o.toStringTodo()));
+//
+//        Query<Informe> q1 = session.createQuery("select  af.arma,af.faccion.numeroSistemasControlados from ArmasFacciones af " +
+//                " inner join af.faccion f "+
+//                "where f.numeroSistemasControlados > :numero ", Informe.class)
+//                .setParameter("numero",0);
+//
+//        q1.stream().forEach(System.out::println);
+//
+//
+//        q1.stream().forEach(o -> {
+//            Object[] resultado = (Object[])o;
+//            System.out.println(resultado[0]);//+" {"+resultado[1]+"}");
+//
+//
+//        });
+//
+//        q1 = session.createQuery("select a.id,a.nombre from Arma a " +
+//                "left join a.armasFaccionesById as af inner join af.faccion as f " +
+//                "where f.numeroSistemasControlados > 0 ");
+//
+//        q1.stream().forEach(o -> System.out.println(((Object[])o)[0]));
 
 //
 //        q = session.createQuery("select b from Batalla b " +

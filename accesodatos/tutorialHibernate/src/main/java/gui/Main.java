@@ -5,17 +5,25 @@ import dao.DaoArmasFacciones;
 import dao.modelo.Arma;
 import dao.modelo.ArmasFacciones;
 import dao.modelo.Faccion;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.LogManager;
 
 import java.time.LocalDate;
 
-
+@Log4j2
 public class Main {
+
+
+
 
     public static void main(String[] args) {
         DaoArmas dao = new DaoArmas();
         dao.getById(7)
                 .peek(System.out::println)
                 .peekLeft(System.out::println);
+
+        log.info("asdfasd");
+
 //
 //        dao.getByNombre("sdf")
 //                .peek(System.out::println)

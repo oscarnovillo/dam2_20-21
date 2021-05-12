@@ -57,7 +57,7 @@ public class DaoArmas {
         Either<String,  List<Arma>> resultado = null;
         try (Session session = HibernateUtilsSingleton.getInstance().getSession()) {
 
-            List<Arma> a = session.createQuery("from Arma ",Arma.class).getResultList();
+            List<Arma> a = session.createQuery("select Arma from Arma",Arma.class).getResultList();
             resultado = Either.right(a);
 
         } catch (Exception e) {
@@ -70,8 +70,10 @@ public class DaoArmas {
     public Either<String, Arma> addArma(Arma a) {
         Either<String,  Arma> resultado = null;
         try (Session session = HibernateUtilsSingleton.getInstance().getSession()) {
-
+            session.beginTransaction();
             session.save(a);
+            session.getTransaction().commit();
+
             resultado = Either.right(a);
 
         }catch (ConstraintViolationException e) {

@@ -73,6 +73,7 @@ public class DaoMarvel {
 
         return (Single<List<dao.modelo.marvel.Character>>) Completable.fromAction(
                 () -> {
+                    Thread.sleep(5000);
                     if (test.equals("error")) throw new Exception("error de validacion");
                 })
                 .andThen(marvelAPI.getCharactersRx()

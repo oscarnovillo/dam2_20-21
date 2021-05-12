@@ -15,9 +15,10 @@
         <property name="hibernate.hikari.maximumPoolSize">5</property>
         <property name="hibernate.hikari.idleTimeout">300000</property>
         <!-- DB schema will be updated if needed -->
+
 <!--        <property name="hibernate.hbm2ddl.auto">update</property>-->
-        <property name="connection.url">jdbc:mysql://dam2.mysql.iesquevedo.es:3335</property>
-        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+<!--        <property name="connection.url">jdbc:mysql://dam2.mysql.iesquevedo.es:3335</property>-->
+<!--        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>-->
 
         <mapping class="dao.modelo.Arma"/>
         <mapping class="dao.modelo.Faccion"/>

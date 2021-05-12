@@ -43,7 +43,7 @@ public class DaoAreas {
 //        return resultado;
     }
 
-    public Either<String, List<Competition>> getCompetitions(Area area) {
+    public Either<String, List<Competition>> getCompetitions(Area area){
         Either<String, List<Competition>> resultado = null;
 
         Retrofit retrofit = ConfigurationSingleton_OkHttpClient.getInstance();
@@ -61,11 +61,13 @@ public class DaoAreas {
             else
             {
                 resultado = Either.left(response.errorBody().toString());
+                
             }
         }
         catch (Exception e)
         {
             resultado= Either.left("Error de comunicacion");
+
         }
 
         return resultado;

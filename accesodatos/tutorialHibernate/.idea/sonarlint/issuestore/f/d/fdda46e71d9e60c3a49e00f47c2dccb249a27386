@@ -1,17 +1,12 @@
 
-V	java:S125"<This block of commented-out lines of code should be removed.(ÓÊ’·8“­“Úï.
-[	java:S125"<This block of commented-out lines of code should be removed.(ÓÔŠ‰úÿÿÿÿ8“­“Úï.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(«àÓ¢8Ê©ÉÂş.
-V	java:S125"<This block of commented-out lines of code should be removed.(Ì©ï8“­“Úï.
-[	java:S125"<This block of commented-out lines of code should be removed.(ÓÔŠ‰úÿÿÿÿ8“­“Úï.
-
-java:S1192"gDefine a constant instead of duplicating this literal "where f.numeroSistemasControlados > 0 " 3 times.(Ú¼Ü@8Ê©ÉÂş.
-X	java:S106"9Replace this use of System.out or System.err by a logger.(Ú‚Èøşÿÿÿÿ8Ê©ÉÂş.
-X	java:S106"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ8Ê©ÉÂş.
-S	java:S106"9Replace this use of System.out or System.err by a logger.(’ªˆõ8Ê©ÉÂş.
-J
-java:S3740"/Provide the parametrized type for this generic.(Ù¤°8Ê©ÉÂş.
-P
-java:S1854"5Remove this useless assignment to local variable "q".(¡ÜÀÌ8“­“Úï.
-X	java:S106"9Replace this use of System.out or System.err by a logger.(Çı·Šıÿÿÿÿ8“­“Úï.
-[	java:S125"<This block of commented-out lines of code should be removed.(­¤Öşÿÿÿÿ8“­“Úï.
+X	java:S1253"<This block of commented-out lines of code should be removed.(şî·¥8Ï¼«Ù•/
+Z	java:S1060"9Replace this use of System.out or System.err by a logger.(¢—¿Éøÿÿÿÿ8ı’¬Ù•/
+X	java:S125"<This block of commented-out lines of code should be removed.(ÓÊ’·8“­“Úï.
+]	java:S125E"<This block of commented-out lines of code should be removed.(­¤Öşÿÿÿÿ8“­“Úï.
+Z	java:S106 "9Replace this use of System.out or System.err by a logger.(Çı·Šıÿÿÿÿ8“­“Úï.
+]	java:S125#"<This block of commented-out lines of code should be removed.(—Ûóäûÿÿÿÿ8ÍÙÏ‘’/
+]	java:S125s"<This block of commented-out lines of code should be removed.(ÓÔŠ‰úÿÿÿÿ8“­“Úï.
+]	java:S125\"<This block of commented-out lines of code should be removed.(ÓÔŠ‰úÿÿÿÿ8“­“Úï.
+X	java:S125C"<This block of commented-out lines of code should be removed.(Ì©ï8“­“Úï.
+R
+java:S1854"5Remove this useless assignment to local variable "q".(¡ÜÀÌ8“­“Úï.

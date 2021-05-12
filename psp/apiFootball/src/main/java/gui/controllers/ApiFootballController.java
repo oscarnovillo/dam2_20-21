@@ -15,6 +15,7 @@ import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
 import io.reactivex.schedulers.Schedulers;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,6 +38,7 @@ public class ApiFootballController implements Initializable {
     public ListView listTeams;
     public TextField texto;
     private Alert alert;
+
 
     private PrincipalController principalController;
 

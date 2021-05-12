@@ -64,7 +64,7 @@ public class DaoUsuarios {
 //        return resultado;
     }
 
-    public Either<ApiError, Usuario> delUsuario(Usuario usu) {
+    public Either<ApiError, Usuario> delUsuario(Usuario usu)  {
         Either<ApiError, Usuario> resultado = null;
 
         Retrofit retrofit = ConfigurationSingleton_OkHttpClient.getInstance();
