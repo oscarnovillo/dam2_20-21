@@ -31,10 +31,10 @@ public class MainQuerys {
 
         List<Arma> a = q1.getResultList();
         //q1.stream().forEach(System.out::println);
-        session.close();
+        //session.close();
 
 
-        a.stream().forEach(arma -> System.out.println(arma.getArmasFaccionesById()));
+       // a.stream().forEach(arma -> System.out.println(arma.getArmasFaccionesById()));
 
 
       //  q.stream().forEach(arma -> System.out.println(arma.getArmasFaccionesById()));
@@ -50,12 +50,12 @@ public class MainQuerys {
 //
 //        q.stream().forEach(o -> System.out.println(o.toStringTodo()));
 //
-//        Query<Informe> q1 = session.createQuery("select  af.arma,af.faccion.numeroSistemasControlados from ArmasFacciones af " +
-//                " inner join af.faccion f "+
-//                "where f.numeroSistemasControlados > :numero ", Informe.class)
-//                .setParameter("numero",0);
-//
-//        q1.stream().forEach(System.out::println);
+        Query<Informe> q11 = session.createQuery("select  NEW dao.modelo.Informe(af.arma,af.faccion.numeroSistemasControlados) from ArmasFacciones af " +
+                " inner join af.faccion f "+
+                "where f.numeroSistemasControlados > :numero ")
+                .setParameter("numero",0);
+
+        q11.stream().forEach(System.out::println);
 //
 //
 //        q1.stream().forEach(o -> {

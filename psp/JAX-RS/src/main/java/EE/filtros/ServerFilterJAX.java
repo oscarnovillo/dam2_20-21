@@ -24,7 +24,7 @@ public class ServerFilterJAX  implements ContainerRequestFilter {
   private HttpServletRequest httpServletRequest;
 
   @Override
-  public void filter(ContainerRequestContext containerRequestContext) throws IOException {
+  public void filter(ContainerRequestContext containerRequestContext)  {
     if (httpServletRequest.getSession().getAttribute("kk")==null) {
       //httpServletRequest.getSession().setAttribute("kk",1);
       containerRequestContext.abortWith(Response.status(Response.Status.BAD_REQUEST)

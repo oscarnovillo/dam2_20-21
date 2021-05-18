@@ -23,7 +23,7 @@ public class ServiciosUsuarios {
         return dao.dameUno(id);
     }
 
-    public Either<ApiError, List<Usuario>> dameTodos()
+    public List<Usuario> dameTodos()
     {
         return dao.dameTodos();
     }

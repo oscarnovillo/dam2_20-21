@@ -29,13 +29,13 @@ public class DaoUsuario {
         }
     }
 
-    public Either<ApiError, List<Usuario>> dameTodos()
+    public List<Usuario> dameTodos()
     {
         if ( usuarios.size()==0)
         {
             throw new CustomException("lista vacia",Response.Status.NOT_FOUND);
         }
-        return Either.right(usuarios);
+        return usuarios;
     }
 
     public Usuario addUser(Usuario user)

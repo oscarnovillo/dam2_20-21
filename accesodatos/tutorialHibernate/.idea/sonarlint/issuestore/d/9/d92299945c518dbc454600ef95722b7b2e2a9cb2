@@ -1,7 +1,7 @@
 
+]	java:S125"<This block of commented-out lines of code should be removed.(ÆÓí¢şÿÿÿÿ8—•Ø’/
+U	java:S106"9Replace this use of System.out or System.err by a logger.(©Š†8èù¿íå.
+]	java:S125D"<This block of commented-out lines of code should be removed.(è›é„úÿÿÿÿ8—•Ø’/
+U	java:S106"9Replace this use of System.out or System.err by a logger.(ßˆ±ö8èù¿íå.
 ]
 java:S1128	"@Remove this unused import 'org.apache.logging.log4j.LogManager'.(Ë”Ëé8îè¢‘’/
-U	java:S106"9Replace this use of System.out or System.err by a logger.(ßˆ±ö8èù¿íå.
-]	java:S125"<This block of commented-out lines of code should be removed.(ÆÓí¢şÿÿÿÿ8—•Ø’/
-]	java:S125D"<This block of commented-out lines of code should be removed.(è›é„úÿÿÿÿ8—•Ø’/
-U	java:S106"9Replace this use of System.out or System.err by a logger.(©Š†8èù¿íå.

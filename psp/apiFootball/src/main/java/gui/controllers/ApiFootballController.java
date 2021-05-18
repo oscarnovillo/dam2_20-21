@@ -282,16 +282,18 @@ public class ApiFootballController implements Initializable {
     public void delUsuario(ActionEvent actionEvent) {
 
         Single<Either<ApiError, Usuario>> s = Single.fromCallable(() ->
-        {
+                {
+                    DaoUsuarios dao = new DaoUsuarios();
+                    return dao.delUsuario(new Usuario("0", "nombre", LocalDateTime.now()));
+                }
 
-            DaoUsuarios dao = new DaoUsuarios();
-            return dao.delUsuario(new Usuario("0", "nombre", LocalDateTime.now()));
-        })
+        )
                 .subscribeOn(Schedulers.io())
                 .observeOn(JavaFxScheduler.platform())
                 .doFinally(() -> this.principalController
                         .getPantallaPrincipal().setCursor(Cursor.DEFAULT));
-        s.subscribe(result -> result.peek(System.out::println)
+        s.subscribe(result ->
+                        result.peek(System.out::println)
                         .peekLeft(error -> {
                             alert.setContentText(error.getMessage());
                             alert.showAndWait();

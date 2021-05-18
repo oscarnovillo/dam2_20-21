@@ -10,6 +10,7 @@ import retrofit2.Retrofit;
 
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 //import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import java.lang.reflect.Type;
@@ -66,7 +67,7 @@ public class ConfigurationSingleton_OkHttpClient {
             ).create();
             retrofit = new Retrofit.Builder()
                     .baseUrl(ConfigurationSingleton_Client.getInstance().getPath_base())
-                    //.addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(ScalarsConverterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(clientOK)

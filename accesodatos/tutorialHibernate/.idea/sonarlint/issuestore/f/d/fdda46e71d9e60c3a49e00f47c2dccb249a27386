@@ -1,12 +1,11 @@
 
-X	java:S1253"<This block of commented-out lines of code should be removed.(şî·¥8Ï¼«Ù•/
-Z	java:S1060"9Replace this use of System.out or System.err by a logger.(¢—¿Éøÿÿÿÿ8ı’¬Ù•/
-X	java:S125"<This block of commented-out lines of code should be removed.(ÓÊ’·8“­“Úï.
-]	java:S125E"<This block of commented-out lines of code should be removed.(­¤Öşÿÿÿÿ8“­“Úï.
-Z	java:S106 "9Replace this use of System.out or System.err by a logger.(Çı·Šıÿÿÿÿ8“­“Úï.
-]	java:S125#"<This block of commented-out lines of code should be removed.(—Ûóäûÿÿÿÿ8ÍÙÏ‘’/
-]	java:S125s"<This block of commented-out lines of code should be removed.(ÓÔŠ‰úÿÿÿÿ8“­“Úï.
-]	java:S125\"<This block of commented-out lines of code should be removed.(ÓÔŠ‰úÿÿÿÿ8“­“Úï.
-X	java:S125C"<This block of commented-out lines of code should be removed.(Ì©ï8“­“Úï.
-R
-java:S1854"5Remove this useless assignment to local variable "q".(¡ÜÀÌ8“­“Úï.
+U	java:S106%"9Replace this use of System.out or System.err by a logger.(Üæß¼8ÈÁÖ–/
+]	java:S125O"<This block of commented-out lines of code should be removed.(­¤Öşÿÿÿÿ8“­“Úï.
+X	java:S125"<This block of commented-out lines of code should be removed.(ıŞ×§8†äŞ–/
+X	java:S125"<This block of commented-out lines of code should be removed.(ÓÊ’·8“­“Úï.
+]	java:S125f"<This block of commented-out lines of code should be removed.(ÓÔŠ‰úÿÿÿÿ8“­“Úï.
+]	java:S125-"<This block of commented-out lines of code should be removed.(—Ûóäûÿÿÿÿ8ÍÙÏ‘’/
+X	java:S125M"<This block of commented-out lines of code should be removed.(Ì©ï8“­“Úï.
+X	java:S125!"<This block of commented-out lines of code should be removed.(‰ú¡Ì8‰à–/
+X	java:S125("<This block of commented-out lines of code should be removed.(«°¬­8‰‘Ñ–/
+]	java:S125}"<This block of commented-out lines of code should be removed.(ÓÔŠ‰úÿÿÿÿ8“­“Úï.

@@ -69,7 +69,7 @@ public class RestUsuarios {
 
     @GET
     public List<Usuario> getAllUsuario() {
-        return su.dameTodos().get();
+        return su.dameTodos();
     }
 
     @POST
