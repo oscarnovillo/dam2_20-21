@@ -1,11 +1,17 @@
 
-U	java:S106%"9Replace this use of System.out or System.err by a logger.(‹Êﬂº8»¡÷Åñ/
-]	java:S125O"<This block of commented-out lines of code should be removed.(≠§é÷˛ˇˇˇˇ8ì≠ì⁄Ô.
-X	java:S125"<This block of commented-out lines of code should be removed.(˝ﬁ◊ß8Ü‰ﬁÅñ/
-X	java:S125"<This block of commented-out lines of code should be removed.(” í∑8ì≠ì⁄Ô.
-]	java:S125f"<This block of commented-out lines of code should be removed.(”‘äâ˙ˇˇˇˇ8ì≠ì⁄Ô.
-]	java:S125-"<This block of commented-out lines of code should be removed.(ó€Û‰˚ˇˇˇˇ8ÕŸœëí/
-X	java:S125M"<This block of commented-out lines of code should be removed.(Ãè©Ô8ì≠ì⁄Ô.
 X	java:S125!"<This block of commented-out lines of code should be removed.(â˙°Ã8êâ‡Åñ/
+X	java:S125="<This block of commented-out lines of code should be removed.(˛Ó∑•8¨öı¯ó/
+]	java:S125-"<This block of commented-out lines of code should be removed.(ó€Û‰˚ˇˇˇˇ8ÕŸœëí/
+C
+java:S1481 "&Remove this unused "a" local variable.(”◊ã©8ΩÎ˜¯ó/
+Z	java:S106:"9Replace this use of System.out or System.err by a logger.(÷ŒúÅ˚ˇˇˇˇ8¨öı¯ó/
+]	java:S125O"<This block of commented-out lines of code should be removed.(≠§é÷˛ˇˇˇˇ8ì≠ì⁄Ô.
+]	java:S125f"<This block of commented-out lines of code should be removed.(”‘äâ˙ˇˇˇˇ8ì≠ì⁄Ô.
+X	java:S125"<This block of commented-out lines of code should be removed.(˝ﬁ◊ß8Ü‰ﬁÅñ/
 X	java:S125("<This block of commented-out lines of code should be removed.(´∞¨≠8âë—Åñ/
+X	java:S125M"<This block of commented-out lines of code should be removed.(Ãè©Ô8ì≠ì⁄Ô.
+X	java:S125%"<This block of commented-out lines of code should be removed.(À√à„8ΩÎ˜¯ó/
 ]	java:S125}"<This block of commented-out lines of code should be removed.(”‘äâ˙ˇˇˇˇ8ì≠ì⁄Ô.
+X	java:S125"<This block of commented-out lines of code should be removed.(” í∑8ì≠ì⁄Ô.
+R
+java:S1854 "5Remove this useless assignment to local variable "a".(”◊ã©8ΩÎ˜¯ó/

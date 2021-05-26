@@ -5,6 +5,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Projections;
 import com.mongodb.client.model.Sorts;
 import modelo.Persona;
@@ -34,7 +35,7 @@ public class TutorialFind {
 
     MongoDatabase db = mongo.getDatabase("oscar");
 
-    MongoCollection<Document> est = db.getCollection("est");
+    MongoCollection<Document> est = db.getCollection("persona");
 
     PersonaConverter pc = new PersonaConverter();
     List<Document> personas = new ArrayList<>();
@@ -50,51 +51,59 @@ public class TutorialFind {
                     //.conventions(Arrays.asList(ANNOTATION_CONVENTION))
                     .automatic(true).build()));
 
-    MongoCollection<Persona> col = db.getCollection("est", Persona.class).withCodecRegistry(pojoCodecRegistry);
+    MongoCollection<Persona> col = db.getCollection("persona", Persona.class).withCodecRegistry(pojoCodecRegistry);
 
-    List<Persona> personas1 =
-
-    col.find().into(new ArrayList());
+    List<Persona> personas1 = col.find().into(new ArrayList());
 
     personas1.stream().forEach(System.out::println);
 
-
-    System.out.println("find");
-    String valor = "Becki Feest";
-
+//
+//    System.out.println("find");
+    String valor = "Orville Halvorson";
+//
     est.find(Document.parse("{\"name\" : \""+valor+"\"}")).into(new ArrayList()).forEach(System.out::println);
+
+    System.out.println("CON COLL");
     col.find(new Document("name",valor)).into(new ArrayList()).forEach(System.out::println);
+
+
 
     col.find(eq("name",valor))
             .into(new ArrayList()).forEach(System.out::println);
-
+//
     LocalDate l = LocalDate.of(1984,11,6);
     col.find(and(eq("name",valor),eq("fecha",l)))
             .into(new ArrayList()).forEach(System.out::println);
-
-    col.find(and(eq("_id",new ObjectId("5fef79cd8fc55d1e0a233fc4"))))
+//
+    col.find(and(eq("_id",personas1.get(0).getId())))
             .into(new ArrayList()).forEach(System.out::println);
 
-//    col.find(exists("name",false))
-//            .into(new ArrayList()).forEach(System.out::println);
+    col.find(exists("name",false))
+            .into(new ArrayList()).forEach(System.out::println);
 
 //    System.out.println("find con expresion regular");
 //
-//    est.find(new Document("name",new Document("$regex","i.*"))).into(new ArrayList()).forEach(System.out::println);
-//
-//    est.find(regex("name","i.*")).into(new ArrayList()).forEach(System.out::println);
+    est.find(new Document("name",new Document("$regex","i.*"))).into(new ArrayList()).forEach(System.out::println);
+
+    col.find(regex("name","Orville")).into(new ArrayList()).forEach(System.out::println);
 
 //    System.out.println("find con expresion regular y or");
 //    est.find(or(eq("name","kk"),regex("name","^L.*H.*"))).into(new ArrayList()).forEach(System.out::println);
 //
 //
-//    System.out.println("find con columna nested");
-//    col.find(gt("cosas.cantidad",3))
-//            .into(new ArrayList()).forEach(System.out::println);
+    System.out.println("find con columna nested");
+    col.find(gt("cosas.cantidad",3))
+            .into(new ArrayList()).forEach(System.out::println);
 //
 //    System.out.println("find con columna nested");
-//    col.find(size("cosas",1))
+    col.find(size("cosas",1))
+            .into(new ArrayList()).forEach(System.out::println);
+
+
+//    col.find(Document.parse("{ \"cosas\" : {$elemMatch : { \"cantidad\": {$gt: 4}  } }}"))
 //            .into(new ArrayList()).forEach(System.out::println);
+
+
 //
 //    System.out.println("find con columna nested");
 //    col.find(exists("cosas.0",true))
@@ -111,6 +120,8 @@ public class TutorialFind {
 ////    $size,$elemMatch,
 //    System.out.println("find con size de un array");
 //    est.find(size("cosas",1)).into(new ArrayList()).forEach(System.out::println);
+//    col.find(Filters.elemMatch("cosas",gt("cantidad",4)))
+//            .into(new ArrayList()).forEach(System.out::println);
 //
 //
 //// $expr
@@ -124,7 +135,7 @@ public class TutorialFind {
 //
 //    //projections
 //    System.out.println("projection");
-//    est.find().projection(new Document("name",1).append("cosas.nombre",1)).into(new ArrayList()).forEach(System.out::println);
+    col.find().projection(new Document("name",1).append("cosas.nombre",1)).into(new ArrayList()).forEach(System.out::println);
 //
 //    est.find().projection(new Document("name",1).append("_id",0).append("cosas.nombre",1)).into(new ArrayList()).forEach(System.out::println);
 //
@@ -132,10 +143,11 @@ public class TutorialFind {
 //
 //    est.find(Document.parse("{ \"cosas.cantidad\": { $exists: true}}")).into(new ArrayList()).forEach(System.out::println);
 //
-//    est.find(Document.parse("{ \"cosas.cantidad\": { $exists: true}}"))
-//            .projection(new Document("name",1).append("_id",0).append("cosas",new Document("$elemMatch",
-//        new Document("$gt",new Document("cantidad",1)))))
-//            .into(new ArrayList()).forEach(System.out::println);
+    col.find(exists("cosas.cantidad",true))
+            .projection(Projections.fields(include("name"),excludeId()
+                    ,Projections.elemMatch("cosas",gt("cantidad",1))))
+            .sort(Sorts.ascending("cosas.cantidad"))
+            .into(new ArrayList()).forEach(System.out::println);
 //
 //
 //
@@ -146,13 +158,13 @@ public class TutorialFind {
 //
 //    System.out.println("ordenando y filtrado");
 //
-    List<Document> cosas = (List)est.find()
-        .sort(Sorts.ascending("name"))
-        .projection(fields(include("name"), excludeId(),
-            Projections.elemMatch("cosas",gt("cantidad",3))))
-        .into(new ArrayList());
-
-    cosas.forEach(System.out::println);
+//    List<Document> cosas = (List)est.find()
+//        .sort(Sorts.ascending("name"))
+//        .projection(fields(include("name"), excludeId(),
+//            Projections.elemMatch("cosas",gt("cantidad",3))))
+//        .into(new ArrayList());
+//
+//    cosas.forEach(System.out::println);
 
 //    Arrays.asList(unwind("$ejemplares"), unwind("$ejemplares.prestamos"), match(eq("ejemplares.prestamos.nombre", "alvaro")), addFields(new Field("fecha",
 //            new Document("$dayOfMonth",

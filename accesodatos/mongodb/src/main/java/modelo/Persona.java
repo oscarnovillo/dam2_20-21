@@ -20,8 +20,6 @@ public class Persona {
 
   private ObjectId id;
 
-
-
   private String name;
   private LocalDate fecha;
   private ObjectId _idLector;
@@ -31,5 +29,6 @@ public class Persona {
   public Persona() {
     cosas = new ArrayList<>();
     fecha = LocalDate.now();
+    name = "no cargado";
   }
 }

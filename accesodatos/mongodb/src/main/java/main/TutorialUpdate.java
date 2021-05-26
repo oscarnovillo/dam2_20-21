@@ -33,17 +33,38 @@ public class TutorialUpdate {
     CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
             fromProviders(PojoCodecProvider.builder().automatic(true).build()));
 
-    MongoCollection<Persona> est = db.getCollection("est", Persona.class)
+    MongoCollection<Persona> est = db.getCollection("persona", Persona.class)
             .withCodecRegistry(pojoCodecRegistry);
 
 
     List<Things> cosas = new ArrayList<>();
-    cosas.add(Things.builder().nombre("ll").cantidad(5).build());
-     System.out.println(est.updateOne(
-            eq("name", "Boyd Olson"),
-             set("name","estoy tonto"))
-            .getModifiedCount());
+    cosas.add(Things.builder().nombre("lasdasdl").cantidad(5).build());
+    cosas.add(Things.builder().nombre("lasdasdl").cantidad(1).build());
+    cosas.add(Things.builder().nombre("lasdasd").cantidad(2).build());
+
+
+    //     System.out.println(est.updateMany(eq("name","cambiar")
+//            ,
+//             combine(set("name","nuevo2"),set("fecha",2),pushEach("cosas",cosas)))
+//            .getModifiedCount());
+
+//     System.out.println(est.updateMany(eq("name","cambiar")
+//            ,
+//             combine(set("name","nuevo2"),set("fecha",2),set("cosas",cosas)))
+//            .getModifiedCount());
+
+//    System.out.println(est.updateMany(eq("name","cambiar")
+//            ,
+//            combine(unset("cosas")))
+//            .getModifiedCount());
 //
+//    System.out.println(est.updateMany(eq("name","cambiar")
+//            ,
+//            combine(set("cosas",cosas)))
+//            .getModifiedCount());
+
+
+    //
 //    System.out.println(est.updateOne(
 //            eq("name", "estoy tonto"),
 //            set("zapatilla.nombre2","nike"))
@@ -57,27 +78,29 @@ public class TutorialUpdate {
 //            .getModifiedCount());
 
 //    System.out.println(est.updateMany(
-//            eq("name", "estoy tonto"),
+//            eq("name", "cambiar"),
 //            pull("cosas",
-//                    eq("nombre","nuevo2")))
+//                    eq("cantidad",1)))
 //            .getModifiedCount());
 
 //    est.updateMany(
 //        eq("name", "jj"),
 //        Updates.combine(set("cosas.0.cantidad", 2),set("cosas.1.cantidad", 210)));
 //
-//
+// $[] cambio a todos
+// n cambia posicion n
+
 //    System.out.println(est.updateOne(
-//        eq("name", "estoy tonto"),
-//        inc("cosas.$[].cantidad", 1)).getModifiedCount());
+//        eq("name", "cambiar"),
+//        set("cosas.$[].nombre", "test")).getModifiedCount());
 //
 //
 //
 //
-    System.out.println(est.updateOne(eq("name", "estoy tonto"),
+    System.out.println(est.updateOne(eq("name", "cambiar"),
        set("cosas.$[oo].cantidad",7),
         new UpdateOptions().arrayFilters(
-            List.of(and(eq("oo.nombre","nuevo2"),
+            List.of(and(eq("oo.nombre","test"),
                     lt("oo.cantidad",9))))).getModifiedCount());
 
 //    System.out.println(est.updateMany(

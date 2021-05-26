@@ -29,23 +29,22 @@ public class TutorialInsert {
         MongoClient mongo = MongoClients.create("mongodb://dam2.tomcat.iesquevedo.es:2323");
 
 
-        CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
-                fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+
 
         MongoDatabase db = mongo.getDatabase("oscar");
 
-        MongoCollection<Document> est = db.getCollection("est");
+        MongoCollection<Document> est = db.getCollection("persona");
 
         //primera manera
-        est.insertOne(Document.parse("{ \"kk\":"+8+",\"ll\":\"ll\"}"));
-
-        //segunda manera
-        Document d = new Document();
-        d.put("kk",90);
-        d.put("ll","ll");
-        d.put("cosas",Document.parse("{ \"kk\":9,\"ll\":\"ll\"}"));
-
-        est.insertOne(d);
+//        est.insertOne(Document.parse("{ \"kk\":"+8+",\"ll\":\"ll\"}"));
+//
+//        //segunda manera
+       Document d = new Document();
+//        d.put("kk",90);
+//        d.put("ll","ll");
+//        d.put("cosas",Document.parse("{ \"kk\":9,\"ll\":\"ll\"}"));
+//
+//        est.insertOne(d);
 
 
         // tercera manera
@@ -56,15 +55,18 @@ public class TutorialInsert {
         cosas = new ArrayList<>();
         cosas.add(Things.builder().nombre(faker.food().dish()).cantidad(faker.number().numberBetween(10, 20)).build());
         p.setCosas(cosas);
-//
+////
         PersonaConverter pc = new PersonaConverter();
         Document d1 = pc.convertPersonaDocument(p);
         est.insertOne(d1);
         p.setId(d.getObjectId("_id"));
         System.out.println(p);
+//
+//
 
-
-        MongoCollection<Persona> col = db.getCollection("est", Persona.class).withCodecRegistry(pojoCodecRegistry);
+        CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
+                fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+        MongoCollection<Persona> col = db.getCollection("persona", Persona.class).withCodecRegistry(pojoCodecRegistry);
         Persona p1 = new Persona();
         p1.setName(null);
 
@@ -74,9 +76,9 @@ public class TutorialInsert {
         col.insertOne(p1);
 
         System.out.println(p1);
-
-
-        col.find().into(new ArrayList()).forEach(System.out::println);
+//
+//
+//        col.find().into(new ArrayList()).forEach(System.out::println);
         //
 //        // System.out.println(est.deleteOne(new Document("_id", p.get_id())).getDeletedCount());
 //        // System.out.println(est.deleteOne(Document.parse("{ _id : ObjectId(\""+p.get_id()+"\") }")).getDeletedCount());

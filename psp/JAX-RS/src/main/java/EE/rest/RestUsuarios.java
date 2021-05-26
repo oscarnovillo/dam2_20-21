@@ -59,7 +59,7 @@ public class RestUsuarios {
                                 @HeaderParam("kk") String head) {
         AtomicReference<Response> r = new AtomicReference();
         su.dameUno(id)
-                .peek(usuario -> r.set(Response.ok(mapper.map(usuario, UsuarioGetDTO.class)).build()))
+                .peek(usuario -> r.set(Response.ok().entity(usuario).build()))
                 .peekLeft(apiError -> r.set(Response.status(Response.Status.NOT_FOUND)
                         .entity(new ApiError("error not found", LocalDateTime.now()))
                         .build()));
