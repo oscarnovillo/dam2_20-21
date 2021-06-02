@@ -68,13 +68,14 @@ public class SignTest {
 
             PrivateKey clavePrivada2 = keyFactoryRSA.generatePrivate(clavePrivadaSpec);
 
+
             Signature sign = Signature.getInstance("SHA256WithRSA");
             sign.initSign(clavePrivada2);
             sign.update("hola".getBytes());
             byte[] firma = sign.sign();
 
             sign.initVerify(clavePublica2);
-
+            sign.update("hola".getBytes());
             System.out.println(sign.verify(firma));
             
         } catch (Exception ex) {

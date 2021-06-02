@@ -19,7 +19,7 @@ public class EjemploRSA  {
 
       // PASO 1: Crear e inicializar el par de claves RSA DE 512 bits
       KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA"); // Hace uso del provider BC
-      keyGen.initialize(2048);  // tamano clave 512 bits
+      keyGen.initialize(2048);
       KeyPair clavesRSA = keyGen.generateKeyPair();
       PrivateKey clavePrivada = clavesRSA.getPrivate();
       PublicKey clavePublica = clavesRSA.getPublic();
@@ -49,7 +49,6 @@ public class EjemploRSA  {
       mostrarBytes(bufferCifrado);
       System.out.println("\n-------------------------------");
 
-
       // PASO 3b: Poner cifrador en modo DESCIFRADO
       cifrador.init(Cipher.DECRYPT_MODE, clavePrivada); // Descrifra con la clave privada
 
@@ -61,6 +60,7 @@ public class EjemploRSA  {
 
       // PASO 3a: Poner cifrador en modo CIFRADO
       cifrador.init(Cipher.ENCRYPT_MODE, clavePrivada);  // Cifra con la clave publica
+
 
       System.out.println("4a. Cifrar con clave privada");
       bufferCifrado = cifrador.doFinal(bufferPlano);
