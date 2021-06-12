@@ -1,0 +1,15 @@
+
+N
+java:S1128"3Remove this unused import 'config.modelo.ConfigDB'.(Ÿï ùşÿÿÿÿ
+V
+java:S1128"@Remove this unused import 'javax.enterprise.inject.Alternative'.(¦ªÑ
+J
+java:S1128"4Remove this unused import 'java.io.FileInputStream'.(˜³ÉÓ
+K
+java:S1128"5Remove this unused import 'java.util.logging.Logger'.(ƒ¥óš
+U
+java:S1128":Remove this unused import 'java.io.FileNotFoundException'.(·î™ùÿÿÿÿ
+J
+java:S1128"4Remove this unused import 'java.util.logging.Level'.(…µÛ¶
+J
+java:S6212!"/Declare this local variable with "var" instead.(ŞÚßÅøÿÿÿÿ

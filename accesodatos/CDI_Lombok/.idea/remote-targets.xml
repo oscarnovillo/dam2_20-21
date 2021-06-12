@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="WSL - Ubuntu-20.04" type="wsl">
+        <config>
+          <option name="distributionMsId" value="Ubuntu-20.04" />
+          <option name="projectRootOnTarget" value="/mnt/c/tools/ideaIU-2021.1.1.win/jbr/bin&#10;/CDI_lombok" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/usr/lib/jvm/java-11-openjdk-amd64/" />
+            <option name="javaVersionString" value="11.0.11" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>

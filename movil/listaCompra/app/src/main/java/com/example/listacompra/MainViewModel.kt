@@ -1,9 +1,6 @@
 package com.example.listacompra
 
-import android.content.Context.INPUT_METHOD_SERVICE
 import android.util.Log
-import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
@@ -28,7 +25,8 @@ class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
     private val _visibility = MutableLiveData<Boolean>()
     val visibility: LiveData<Boolean> get() = _visibility
 
-    private val _tiendaActual : MutableLiveData<String> = savedStateHandle.getLiveData("tiendaActual")
+    private val _tiendaActual: MutableLiveData<String> =
+        savedStateHandle.getLiveData("tiendaActual")
     val tiendaActual: LiveData<String> get() = _tiendaActual
 
     private val _errorMessage = MutableLiveData<String>()
@@ -42,7 +40,7 @@ class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
     }
 
 
-    fun cambiarDeTienda(tiendaNueva: Int,producto:Producto) {
+    fun cambiarDeTienda(tiendaNueva: Int, producto: Producto) {
         if (listaTiendas[tiendaNueva] != tiendaActual.value) {
             database.child("tiendas/${listaTiendas[tiendaNueva]}/listas/actual")
                 .child(producto.nombre).setValue(producto)
@@ -78,7 +76,7 @@ class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
 
     fun comprarProducto(producto: Producto) {
         producto.comprado = !producto.comprado
-        database.child("tiendas").child(tiendaActual.value?: "").child("listas")
+        database.child("tiendas").child(tiendaActual.value ?: "").child("listas")
             .child("actual").child(producto.nombre).setValue(producto)
         _productos.value = listaProductos
     }
@@ -100,7 +98,7 @@ class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
                 database.child("tiendas/${tiendaActual.value}/listas/actual/${producto.nombre}")
                     .removeValue()
             }
-        _productos.value?.filter {producto -> !producto.comprado  }?.toCollection(listaProductos)
+        _productos.value?.filter { producto -> !producto.comprado }?.toCollection(listaProductos)
         _productos.value = listaProductos
     }
 
@@ -108,18 +106,18 @@ class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
         _visibility.value = true
         _tiendaActual.value = tienda
         database.child("tiendas").child(tienda).child("listas").child("actual").get()
-            .addOnSuccessListener {
+            .addOnSuccessListener { productos ->
                 listaProductos.clear()
-                it.children.forEach { dataSnapshot ->
+                productos.children.forEach { dataSnapshot ->
 
-                    val user = dataSnapshot.getValue(Producto::class.java)
-                    user?.let {
+                    val producto = dataSnapshot.getValue(Producto::class.java)
+                    producto?.let {
                         listaProductos.add(it)
                     }
                 }
                 listaProductos.sortBy { producto -> producto.comprado }
                 _productos.value = listaProductos
-                Log.d("::::TAG", "Got value ${it.value}")
+                Log.d("::::TAG", "Got value ${productos.value}")
                 _visibility.value = false
             }.addOnFailureListener {
                 listaProductos.clear()
@@ -153,6 +151,21 @@ class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
         database.child("tiendas").child(tiendaActual.value.orEmpty()).child("listas")
             .child("actual").child(producto.nombre).setValue(producto)
         //adapter.notifyDataSetChanged()
+    }
+
+    fun addProductosUltimaCompra() {
+        database.child("tiendas/${tiendaActual.value}/listas/").get()
+            .addOnSuccessListener { listas ->
+                // el ultimo es el actual
+                listas.children.elementAt(listas.childrenCount.toInt() - 2).children.forEach {
+                    val producto = it.getValue(Producto::class.java)
+
+                    producto?.let {
+                        producto.comprado = false
+                        addProducto(producto)
+                    }
+                }
+            }
     }
 
 

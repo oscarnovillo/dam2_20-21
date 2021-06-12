@@ -114,8 +114,8 @@ class MainActivity : AppCompatActivity() {
                     this@MainActivity.cambiarProductoDeTienda(producto)
             })
 
-        binding.rvCompras.adapter = adapter
-        binding.rvCompras.layoutManager = LinearLayoutManager(this)
+        rvCompras.adapter = adapter
+        rvCompras.layoutManager = LinearLayoutManager(this)
 
 
         viewModel.visibility.observe(this, Observer { visible ->
@@ -136,7 +136,8 @@ class MainActivity : AppCompatActivity() {
         })
 
         btAdd.setOnClickListener { addProducto() }
-        binding.fbRecargar.setOnClickListener { viewModel.cargarListaProductos() }
+        addMultiple.setOnClickListener { addProductosCompra() }
+        fbRecargar.setOnClickListener { viewModel.cargarListaProductos() }
 
         if (viewModel.tiendaActual.value == null) {
             viewModel.cargarTiendas()
@@ -146,9 +147,27 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.myToolbar)
     }
 
+    private fun addProductosCompra() {
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("CONFIRMACION")
+            .setMessage("¿Seguro que quieres añadir todos los productos de la ultima compra?")
+            .setNegativeButton("NO") { view, _ ->
+                view.dismiss()
+            }
+            .setPositiveButton("YES") { view, _ ->
+                viewModel.addProductosUltimaCompra()
+                view.dismiss()
+            }
+            .setCancelable(false)
+            .create()
+
+        dialog.show()
+    }
+
     fun hideKeyboard() {
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+
     }
 
     fun cambiarProductoDeTienda(producto: Producto) {
@@ -179,6 +198,7 @@ class MainActivity : AppCompatActivity() {
         val newProducto = Producto(binding.etProducto.text.toString(), false)
         viewModel.addProducto(newProducto)
         binding.etProducto.setText("")
+        hideKeyboard()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

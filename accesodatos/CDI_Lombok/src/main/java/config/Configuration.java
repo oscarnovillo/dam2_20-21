@@ -15,6 +15,7 @@ import javax.inject.Singleton;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Map;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,6 +39,8 @@ public class Configuration {
         this.ruta = m.get("ruta");
         this.user = m.get("user");
         this.password = m.get("password");
+        this.ruta = Optional.ofNullable(System.getenv("ruta")).orElseGet(() ->  m.get("ruta"));
+
     }
 
 

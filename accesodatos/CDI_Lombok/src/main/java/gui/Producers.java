@@ -1,10 +1,5 @@
 package gui;
 
-import config.Configuration;
-import javafx.fxml.FXMLLoader;
-
-import javax.enterprise.inject.Alternative;
-import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -14,10 +9,8 @@ import javax.validation.ValidatorFactory;
 public class Producers {
 
 
-
     @Produces
-    public Validator createValidator()
-    {
+    public Validator createValidator() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         return validator;
