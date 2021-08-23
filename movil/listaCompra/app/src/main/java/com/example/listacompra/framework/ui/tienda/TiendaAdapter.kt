@@ -1,4 +1,4 @@
-package com.example.listacompra
+package com.example.listacompra.framework.ui.tienda
 
 import android.view.LayoutInflater
 import android.view.View

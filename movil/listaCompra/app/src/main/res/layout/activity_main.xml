@@ -8,7 +8,7 @@
     android:gravity="center"
     android:theme="@style/Theme.ListaCompra"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".framework.ui.main.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"

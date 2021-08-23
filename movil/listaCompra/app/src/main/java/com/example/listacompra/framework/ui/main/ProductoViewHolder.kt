@@ -1,10 +1,11 @@
-package com.example.listacompra
+package com.example.listacompra.framework.ui.main
 
 import android.view.View.*
 import android.view.inputmethod.EditorInfo
 import androidx.recyclerview.widget.RecyclerView
+import com.example.listacompra.R
 import com.example.listacompra.databinding.ItemProductoBinding
-import com.example.listacompra.modelo.Producto
+import com.example.listacompra.domain.Producto
 
 class ProductoViewHolder(val binding: ItemProductoBinding) : RecyclerView.ViewHolder(binding.root) {
 

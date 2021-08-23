@@ -1,14 +1,16 @@
-package com.example.listacompra
+package com.example.listacompra.framework.ui.main
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import com.example.listacompra.modelo.Producto
+import androidx.lifecycle.*
+import com.example.listacompra.data.Resultado
+import com.example.listacompra.data.repository.ProductoRepository
+import com.example.listacompra.domain.Producto
+import com.example.listacompra.framework.data.datasource.FirebaseProductoDataSource
+import com.example.listacompra.usecases.GetProductosTienda
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
@@ -97,37 +99,53 @@ class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
                     .setValue(producto)
                 database.child("tiendas/${tiendaActual.value}/listas/actual/${producto.nombre}")
                     .removeValue()
+                listaProductos.remove(producto)
             }
-        _productos.value?.filter { producto -> !producto.comprado }?.toCollection(listaProductos)
+
+        //_productos.value?.filter { producto -> !producto.comprado }?.toCollection(listaProductos)
         _productos.value = listaProductos
     }
 
     fun cargarListaProductos(tienda: String) {
-        _visibility.value = true
-        _tiendaActual.value = tienda
-        database.child("tiendas").child(tienda).child("listas").child("actual").get()
-            .addOnSuccessListener { productos ->
-                listaProductos.clear()
-                productos.children.forEach { dataSnapshot ->
 
-                    val producto = dataSnapshot.getValue(Producto::class.java)
-                    producto?.let {
-                        listaProductos.add(it)
-                    }
+
+        viewModelScope.launch {
+
+            _visibility.value = true
+            _tiendaActual.value = tienda
+            val getProductosTienda = GetProductosTienda(
+                ProductoRepository(
+                    FirebaseProductoDataSource(),
+                    database
+                )
+            )
+            val productos = getProductosTienda(tienda)
+            when (productos) {
+                is Resultado.Error -> {
+                    listaProductos.clear()
+                    _productos.value = listaProductos
+                    //adapter.notifyDataSetChanged()
+                    _errorMessage.value = productos.message
+                    _visibility.value = false
+                    Log.e("firebase", "Error getting data ${ productos.message}")
                 }
-                listaProductos.sortBy { producto -> producto.comprado }
-                _productos.value = listaProductos
-                Log.d("::::TAG", "Got value ${productos.value}")
-                _visibility.value = false
-            }.addOnFailureListener {
-                listaProductos.clear()
-                _productos.value = listaProductos
-                //adapter.notifyDataSetChanged()
-                _errorMessage.value = "No se pudo cargar los datos"
-                _visibility.value = false
-                Log.e("firebase", "Error getting data", it)
+                Resultado.Loading -> {
+                    // cuando hay flows
+                }
+
+                is Resultado.Success -> {
+                    listaProductos.clear()
+                    listaProductos.addAll(productos.result)
+                    _productos.value = listaProductos
+                    Log.d("::::TAG", "Got value ${productos}")
+                    _visibility.value = false
+                }
             }
+        }
+
+
     }
+
 
     fun addProducto(productoNuevo: Producto) {
         database.child("tiendas/${tiendaActual.value ?: ""}/listas/actual")
@@ -170,4 +188,5 @@ class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
 
 
 }
+
 

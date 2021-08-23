@@ -1,19 +1,19 @@
-package com.example.listacompra
+package com.example.listacompra.framework.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.example.listacompra.databinding.ItemProductoBinding
-import com.example.listacompra.modelo.Producto
+import com.example.listacompra.domain.Producto
 
 class ProductoAdapter(
 //                      private val onEditarProducto: (Producto,String) -> Unit,
 //                      private val onComprarProducto: (Producto) -> Unit,
 //                      private val onBorrarProducto: (Producto) -> Unit,
 //                      private val onCambiarProductoDeTienda: (Producto) -> Unit,
-                      private val productosActions: ProductosActions): ListAdapter<Producto,ProductoViewHolder>(DiffUtilCallback) {
+                      private val productosActions: ProductosActions
+): ListAdapter<Producto, ProductoViewHolder>(DiffUtilCallback) {
 
 
     interface ProductosActions {

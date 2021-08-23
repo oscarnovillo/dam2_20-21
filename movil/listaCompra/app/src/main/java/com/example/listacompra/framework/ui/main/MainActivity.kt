@@ -1,4 +1,4 @@
-package com.example.listacompra
+package com.example.listacompra.framework.ui.main
 
 
 import android.content.DialogInterface
@@ -9,15 +9,15 @@ import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.listacompra.R
+import com.example.listacompra.framework.ui.tienda.TiendasActivity
 import com.example.listacompra.databinding.ActivityMainBinding
-import com.example.listacompra.modelo.Producto
+import com.example.listacompra.domain.Producto
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.Serializable
 
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var adapter: ProductoAdapter
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
@@ -92,12 +92,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+
         val view = binding.root
         setContentView(view)
 
         // si el target es menor que 1.8 build gradle options
         // ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel = ViewModelProvider(this).get()
+       // viewModel = ViewModelProvider(this).get()
 
         adapter = ProductoAdapter(
             object : ProductoAdapter.ProductosActions {
@@ -113,6 +114,7 @@ class MainActivity : AppCompatActivity() {
                 override fun cambiarProductoDeTienda(producto: Producto) =
                     this@MainActivity.cambiarProductoDeTienda(producto)
             })
+
 
         rvCompras.adapter = adapter
         rvCompras.layoutManager = LinearLayoutManager(this)
@@ -195,7 +197,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addProducto() {
-        val newProducto = Producto(binding.etProducto.text.toString(), false)
+        val newProducto = Producto(binding.etProducto.text.toString())
         viewModel.addProducto(newProducto)
         binding.etProducto.setText("")
         hideKeyboard()

@@ -1,4 +1,4 @@
-package com.example.listacompra.modelo
+package com.example.listacompra.domain
 
 import java.io.Serializable
 

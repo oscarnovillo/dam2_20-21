@@ -1,20 +1,18 @@
-package com.example.listacompra
+package com.example.listacompra.framework.ui.tienda
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.listacompra.R
 import com.example.listacompra.databinding.ActivityTiendasBinding
-import com.example.listacompra.modelo.Producto
+import com.example.listacompra.framework.ui.main.MainActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.Serializable
 
 class TiendasActivity : AppCompatActivity() {
 

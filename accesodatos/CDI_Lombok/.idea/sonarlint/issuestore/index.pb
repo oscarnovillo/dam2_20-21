@@ -17,10 +17,12 @@ N
 src/main/java/dao/DaoTest.java,d\1\d1c3d39957c175e285e68fe5a903f94a27c9d2ea
 X
 (src/main/java/controllers/Principal.java,f\0\f0b0d94d20e952ab19313696f8446cfde8c0aaec
-N
-src/main/java/main/MainFX.java,0\b\0b1ca344ee7d18831cec3b217c85cbfcc8a7e495
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+W
+'src/main/java/config/Configuration.java,7\f\7f9a1455549e9958f1cfe6993a695569484b133b
+B
+config/config.yaml,5\1\51c347deb3d0a913cd1171b574d79293a866eb3f
 R
 "src/main/java/dao/DaoTestImpl.java,c\8\c80aaddf5ae93fd98de6e5ce034bbb40c078c811
 Y
@@ -29,7 +31,3 @@ P
  src/main/java/gui/Producers.java,0\c\0ccb22e4f4008479e9aa017246e1fb0c4f4d4461
 Z
 *src/main/java/config/ExampleSingleton.java,5\b\5b86e0a071846f8ea86042cdda0c11dc91885358
-B
-config/config.yaml,5\1\51c347deb3d0a913cd1171b574d79293a866eb3f
-W
-'src/main/java/config/Configuration.java,7\f\7f9a1455549e9958f1cfe6993a695569484b133b
