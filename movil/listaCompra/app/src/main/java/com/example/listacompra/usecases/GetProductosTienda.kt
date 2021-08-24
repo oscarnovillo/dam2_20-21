@@ -5,8 +5,9 @@ import com.example.listacompra.data.datasource.IProductoRemoteDatasource
 import com.example.listacompra.data.repository.ProductoRepository
 import com.example.listacompra.domain.Producto
 import com.google.firebase.database.DatabaseReference
+import javax.inject.Inject
 
-class GetProductosTienda (
+class GetProductosTienda @Inject constructor(
     private val repository: ProductoRepository
 ){
 

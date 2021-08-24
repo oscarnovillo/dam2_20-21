@@ -18,15 +18,16 @@ import com.example.listacompra.R
 import com.example.listacompra.framework.ui.tienda.TiendasActivity
 import com.example.listacompra.databinding.ActivityMainBinding
 import com.example.listacompra.domain.Producto
-import kotlinx.android.synthetic.main.activity_main.*
+import dagger.hilt.android.AndroidEntryPoint
+
 import java.io.Serializable
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    lateinit var adapter: ProductoAdapter
+    private lateinit var adapter: ProductoAdapter
 
     private val viewModel by viewModels<MainViewModel>()
 
@@ -115,10 +116,10 @@ class MainActivity : AppCompatActivity() {
                     this@MainActivity.cambiarProductoDeTienda(producto)
             })
 
-
-        rvCompras.adapter = adapter
-        rvCompras.layoutManager = LinearLayoutManager(this)
-
+        with(binding) {
+            rvCompras.adapter = adapter
+            rvCompras.layoutManager = LinearLayoutManager(this@MainActivity)
+        }
 
         viewModel.visibility.observe(this, Observer { visible ->
             binding.progressBar.visibility = if (visible) View.VISIBLE else View.GONE
@@ -137,10 +138,11 @@ class MainActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         })
 
-        btAdd.setOnClickListener { addProducto() }
-        addMultiple.setOnClickListener { addProductosCompra() }
-        fbRecargar.setOnClickListener { viewModel.cargarListaProductos() }
-
+        with(binding) {
+            btAdd.setOnClickListener { addProducto() }
+            addMultiple.setOnClickListener { addProductosCompra() }
+            fbRecargar.setOnClickListener { viewModel.cargarListaProductos() }
+        }
         if (viewModel.tiendaActual.value == null) {
             viewModel.cargarTiendas()
         } else {

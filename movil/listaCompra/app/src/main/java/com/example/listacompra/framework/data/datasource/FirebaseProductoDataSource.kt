@@ -9,8 +9,9 @@ import com.google.firebase.database.DatabaseReference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class FirebaseProductoDataSource : IProductoRemoteDatasource {
+class FirebaseProductoDataSource @Inject constructor() : IProductoRemoteDatasource  {
     override suspend fun getProductosTienda(
         database: DatabaseReference,
         tienda: String

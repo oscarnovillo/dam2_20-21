@@ -12,8 +12,10 @@ import com.example.listacompra.framework.ui.main.MainActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_main.*
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class TiendasActivity : AppCompatActivity() {
 
 
@@ -52,7 +54,7 @@ class TiendasActivity : AppCompatActivity() {
         cargarTiendas()
 
 
-        btAdd.setOnClickListener { addTask() }
+        binding.btAdd.setOnClickListener { addTask() }
     }
 
 

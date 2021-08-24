@@ -8,12 +8,20 @@ import com.example.listacompra.domain.Producto
 import com.example.listacompra.framework.data.datasource.FirebaseProductoDataSource
 import com.example.listacompra.usecases.GetProductosTienda
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+import dagger.assisted.Assisted
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.time.LocalDate
+import javax.inject.Inject
 
-class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
+
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val database: DatabaseReference,
+    private val getProductosTienda: GetProductosTienda,
+    @Assisted private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
 
     private var listaProductos = mutableListOf<Producto>()
     private var listaTiendas = mutableListOf<String>()
@@ -34,12 +42,12 @@ class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
 
-    private var database: DatabaseReference
-
-
-    init {
-        database = Firebase.database.reference
-    }
+//    private var database: DatabaseReference
+//
+//
+//    init {
+//        database = Firebase.database.reference
+//    }
 
 
     fun cambiarDeTienda(tiendaNueva: Int, producto: Producto) {
@@ -113,12 +121,12 @@ class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
 
             _visibility.value = true
             _tiendaActual.value = tienda
-            val getProductosTienda = GetProductosTienda(
-                ProductoRepository(
-                    FirebaseProductoDataSource(),
-                    database
-                )
-            )
+//            val getProductosTienda = GetProductosTienda(
+//                ProductoRepository(
+//                    FirebaseProductoDataSource(),
+//                    database
+//                )
+//            )
             val productos = getProductosTienda(tienda)
             when (productos) {
                 is Resultado.Error -> {
@@ -127,7 +135,7 @@ class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
                     //adapter.notifyDataSetChanged()
                     _errorMessage.value = productos.message
                     _visibility.value = false
-                    Log.e("firebase", "Error getting data ${ productos.message}")
+                    Log.e("firebase", "Error getting data ${productos.message}")
                 }
                 Resultado.Loading -> {
                     // cuando hay flows
@@ -137,7 +145,7 @@ class MainViewModel(val savedStateHandle: SavedStateHandle) : ViewModel() {
                     listaProductos.clear()
                     listaProductos.addAll(productos.result)
                     _productos.value = listaProductos
-                    Log.d("::::TAG", "Got value ${productos}")
+                    Timber.i("Got value ${productos}")
                     _visibility.value = false
                 }
             }
