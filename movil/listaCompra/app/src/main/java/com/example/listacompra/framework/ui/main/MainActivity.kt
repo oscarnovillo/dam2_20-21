@@ -12,14 +12,17 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.lifecycle.Observer
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.listacompra.R
-import com.example.listacompra.framework.ui.tienda.TiendasActivity
 import com.example.listacompra.databinding.ActivityMainBinding
 import com.example.listacompra.domain.Producto
+import com.example.listacompra.framework.ui.tienda.TiendasActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-
+import timber.log.Timber
 import java.io.Serializable
 
 @AndroidEntryPoint
@@ -29,8 +32,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var adapter: ProductoAdapter
 
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel: MainViewModel by viewModels()
 
+    // añade el menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
@@ -50,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_comprar -> {
-                val dialog = AlertDialog.Builder(this)
+                val dialog = MaterialAlertDialogBuilder(this)
                     .setTitle("CONFIRMACION")
                     .setMessage("Seguro que has acabado la compra")
                     .setNegativeButton("NO") { view, _ ->
@@ -72,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                     .setItems(
                         viewModel.tiendas.value?.toTypedArray()
                     ) { _, which ->
-                        viewModel.cargarListaProductos(
+                        viewModel.changeTiendaActual(
                             viewModel.tiendas.value?.get(which).orEmpty()
                         )
                     }
@@ -92,19 +96,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        Timber.d("Creando actividad!!!")
 
-        val view = binding.root
-        setContentView(view)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // si el target es menor que 1.8 build gradle options
         // ViewModelProvider(this)[MainViewModel::class.java]
-       // viewModel = ViewModelProvider(this).get()
+        // viewModel = ViewModelProvider(this).get()
 
         adapter = ProductoAdapter(
             object : ProductoAdapter.ProductosActions {
                 override fun onEditarProducto(producto: Producto, nuevoNombre: String) =
-                    this@MainActivity.editarProducto(producto,nuevoNombre)
+                    this@MainActivity.editarProducto(producto, nuevoNombre)
 
                 override fun comprarProducto(producto: Producto) =
                     this@MainActivity.viewModel.comprarProducto(producto)
@@ -125,9 +129,7 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = if (visible) View.VISIBLE else View.GONE
         })
 
-        viewModel.tiendaActual.observe(this, Observer { tienda ->
-            binding.myToolbar.title = tienda
-        })
+
 
         viewModel.errorMessage.observe(this, Observer { error ->
             Toast.makeText(this, error, Toast.LENGTH_LONG).show()
@@ -138,17 +140,24 @@ class MainActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         })
 
+        viewModel.tiendaActual.observe(this, Observer { tienda ->
+            binding.myToolbar.title = tienda
+
+        })
+
         with(binding) {
             btAdd.setOnClickListener { addProducto() }
             addMultiple.setOnClickListener { addProductosCompra() }
             fbRecargar.setOnClickListener { viewModel.cargarListaProductos() }
         }
-        if (viewModel.tiendaActual.value == null) {
-            viewModel.cargarTiendas()
-        } else {
-            binding.myToolbar.title = viewModel.tiendaActual.value
-        }
+
+//        binding.myToolbar.title =
+//            PreferenceManager.getDefaultSharedPreferences(this).getString("TIENDA", "")
+        viewModel.cargarTiendas()
+
         setSupportActionBar(binding.myToolbar)
+
+
     }
 
     private fun addProductosCompra() {
@@ -171,7 +180,6 @@ class MainActivity : AppCompatActivity() {
     fun hideKeyboard() {
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
-
     }
 
     fun cambiarProductoDeTienda(producto: Producto) {
@@ -192,8 +200,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun editarProducto(producto: Producto, nuevoNombre: String)
-    {
+    private fun editarProducto(producto: Producto, nuevoNombre: String) {
         viewModel.editarProducto(producto, nuevoNombre)
         hideKeyboard()
     }

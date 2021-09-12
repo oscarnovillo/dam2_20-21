@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class DaoTestImpl implements DaoTest {
 
-  private Configuration config;
+  private final Configuration config;
 
   @Inject
   public DaoTestImpl(Configuration config) {

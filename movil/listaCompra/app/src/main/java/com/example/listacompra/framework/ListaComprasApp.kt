@@ -11,7 +11,16 @@ class ListaComprasApp: Application()
     override fun onCreate() {
         super.onCreate()
         if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
+            Timber.plant(object : Timber.DebugTree(){
+
+                override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+                    super.log(priority, "--$tag", message, t)
+                }
+
+                override fun createStackElementTag(element: StackTraceElement): String? {
+                    return super.createStackElementTag(element)
+                }
+            })
         }
     }
 }

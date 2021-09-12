@@ -1,14 +1,13 @@
 package com.example.listacompra.framework.ui.main
 
+import android.content.SharedPreferences
 import android.util.Log
+import androidx.core.content.edit
 import androidx.lifecycle.*
 import com.example.listacompra.data.Resultado
-import com.example.listacompra.data.repository.ProductoRepository
 import com.example.listacompra.domain.Producto
-import com.example.listacompra.framework.data.datasource.FirebaseProductoDataSource
 import com.example.listacompra.usecases.GetProductosTienda
 import com.google.firebase.database.DatabaseReference
-import dagger.assisted.Assisted
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -20,8 +19,10 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val database: DatabaseReference,
     private val getProductosTienda: GetProductosTienda,
-    @Assisted private val savedStateHandle: SavedStateHandle
+    private val sharedPref: SharedPreferences,
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
+
 
     private var listaProductos = mutableListOf<Producto>()
     private var listaTiendas = mutableListOf<String>()
@@ -36,7 +37,8 @@ class MainViewModel @Inject constructor(
     val visibility: LiveData<Boolean> get() = _visibility
 
     private val _tiendaActual: MutableLiveData<String> =
-        savedStateHandle.getLiveData("tiendaActual")
+        savedStateHandle.getLiveData("tiendaActual") // guarda estado aunque se muera el viewmodel
+
     val tiendaActual: LiveData<String> get() = _tiendaActual
 
     private val _errorMessage = MutableLiveData<String>()
@@ -45,10 +47,6 @@ class MainViewModel @Inject constructor(
 //    private var database: DatabaseReference
 //
 //
-//    init {
-//        database = Firebase.database.reference
-//    }
-
 
     fun cambiarDeTienda(tiendaNueva: Int, producto: Producto) {
         if (listaTiendas[tiendaNueva] != tiendaActual.value) {
@@ -61,26 +59,31 @@ class MainViewModel @Inject constructor(
         }
     }
 
+
     fun cargarTiendas() {
-        _visibility.value = true
+        Timber.d("cargando tiendas!!!")
 
-        database.child("tiendas").get().addOnSuccessListener {
-            listaTiendas.clear()
-            it.children.forEach { dataSnapshot ->
-                val tienda = dataSnapshot.key
-                tienda?.let {
-                    listaTiendas.add(it)
+        if (listaTiendas.isEmpty()) {
+            _visibility.value = true
+            database.child("tiendas").get().addOnSuccessListener {
+                listaTiendas.clear()
+                it.children.forEach { dataSnapshot ->
+                    val tienda = dataSnapshot.key
+                    tienda?.let {
+                        listaTiendas.add(it)
+                    }
                 }
-                listaTiendas[0]?.let {
-                    _tiendaActual.value = listaTiendas[0]
-                    cargarListaProductos()
-                }
+
+                _tiendaActual.value = sharedPref.getString("TIENDA", "")
+                val tienda = listaTiendas.find { tienda -> tienda.equals(_tiendaActual.value) }
+                    ?: listaTiendas[0]
+
+               changeTiendaActual(tienda)
+
+                _tiendas.value = listaTiendas
+                _visibility.value = false
             }
-            _tiendas.value = listaTiendas
-            _visibility.value = false
         }
-
-
     }
 
 
@@ -88,13 +91,19 @@ class MainViewModel @Inject constructor(
         producto.comprado = !producto.comprado
         database.child("tiendas").child(tiendaActual.value ?: "").child("listas")
             .child("actual").child(producto.nombre).setValue(producto)
-        _productos.value = listaProductos
+
+        _productos.value = listaProductos.sortedBy { producto -> producto.comprado }
     }
 
 
-    fun cargarListaProductos() {
-        val tienda = _tiendaActual.value ?: ""
-        cargarListaProductos(tienda)
+    fun changeTiendaActual(tienda:String)
+    {
+        _tiendaActual.value = tienda
+        sharedPref.edit {
+            putString("TIENDA", tienda)
+            commit()
+        }
+        cargarListaProductos()
     }
 
     fun comprar() {
@@ -103,7 +112,7 @@ class MainViewModel @Inject constructor(
         date.toString()
         productos.value?.filter { producto -> producto.comprado }
             ?.forEach { producto ->
-                database.child("tiendas/${tiendaActual.value}/listas/${date.toString()}/${producto.nombre}")
+                database.child("tiendas/${tiendaActual.value}/listas/$date/${producto.nombre}")
                     .setValue(producto)
                 database.child("tiendas/${tiendaActual.value}/listas/actual/${producto.nombre}")
                     .removeValue()
@@ -114,39 +123,40 @@ class MainViewModel @Inject constructor(
         _productos.value = listaProductos
     }
 
-    fun cargarListaProductos(tienda: String) {
-
+     fun cargarListaProductos() {
+        val tienda = _tiendaActual.value
 
         viewModelScope.launch {
 
             _visibility.value = true
-            _tiendaActual.value = tienda
 //            val getProductosTienda = GetProductosTienda(
 //                ProductoRepository(
 //                    FirebaseProductoDataSource(),
 //                    database
 //                )
 //            )
-            val productos = getProductosTienda(tienda)
-            when (productos) {
-                is Resultado.Error -> {
-                    listaProductos.clear()
-                    _productos.value = listaProductos
-                    //adapter.notifyDataSetChanged()
-                    _errorMessage.value = productos.message
-                    _visibility.value = false
-                    Log.e("firebase", "Error getting data ${productos.message}")
-                }
-                Resultado.Loading -> {
-                    // cuando hay flows
-                }
+            tienda?.let {
+                val productos = getProductosTienda(it)
+                when (productos) {
+                    is Resultado.Error -> {
+                        listaProductos.clear()
+                        _productos.value = listaProductos
+                        //adapter.notifyDataSetChanged()
+                        _errorMessage.value = productos.message
+                        _visibility.value = false
+                        Log.e("firebase", "Error getting data ${productos.message}")
+                    }
+                    Resultado.Loading -> {
+                        // cuando hay flows
+                    }
 
-                is Resultado.Success -> {
-                    listaProductos.clear()
-                    listaProductos.addAll(productos.result)
-                    _productos.value = listaProductos
-                    Timber.i("Got value ${productos}")
-                    _visibility.value = false
+                    is Resultado.Success -> {
+                        listaProductos.clear()
+                        listaProductos.addAll(productos.result)
+                        _productos.value = listaProductos
+                        Timber.i("Got value ${productos}")
+                        _visibility.value = false
+                    }
                 }
             }
         }

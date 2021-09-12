@@ -17,10 +17,6 @@ import javax.inject.Inject;
 
 public class Principal {
 
-
-
-
-
     @FXML
     private BorderPane root;
     @FXML
@@ -32,11 +28,10 @@ public class Principal {
         return alert;
     }
 
+    private final ServiciosTest st;
 
-    private ServiciosTest st;
 
-
-    private ExampleSingleton eps;
+    private final ExampleSingleton eps;
 
 
     private FXMLLoader fxmlloaderPantalla;
@@ -91,5 +86,10 @@ public class Principal {
         alert.setContentText(eps.getNow()+"hola " + st.dameNombre(1) + " " + st.dameNumero());
         alert.showAndWait();
         cargarPantalla1();
+    }
+
+    public void clickMenuItem(ActionEvent actionEvent) {
+
+
     }
 }

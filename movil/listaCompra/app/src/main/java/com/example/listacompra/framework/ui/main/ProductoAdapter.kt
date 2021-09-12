@@ -29,9 +29,8 @@ class ProductoAdapter(
         return ProductoViewHolder(ItemProductoBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false))
     }
 
-
     override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
-        holder.render(getItem(position),productosActions)
+        holder.render(currentList[position],productosActions)
     }
 
 

@@ -1,11 +1,7 @@
 
-W
-java:S1128"5Remove this unused import 'javafx.event.ActionEvent'.(î•¯¼ýÿÿÿÿ8ÔÆ„õÛ.
-`
-java:S1128"CRemove this unused import 'javax.enterprise.context.RequestScoped'.(‚Õ…½8ÔÆ„õÛ.
-]	java:S125?"<This block of commented-out lines of code should be removed.(Ëç˜Èÿÿÿÿÿ8±áÌø‰/
-Q
-java:S6212B"/Declare this local variable with "var" instead.(Ö¾—×ýÿÿÿÿ8Ã”‰ /
-Q
-java:S6212M"/Declare this local variable with "var" instead.(—ô¶öüÿÿÿÿ8‰Ã”‰ /
-]	java:S125X"<This block of commented-out lines of code should be removed.(ðùŠÏýÿÿÿÿ8ÔÆ„õÛ.
+—
+java:S1186["€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Á¯ü±
+V	java:S125:"<This block of commented-out lines of code should be removed.(Ëç˜Èÿÿÿÿÿ
+V	java:S125S"<This block of commented-out lines of code should be removed.(ðùŠÏýÿÿÿÿ
+Y
+java:S1128"CRemove this unused import 'javax.enterprise.context.RequestScoped'.(‚Õ…½

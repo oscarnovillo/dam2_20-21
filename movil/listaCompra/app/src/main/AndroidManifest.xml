@@ -3,20 +3,33 @@
     package="com.example.listacompra">
 
     <application
-        android:allowBackup="true"
         android:name=".framework.ListaComprasApp"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".framework.ui.tienda.TiendasActivity"></activity>
-        <activity android:name=".framework.ui.main.MainActivity" >
+        android:theme="@style/Theme.ListaCompra">
+        <activity
+            android:name=".framework.ui.main.MainActivityTest"
+            android:exported="true" >
+
+        </activity>
+        <activity
+            android:name=".framework.ui.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/SplashAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
+        </activity>
+        <activity android:name=".framework.ui.tienda.TiendasActivity" />
+        <activity android:name=".framework.ui.main.MainActivity">
+
         </activity>
     </application>
 
